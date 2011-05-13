@@ -87,6 +87,25 @@ namespace AskMe.TextParser.Specs
 
         private It should_contain_the_second_given_question =
             () => GetQuestion(1).Text.ShouldEqual("Mich überkommt eine ängstliche Vorahnung,dass etwas Schreckliches passieren könnte.");
+    }
 
+    public class when_parsing_two_questions_with_linux_line_endings : when_parsing
+    {
+        private Establish context =
+            () => Text =
+                  "Ich fühle mich angespannt und überreizt.\n" +
+                  "  A) oft\n" +
+                  "  B) von Zeit zu Zeit, gelegentlich\n" +
+                  "Mich überkommt eine ängstliche Vorahnung,dass etwas Schreckliches passieren könnte.\n" +
+                  "  A) ja, sehr stark\n" +
+                  "  B) ja, aber nicht allzu stark\n" +
+                  "  C) etwas, aber es macht mir keine Sorgen\n" +
+                  "  D) überhaupt nicht";
+
+        private It should_contain_two_questions =
+            () => Questions.Count.ShouldEqual(2);
+
+        private It should_contain_the_fours_answers_for_the_second_question =
+            () => GetQuestion(1).Answers.Count.ShouldEqual(4);
     }
 }
