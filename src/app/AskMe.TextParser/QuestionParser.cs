@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using AskMe.Model;
 
 namespace AskMe.TextParser
@@ -13,7 +12,7 @@ namespace AskMe.TextParser
 
         public static Question Parse(List<string> lines, ref int lineNo)
         {
-            var text = lines[lineNo++];
+            string text = lines[lineNo++];
             return new Question(text, AnswerParser.ParseAnswers(lines, ref lineNo));
         }
     }

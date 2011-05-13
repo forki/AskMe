@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="QuestionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,8 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="QuestionWindow.xaml.cs">
+      <DependentUpon>QuestionWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -96,6 +96,10 @@
     <ProjectReference Include="..\AskMe.Model\AskMe.Model.csproj">
       <Project>{7211F369-D40C-467E-9A4A-E071DCFAB523}</Project>
       <Name>AskMe.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AskMe.TextParser\AskMe.TextParser.csproj">
+      <Project>{B9162DB7-91A6-480F-A0DE-D0DAA51A5D75}</Project>
+      <Name>AskMe.TextParser</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
