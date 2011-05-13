@@ -14,5 +14,10 @@ namespace AskMe.Model
         public string Text { get; private set; }
 
         public List<Answer> Answers { get; private set; }
+
+        public Result Answer(string code)
+        {
+            return new Result(5);
+        }
     }
 }
