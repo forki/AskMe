@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7211F369-D40C-467E-9A4A-E071DCFAB523}</ProjectGuid>
+    <ProjectGuid>{B9162DB7-91A6-480F-A0DE-D0DAA51A5D75}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AskMe.Model</RootNamespace>
-    <AssemblyName>AskMe.Model</AssemblyName>
+    <RootNamespace>AskMe.TextParser</RootNamespace>
+    <AssemblyName>AskMe.TextParser</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,10 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Question.cs" />
+    <Compile Include="Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AskMe.Model\AskMe.Model.csproj">
+      <Project>{7211F369-D40C-467E-9A4A-E071DCFAB523}</Project>
+      <Name>AskMe.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>C:\data\AskMe\packages\Machine.Specifications.0.4.12.0\tools\mspec-clr4.exe C:\data\AskMe\src\test\AskMe.TextParser.Specs\bin\Debug\AskMe.TextParser.Specs.dll</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
