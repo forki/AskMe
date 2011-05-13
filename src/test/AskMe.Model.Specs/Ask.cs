@@ -12,7 +12,7 @@ namespace AskMe.Model.Specs
 
         public static Question WithAnswer(this Question question, string code, string text)
         {
-            var newAnswers = question.Answers.ToList();
+            var newAnswers = question.Answers.Values.ToList();
             newAnswers.Add(new Answer(code,text));
             return new Question(question.Text,newAnswers);
         }

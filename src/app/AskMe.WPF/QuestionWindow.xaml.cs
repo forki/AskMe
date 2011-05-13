@@ -41,7 +41,7 @@ namespace AskMe.WPF
         private void DisplayAnswers(Question question)
         {
             answersListBox.Items.Clear();
-            foreach (Answer answer in question.Answers)
+            foreach (Answer answer in question.Answers.Values)
                 answersListBox.Items.Add(answer);
         }
 

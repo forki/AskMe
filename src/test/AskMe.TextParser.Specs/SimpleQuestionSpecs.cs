@@ -14,7 +14,7 @@ namespace AskMe.TextParser.Specs
 
         public static Answer GetAnswer(int question, int answer)
         {
-            return GetQuestion(question).Answers.Skip(answer).First();
+            return GetQuestion(question).Answers.Values.Skip(answer).First();
         }
 
         public static Question GetQuestion(int question)

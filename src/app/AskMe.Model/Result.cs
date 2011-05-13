@@ -2,11 +2,19 @@ namespace AskMe.Model
 {
     public class Result
     {
-        public Result(int points)
+        public Result(Question question, Answer answer)
         {
-            Points = points;
+            Question = question;
+            SelectedAnswer = answer;
         }
 
-        public int Points { get; private set; }
+        public int Points
+        {
+            get { return 5; }
+        }
+
+        public Question Question { get; private set; }
+
+        public Answer SelectedAnswer { get; private set; }
     }
 }
