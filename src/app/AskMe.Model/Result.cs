@@ -2,9 +2,9 @@ namespace AskMe.Model
 {
     public class Result
     {
-        public Result(Question question, Answer answer)
+        public Result(Item item, Answer answer)
         {
-            Question = question;
+            Item = item;
             SelectedAnswer = answer;
         }
 
@@ -13,7 +13,7 @@ namespace AskMe.Model
             get { return 5; }
         }
 
-        public Question Question { get; private set; }
+        public Item Item { get; private set; }
 
         public Answer SelectedAnswer { get; private set; }
     }

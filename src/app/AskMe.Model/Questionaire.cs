@@ -5,29 +5,29 @@ namespace AskMe.Model
 {
     public class Questionaire
     {
-        readonly Dictionary<string, Question> _questions;
+        readonly Dictionary<string, Item> _questions;
 
-        public Questionaire(IEnumerable<Question> questions)
+        public Questionaire(IEnumerable<Item> questions)
         {
-            Questions = new List<Question>();
-            _questions = new Dictionary<string, Question>();
+            Items = new List<Item>();
+            _questions = new Dictionary<string, Item>();
             foreach (var question in questions)
                 AddQuestion(question);
         }
 
-        public List<Question> Questions { get; private set; }
+        public List<Item> Items { get; private set; }
 
-        void AddQuestion(Question question)
+        void AddQuestion(Item item)
         {
             try
             {
-                _questions.Add(question.Code, question);
+                _questions.Add(item.Code, item);
             }
             catch (Exception ex)
             {
-                throw new DuplicateQuestionException(question.Code, ex);
+                throw new DuplicateItemException(item.Code, ex);
             }
-            Questions.Add(question);
+            Items.Add(item);
         }
     }
 }

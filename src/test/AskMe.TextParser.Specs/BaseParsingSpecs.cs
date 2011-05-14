@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using AskMe.Model;
 using Machine.Specifications;
@@ -13,14 +12,14 @@ namespace AskMe.TextParser.Specs
 
         Because of = () => Questionaire = QuestionaireParser.Parse(Text);
 
-        public static Answer GetAnswer(int question, int answer)
+        public static Answer GetAnswer(int itemIndex, int answer)
         {
-            return GetQuestion(question).Answers.Values.Skip(answer).First();
+            return GetItem(itemIndex).Answers.Values.Skip(answer).First();
         }
 
-        public static Question GetQuestion(int question)
+        public static Item GetItem(int itemIndex)
         {
-            return Questionaire.Questions.Skip(question).First();
+            return Questionaire.Items.Skip(itemIndex).First();
         }
     }
 }

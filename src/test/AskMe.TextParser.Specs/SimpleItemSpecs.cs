@@ -8,10 +8,10 @@ namespace AskMe.TextParser.Specs
             () => Text = "Ich fühle mich angespannt und überreizt.";
 
         It should_contain_one_question =
-            () => Questionaire.Questions.Count.ShouldEqual(1);
+            () => Questionaire.Items.Count.ShouldEqual(1);
 
         It should_contain_the_given_sentence =
-            () => GetQuestion(0).Text.ShouldEqual(Text);
+            () => GetItem(0).Text.ShouldEqual(Text);
     }
 
     public class when_parsing_a_single_question_with_two_answers : when_parsing
@@ -23,7 +23,7 @@ namespace AskMe.TextParser.Specs
                   "  B) von Zeit zu Zeit, gelegentlich";
 
         It should_contain_one_question =
-            () => Questionaire.Questions.Count.ShouldEqual(1);
+            () => Questionaire.Items.Count.ShouldEqual(1);
 
         It should_contain_the_given_answer_code_for_A =
             () => GetAnswer(0, 0).Code.ShouldEqual("A");
@@ -38,10 +38,10 @@ namespace AskMe.TextParser.Specs
             () => GetAnswer(0, 1).Text.ShouldEqual("von Zeit zu Zeit, gelegentlich");
 
         It should_contain_the_given_question =
-            () => GetQuestion(0).Text.ShouldEqual("Ich fühle mich angespannt und überreizt.");
+            () => GetItem(0).Text.ShouldEqual("Ich fühle mich angespannt und überreizt.");
 
         It should_contain_two_answers =
-            () => GetQuestion(0).Answers.Count.ShouldEqual(2);
+            () => GetItem(0).Answers.Count.ShouldEqual(2);
     }
 
     public class when_parsing_a_question_with_pointed_answers : when_parsing
@@ -73,13 +73,13 @@ namespace AskMe.TextParser.Specs
                   "  D) überhaupt nicht";
 
         It should_contain_two_questions =
-            () => Questionaire.Questions.Count.ShouldEqual(2);
+            () => Questionaire.Items.Count.ShouldEqual(2);
 
         It should_contain_the_fours_answers_for_the_second_question =
-            () => GetQuestion(1).Answers.Count.ShouldEqual(4);
+            () => GetItem(1).Answers.Count.ShouldEqual(4);
 
         It should_contain_the_second_given_question =
-            () => GetQuestion(1).Text.ShouldEqual(ExpectedQuestion);
+            () => GetItem(1).Text.ShouldEqual(ExpectedQuestion);
 
         const string ExpectedQuestion =
             "Mich überkommt eine ängstliche Vorahnung, dass etwas Schreckliches passieren könnte.";
@@ -99,9 +99,9 @@ namespace AskMe.TextParser.Specs
                   "  D) überhaupt nicht";
 
         It should_contain_two_questions =
-            () => Questionaire.Questions.Count.ShouldEqual(2);
+            () => Questionaire.Items.Count.ShouldEqual(2);
 
         It should_contain_the_fours_answers_for_the_second_question =
-            () => GetQuestion(1).Answers.Count.ShouldEqual(4);
+            () => GetItem(1).Answers.Count.ShouldEqual(4);
     }
 }

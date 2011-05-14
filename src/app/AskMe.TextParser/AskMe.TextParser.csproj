@@ -43,7 +43,7 @@
     <Compile Include="AnswerParser.cs" />
     <Compile Include="QuestionaireParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuestionParser.cs" />
+    <Compile Include="ItemParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AskMe.Model\AskMe.Model.csproj">

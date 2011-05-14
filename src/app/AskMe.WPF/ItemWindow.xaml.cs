@@ -8,14 +8,14 @@ using AskMe.TextParser;
 namespace AskMe.WPF
 {
     /// <summary>
-    /// Interaction logic for QuestionWindow.xaml
+    /// Interaction logic for ItemWindow.xaml
     /// </summary>
-    public partial class QuestionWindow
+    public partial class ItemWindow
     {
         private readonly Questionaire _questionaire;
         private int currentQuestion;
 
-        public QuestionWindow()
+        public ItemWindow()
         {
             InitializeComponent();
 
@@ -26,22 +26,22 @@ namespace AskMe.WPF
 
         private void ShowNextQuestion()
         {
-            if (currentQuestion >= _questionaire.Questions.Count)
+            if (currentQuestion >= _questionaire.Items.Count)
                 return;
-            Question question = _questionaire.Questions[currentQuestion++];
-            DisplayQuestion(question);
-            DisplayAnswers(question);
+            Item item = _questionaire.Items[currentQuestion++];
+            DisplayQuestion(item);
+            DisplayAnswers(item);
         }
 
-        private void DisplayQuestion(Question question)
+        private void DisplayQuestion(Item item)
         {
-            questionLabel.Content = question.Text;
+            questionLabel.Content = item.Text;
         }
 
-        private void DisplayAnswers(Question question)
+        private void DisplayAnswers(Item item)
         {
             answersListBox.Items.Clear();
-            foreach (Answer answer in question.Answers.Values)
+            foreach (Answer answer in item.Answers.Values)
                 answersListBox.Items.Add(answer);
         }
 

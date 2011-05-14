@@ -8,12 +8,12 @@ namespace AskMe.TextParser.Specs
             () => Text = "HADS_1: How do you feel today?";
 
         It should_contain_one_question =
-            () => Questionaire.Questions.Count.ShouldEqual(1);
+            () => Questionaire.Items.Count.ShouldEqual(1);
 
         It should_contain_the_given_sentence =
-            () => GetQuestion(0).Text.ShouldEqual("How do you feel today?");
+            () => GetItem(0).Text.ShouldEqual("How do you feel today?");
 
         It should_have_the_given_question_code =
-            () => GetQuestion(0).Code.ShouldEqual("HADS_1");
+            () => GetItem(0).Code.ShouldEqual("HADS_1");
     }
 }

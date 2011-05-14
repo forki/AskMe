@@ -5,22 +5,22 @@ using AskMe.Model;
 
 namespace AskMe.TextParser
 {
-    public class QuestionParser
+    public class ItemParser
     {
-        static readonly Regex QuestionRegex = new Regex(@"(([^\s]+):\s)?(.*)", RegexOptions.Compiled);
+        static readonly Regex ItemRegex = new Regex(@"(([^\s]+):\s)?(.*)", RegexOptions.Compiled);
 
         public static bool HasNextQuestion(List<string> lines, int lineNo)
         {
             return lineNo < lines.Count;
         }
 
-        public static Question Parse(List<string> lines, int questionCount, ref int lineNo)
+        public static Item Parse(List<string> lines, int questionCount, ref int lineNo)
         {
             var text = lines[lineNo++];
-            var match = QuestionRegex.Match(text);
+            var match = ItemRegex.Match(text);
 
             var code = BuildQuestionCode(questionCount, match);
-            return new Question(code, match.Groups[3].Value, AnswerParser.ParseAnswers(lines, ref lineNo));
+            return new Item(code, match.Groups[3].Value, AnswerParser.ParseAnswers(lines, ref lineNo));
         }
 
         static string BuildQuestionCode(int questionCount, Match match)

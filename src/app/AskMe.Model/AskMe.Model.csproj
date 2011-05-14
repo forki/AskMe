@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Answer.cs" />
     <Compile Include="Exceptions.cs" />
-    <Compile Include="Question.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Questionaire.cs" />
     <Compile Include="Result.cs" />

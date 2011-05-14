@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace AskMe.Model
 {
-    public class Question
+    public class Item
     {
-        public Question(string code, string text, IEnumerable<Answer> answers)
+        public Item(string code, string text, IEnumerable<Answer> answers)
         {
             Code = code;
             Text = text;

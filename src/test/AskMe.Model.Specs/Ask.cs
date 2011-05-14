@@ -5,33 +5,33 @@ namespace AskMe.Model.Specs
 {
     public static class Ask
     {
-        public static Questionaire Question(string code, string text)
+        public static Questionaire Item(string code, string text)
         {
             return
-                new Questionaire(new List<Question>())
-                    .Question(code, text);
+                new Questionaire(new List<Item>())
+                    .Item(code, text);
         }
 
-        public static Questionaire Question(string text)
+        public static Questionaire Item(string text)
         {
-            return Question(text, text);
+            return Item(text, text);
         }
 
-        public static Questionaire Question(this Questionaire questionaire, string code, string text)
+        public static Questionaire Item(this Questionaire questionaire, string code, string text)
         {
-            var questions = questionaire.Questions.ToList();
-            questions.Add(new Question(code, text, new List<Answer>()));
+            var questions = questionaire.Items.ToList();
+            questions.Add(new Item(code, text, new List<Answer>()));
             return new Questionaire(questions);
         }
 
-        public static Questionaire Question(this Questionaire questionaire, string text)
+        public static Questionaire Item(this Questionaire questionaire, string text)
         {
-            return questionaire.Question(text, text);
+            return questionaire.Item(text, text);
         }
 
         public static Questionaire WithAnswer(this Questionaire questionaire, string code, string text)
         {
-            var questions = questionaire.Questions.ToList();
+            var questions = questionaire.Items.ToList();
             questions[questions.Count - 1] =
                 questions[questions.Count - 1]
                     .WithAnswer(code, text);
@@ -39,12 +39,12 @@ namespace AskMe.Model.Specs
             return new Questionaire(questions);
         }
 
-        public static Question WithAnswer(this Question question, string code, string text)
+        public static Item WithAnswer(this Item item, string code, string text)
         {
-            var newAnswers = question.Answers.Values.ToList();
+            var newAnswers = item.Answers.Values.ToList();
             newAnswers.Add(new Answer(code, text, 0));
 
-            return new Question(question.Code, question.Text, newAnswers);
+            return new Item(item.Code, item.Text, newAnswers);
         }
     }
 }

@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodedQuestionSpecs.cs" />
-    <Compile Include="SimpleQuestionSpecs.cs" />
+    <Compile Include="CodedItemSpecs.cs" />
+    <Compile Include="SimpleItemSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BaseParsingSpecs.cs" />
   </ItemGroup>
