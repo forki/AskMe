@@ -14,12 +14,15 @@ namespace AskMe.TextParser
             return lineNo < lines.Count;
         }
 
-        public static Question Parse(List<string> lines, ref int lineNo)
+        public static Question Parse(List<string> lines, int questionCount, ref int lineNo)
         {
             string text = lines[lineNo++];
             var m = QuestionRegex.Match(text);
 
-            return new Question(m.Groups[2].Value, m.Groups[3].Value, AnswerParser.ParseAnswers(lines, ref lineNo));
+            string code = m.Groups[2].Value;
+            if (string.IsNullOrEmpty(code))
+                code = string.Format("Q_{0}", questionCount);
+            return new Question(code, m.Groups[3].Value, AnswerParser.ParseAnswers(lines, ref lineNo));
         }
     }
 }

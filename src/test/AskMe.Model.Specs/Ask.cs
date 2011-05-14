@@ -5,9 +5,14 @@ namespace AskMe.Model.Specs
 {
     public static class Ask
     {
+        public static Question Question(string code, string text)
+        {
+            return new Question(code, text, new List<Answer>());
+        }
+
         public static Question Question(string text)
         {
-            return new Question(text, text, new List<Answer>());
+            return Question(text, text);
         }
 
         public static Question WithAnswer(this Question question, string code, string text)

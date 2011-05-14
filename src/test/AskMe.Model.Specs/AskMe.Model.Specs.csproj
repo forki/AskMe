@@ -46,6 +46,7 @@
     <Compile Include="Ask.cs" />
     <Compile Include="QuestionResultsSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionaireSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\app\AskMe.Model\AskMe.Model.csproj">
@@ -58,7 +59,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>C:\data\AskMe\packages\Machine.Specifications.0.4.12.0\tools\mspec-clr4.exe C:\data\AskMe\src\test\AskMe.Model.Specs\bin\Debug\AskMe.Model.Specs.dll</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -63,7 +63,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>C:\data\AskMe\packages\Machine.Specifications.0.4.12.0\tools\mspec-clr4.exe C:\data\AskMe\src\test\AskMe.TextParser.Specs\bin\Debug\AskMe.TextParser.Specs.dll</PostBuildEvent>
+    <PostBuildEvent>C:\data\AskMe\packages\Machine.Specifications.0.4.12.0\tools\mspec-clr4.exe --html C:\data\AskMe\TestResults.html C:\data\AskMe\src\test\AskMe.Model.Specs\bin\Debug\AskMe.Model.Specs.dll C:\data\AskMe\src\test\AskMe.TextParser.Specs\bin\Debug\AskMe.TextParser.Specs.dll</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
