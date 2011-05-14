@@ -2,14 +2,14 @@ namespace AskMe.Model
 {
     public class Answer
     {
-        public int Points { get; private set; }
-
         public Answer(string code, string text, int points)
         {
             Code = code;
             Text = text;
             Points = points;
         }
+
+        public int Points { get; private set; }
 
         public string Text { get; private set; }
 

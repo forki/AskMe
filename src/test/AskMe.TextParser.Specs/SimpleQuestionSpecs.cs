@@ -102,9 +102,10 @@ namespace AskMe.TextParser.Specs
             () => GetQuestion(1).Answers.Count.ShouldEqual(4);
 
         It should_contain_the_second_given_question =
-            () =>
-            GetQuestion(1).Text.ShouldEqual(
-                                            "Mich überkommt eine ängstliche Vorahnung, dass etwas Schreckliches passieren könnte.");
+            () => GetQuestion(1).Text.ShouldEqual(ExpectedQuestion);
+
+        const string ExpectedQuestion =
+            "Mich überkommt eine ängstliche Vorahnung, dass etwas Schreckliches passieren könnte.";
     }
 
     public class when_parsing_two_questions_with_linux_line_endings : when_parsing
