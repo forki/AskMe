@@ -35,7 +35,7 @@ namespace AskMe.WPF
 
         private void DisplayQuestion(Item item)
         {
-            questionLabel.Content = item.Text;
+            itemTextBlock.Text = item.Text;
         }
 
         private void DisplayAnswers(Item item)
@@ -50,7 +50,7 @@ namespace AskMe.WPF
             return new QuestionaireParser().Parse(File.ReadAllText(fileName, Encoding.Default));
         }
 
-        private void nextButton_Click(object sender, RoutedEventArgs e)
+        private void NextButtonClick(object sender, RoutedEventArgs e)
         {
             ShowNextQuestion();
         }
