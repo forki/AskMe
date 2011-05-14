@@ -44,10 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ask.cs" />
-    <Compile Include="QuestionSpecs.cs" />
+    <Compile Include="QuestionaireSpecs.cs" />
     <Compile Include="QuestionResultsSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuestionaireSpecs.cs" />
+    <Compile Include="QuestionSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\app\AskMe.Model\AskMe.Model.csproj">

@@ -24,8 +24,7 @@ namespace AskMe.Model
                 catch (Exception ex)
                 {                    
                     throw new DuplicateAnswerException(Code, answer.Code, ex);
-                }
-                
+                }                
         }
 
         public string Text { get; private set; }

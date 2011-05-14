@@ -4,20 +4,20 @@ using Machine.Specifications;
 
 namespace AskMe.Model.Specs
 {
-    public class when_adding_two_answers_with_same_code
+    public class when_adding_two_questions_with_same_code
     {
-        static Question Question;
+        static readonly Questionaire Questionaire = new Questionaire();
         static Exception Exception;
 
         Establish context =
-            () => Question = 
-                Ask.Question("HADS_1", "How do you feel?")
-                .WithAnswer("A", "Bad");
+            () => Questionaire.AddQuestion(Ask.Question("HADS_1", "How do you feel?"));
 
         Because of =
-            () => Exception = Catch.Exception(() => Question.WithAnswer("A", "Bad again"));
+            () =>
+            Exception =
+            Catch.Exception(() => Questionaire.AddQuestion(Ask.Question("HADS_1", "How do you really feel?")));
 
-        It should_give_a_nice_error = () => Exception.ShouldBeOfType<DuplicateAnswerException>();
-        It should_give_a_nice_error_message = () => Exception.Message.ShouldEqual("The answer A was used twice in question HADS_1.");
+        It should_give_a_nice_error = () => Exception.ShouldBeOfType<DuplicateQuestionException>();
+        It should_give_a_nice_error_message = () => Exception.Message.ShouldEqual("The question HADS_1 was used twice.");
     }
 }
