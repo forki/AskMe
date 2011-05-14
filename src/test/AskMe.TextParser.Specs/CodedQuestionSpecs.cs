@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-using AskMe.Model;
-
-using Machine.Specifications;
+﻿using Machine.Specifications;
 
 namespace AskMe.TextParser.Specs
 {

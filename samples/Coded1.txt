@@ -1,0 +1,8 @@
+HADS_1: Ich fühle mich angespannt und überreizt.
+  A) oft - 2
+  B) von Zeit zu Zeit, gelegentlich - 3
+HADS_2: Mich überkommt eine ängstliche Vorahnung,dass etwas Schreckliches passieren könnte.
+  A) ja, sehr stark - 4
+  B) ja, aber nicht allzu stark - 3
+  C) etwas, aber es macht mir keine Sorgen - 2
+  D) überhaupt nicht - 1

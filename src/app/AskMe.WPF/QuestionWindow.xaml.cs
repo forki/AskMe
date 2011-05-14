@@ -19,7 +19,7 @@ namespace AskMe.WPF
         {
             InitializeComponent();
 
-            _questions = LoadQuestions(@"C:\data\AskMe\samples\Simple1.txt");
+            _questions = LoadQuestions(@"C:\data\AskMe\samples\Coded1.txt");
 
             ShowNextQuestion();
         }
