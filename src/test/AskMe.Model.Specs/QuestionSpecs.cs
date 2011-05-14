@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 using Machine.Specifications;
 
@@ -12,7 +13,8 @@ namespace AskMe.Model.Specs
         Establish context =
             () => Question = 
                 Ask.Question("HADS_1", "How do you feel?")
-                .WithAnswer("A", "Bad");
+                .WithAnswer("A", "Bad")
+                .Questions.Last();
 
         Because of =
             () => Exception = Catch.Exception(() => Question.WithAnswer("A", "Bad again"));

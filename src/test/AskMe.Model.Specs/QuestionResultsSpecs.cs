@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using Machine.Specifications;
 
@@ -13,7 +14,8 @@ namespace AskMe.Model.Specs
             () => Question =
                   Ask.Question("How do you feel?")
                       .WithAnswer("A", "good")
-                      .WithAnswer("B", "bad");
+                      .WithAnswer("B", "bad")
+                      .Questions.Last();
 
         Because of = () => Result = Question.AnswerWith("A");
 
@@ -26,16 +28,16 @@ namespace AskMe.Model.Specs
     {
         static Question Question;
         protected static Result Result;
+        static Exception Exception;
 
         Establish context =
             () => Question =
                   Ask.Question("How do you feel?")
                       .WithAnswer("A", "good")
-                      .WithAnswer("B", "bad");
+                      .WithAnswer("B", "bad")
+                      .Questions.Last();
 
         Because of = () => Exception = Catch.Exception(() => Result = Question.AnswerWith("C"));
-
-        static Exception Exception;
 
         It should_give_a_nice_error = () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
         It should_give_a_nice_error_message = () => Exception.Message.ShouldEqual("The answer C is not allowed.");

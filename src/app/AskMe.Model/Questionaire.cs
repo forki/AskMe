@@ -7,15 +7,17 @@ namespace AskMe.Model
     {
         readonly Dictionary<string, Question> _questions;
 
-        public Questionaire()
+        public Questionaire(IEnumerable<Question> questions)
         {
-            _questions = new Dictionary<string, Question>();
             Questions = new List<Question>();
+            _questions = new Dictionary<string, Question>();
+            foreach (var question in questions)
+                AddQuestion(question);
         }
 
         public List<Question> Questions { get; private set; }
 
-        public void AddQuestion(Question question)
+        void AddQuestion(Question question)
         {
             try
             {

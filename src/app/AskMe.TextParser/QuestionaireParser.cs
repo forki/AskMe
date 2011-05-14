@@ -11,11 +11,11 @@ namespace AskMe.TextParser
         {
             List<string> lines = text.Split(new[] {"\r","\n"}, StringSplitOptions.RemoveEmptyEntries).ToList();
             int lineNo = 0;
-            var questionaire = new Questionaire();
+            var questions = new List<Question>();
             int questionCount = 0;
             while (QuestionParser.HasNextQuestion(lines, lineNo))
-                questionaire.AddQuestion(QuestionParser.Parse(lines, questionCount++, ref lineNo));
-            return questionaire;
+                questions.Add(QuestionParser.Parse(lines, questionCount++, ref lineNo));
+            return new Questionaire(questions);
         }
     }
 }
