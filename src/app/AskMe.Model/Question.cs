@@ -9,7 +9,7 @@ namespace AskMe.Model
             Text = text;
 
             Answers = new Dictionary<string, Answer>();
-            foreach (Answer answer in answers)
+            foreach (var answer in answers)
                 Answers.Add(answer.Code, answer);
         }
 
@@ -17,9 +17,12 @@ namespace AskMe.Model
 
         public Dictionary<string, Answer> Answers { get; private set; }
 
-        public Result Answer(string code)
+        public Result AnswerWith(string answerCode)
         {
-            return new Result(this, Answers[code]);
+            Answer selectedAnswer;
+            if (Answers.TryGetValue(answerCode, out selectedAnswer))
+                return new Result(this, selectedAnswer);
+            throw new AnswerNotAllowedException(answerCode);
         }
     }
 }
