@@ -23,7 +23,7 @@ namespace AskMe.Model
             }
             catch (Exception ex)
             {
-                throw new QuestionException(question.Code, ex);
+                throw new DuplicateQuestionException(question.Code, ex);
             }
             Questions.Add(question);
         }

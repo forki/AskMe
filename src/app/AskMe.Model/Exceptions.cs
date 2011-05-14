@@ -10,10 +10,20 @@ namespace AskMe.Model
         }
     }
 
-    public class QuestionException : Exception
+    public class DuplicateQuestionException : Exception
     {
-        public QuestionException(string code, Exception innerException)
+        public DuplicateQuestionException(string code, Exception innerException)
             : base(string.Format("The question {0} was used twice.", code), innerException)
+        {
+        }
+    }
+
+    public class DuplicateAnswerException : Exception
+    {
+        public DuplicateAnswerException(string questionCode, string answerCode, Exception innerException)
+            : base(
+                string.Format("The answer {0} was used twice in question {1}.", answerCode, questionCode),
+                innerException)
         {
         }
     }

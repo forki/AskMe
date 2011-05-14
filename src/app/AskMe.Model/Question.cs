@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AskMe.Model
 {
@@ -9,9 +10,22 @@ namespace AskMe.Model
             Code = code;
             Text = text;
 
+            AddAnswers(answers);
+        }
+
+        void AddAnswers(IEnumerable<Answer> answers)
+        {
             Answers = new Dictionary<string, Answer>();
             foreach (var answer in answers)
-                Answers.Add(answer.Code, answer);
+                try
+                {
+                    Answers.Add(answer.Code, answer);
+                }
+                catch (Exception ex)
+                {                    
+                    throw new DuplicateAnswerException(Code, answer.Code, ex);
+                }
+                
         }
 
         public string Text { get; private set; }
