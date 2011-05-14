@@ -8,7 +8,7 @@ namespace AskMe.TextParser.Specs
             () => Text = "HADS_1: How do you feel today?";
 
         It should_contain_one_question =
-            () => Questions.Count.ShouldEqual(1);
+            () => Questionaire.Questions.Count.ShouldEqual(1);
 
         It should_contain_the_given_sentence =
             () => GetQuestion(0).Text.ShouldEqual("How do you feel today?");

@@ -8,7 +8,7 @@ namespace AskMe.TextParser.Specs
             () => Text = "Ich fühle mich angespannt und überreizt.";
 
         It should_contain_one_question =
-            () => Questions.Count.ShouldEqual(1);
+            () => Questionaire.Questions.Count.ShouldEqual(1);
 
         It should_contain_the_given_sentence =
             () => GetQuestion(0).Text.ShouldEqual(Text);
@@ -23,7 +23,7 @@ namespace AskMe.TextParser.Specs
                   "  B) von Zeit zu Zeit, gelegentlich";
 
         It should_contain_one_question =
-            () => Questions.Count.ShouldEqual(1);
+            () => Questionaire.Questions.Count.ShouldEqual(1);
 
         It should_contain_the_given_answer_code_for_A =
             () => GetAnswer(0, 0).Code.ShouldEqual("A");
@@ -73,7 +73,7 @@ namespace AskMe.TextParser.Specs
                   "  D) überhaupt nicht";
 
         It should_contain_two_questions =
-            () => Questions.Count.ShouldEqual(2);
+            () => Questionaire.Questions.Count.ShouldEqual(2);
 
         It should_contain_the_fours_answers_for_the_second_question =
             () => GetQuestion(1).Answers.Count.ShouldEqual(4);
@@ -99,7 +99,7 @@ namespace AskMe.TextParser.Specs
                   "  D) überhaupt nicht";
 
         It should_contain_two_questions =
-            () => Questions.Count.ShouldEqual(2);
+            () => Questionaire.Questions.Count.ShouldEqual(2);
 
         It should_contain_the_fours_answers_for_the_second_question =
             () => GetQuestion(1).Answers.Count.ShouldEqual(4);

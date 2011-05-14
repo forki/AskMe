@@ -44,6 +44,7 @@
     <Compile Include="AnswerNotAllowedException.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Questionaire.cs" />
     <Compile Include="Result.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

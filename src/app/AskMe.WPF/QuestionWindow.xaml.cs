@@ -12,23 +12,23 @@ namespace AskMe.WPF
     /// </summary>
     public partial class QuestionWindow
     {
-        private readonly List<Question> _questions;
+        private readonly Questionaire _questionaire;
         private int currentQuestion;
 
         public QuestionWindow()
         {
             InitializeComponent();
 
-            _questions = LoadQuestions(@"C:\data\AskMe\samples\Coded1.txt");
+            _questionaire = LoadQuestions(@"C:\data\AskMe\samples\Coded1.txt");
 
             ShowNextQuestion();
         }
 
         private void ShowNextQuestion()
         {
-            if (currentQuestion >= _questions.Count)
+            if (currentQuestion >= _questionaire.Questions.Count)
                 return;
-            Question question = _questions[currentQuestion++];
+            Question question = _questionaire.Questions[currentQuestion++];
             DisplayQuestion(question);
             DisplayAnswers(question);
         }
@@ -45,7 +45,7 @@ namespace AskMe.WPF
                 answersListBox.Items.Add(answer);
         }
 
-        private static List<Question> LoadQuestions(string fileName)
+        private static Questionaire LoadQuestions(string fileName)
         {
             return new QuestionaireParser().Parse(File.ReadAllText(fileName, Encoding.Default));
         }

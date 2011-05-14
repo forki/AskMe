@@ -9,9 +9,9 @@ namespace AskMe.TextParser.Specs
     {
         protected static string Text;
         static readonly QuestionaireParser QuestionaireParser = new QuestionaireParser();
-        protected static List<Question> Questions;
+        protected static Questionaire Questionaire;
 
-        Because of = () => Questions = QuestionaireParser.Parse(Text);
+        Because of = () => Questionaire = QuestionaireParser.Parse(Text);
 
         public static Answer GetAnswer(int question, int answer)
         {
@@ -20,7 +20,7 @@ namespace AskMe.TextParser.Specs
 
         public static Question GetQuestion(int question)
         {
-            return Questions.Skip(question).First();
+            return Questionaire.Questions.Skip(question).First();
         }
     }
 }
