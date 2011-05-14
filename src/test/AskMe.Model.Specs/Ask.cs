@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,6 +28,11 @@ namespace AskMe.Model.Specs
         public static Questionaire Item(this Questionaire questionaire, string text)
         {
             return questionaire.Item(text, text);
+        }
+
+        public static QuestionairePresenter ToPresenter(this Questionaire questionaire)
+        {
+            return new QuestionairePresenter(questionaire);
         }
 
         public static Questionaire WithAnswer(this Questionaire questionaire, string code, string text)

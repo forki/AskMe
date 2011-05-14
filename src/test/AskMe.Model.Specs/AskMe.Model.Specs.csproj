@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ask.cs" />
+    <Compile Include="QuestionairePresenterSpecs.cs" />
     <Compile Include="QuestionaireSpecs.cs" />
     <Compile Include="QuestionResultsSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
