@@ -1,3 +1,5 @@
+using System;
+
 namespace AskMe.Model
 {
     public class QuestionairePresenter
@@ -14,6 +16,11 @@ namespace AskMe.Model
         public Item AskNextItem()
         {
             return Questionaire.Items[_answeredQuestions++];
+        }
+
+        public bool HasNextItem()
+        {
+            return _answeredQuestions < Questionaire.Items.Count;
         }
     }
 }
