@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using AskMe.Model;
 
 namespace AskMe.TextParser
@@ -15,10 +15,17 @@ namespace AskMe.TextParser
             return answers;
         }
 
-        private static Answer BuildAnswer(string text)
+        private static Answer BuildAnswer(string line)
         {
-            string[] answerParts = text.Split(')');
-            return new Answer(answerParts[0].TrimStart(' '), answerParts[1].TrimStart(' '));
+            string[] answerParts = line.Split(')');
+            string code = answerParts[0].Trim(' ');
+            string[] textParts = answerParts[1].Split(new[] {" - "}, StringSplitOptions.RemoveEmptyEntries);
+            string text = textParts[0].Trim(' ');
+            int points = 0;
+            if (textParts.Length > 1)
+                points = int.Parse(textParts[1].Trim(' '));
+
+            return new Answer(code, text, points);
         }
     }
 }
