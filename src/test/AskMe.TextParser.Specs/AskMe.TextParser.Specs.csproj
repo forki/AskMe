@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodedQuestionSpecs.cs" />
     <Compile Include="SimpleQuestionSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="when_parsing.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

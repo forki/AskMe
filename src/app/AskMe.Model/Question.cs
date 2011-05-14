@@ -4,8 +4,9 @@ namespace AskMe.Model
 {
     public class Question
     {
-        public Question(string text, IEnumerable<Answer> answers)
+        public Question(string code, string text, IEnumerable<Answer> answers)
         {
+            Code = code;
             Text = text;
 
             Answers = new Dictionary<string, Answer>();
@@ -16,6 +17,8 @@ namespace AskMe.Model
         public string Text { get; private set; }
 
         public Dictionary<string, Answer> Answers { get; private set; }
+
+        public string Code { get; private set; }
 
         public Result AnswerWith(string answerCode)
         {
