@@ -18,7 +18,7 @@ namespace AskMe.WPF
         {
             InitializeComponent();
 
-            _questionairePresenter = new QuestionairePresenter(LoadQuestionaire(@"C:\data\AskMe\samples\Coded1.txt"));
+            _questionairePresenter = new QuestionairePresenter(LoadQuestionaire(@"D:\AskMe\samples\Coded1.txt"));
 
             ShowNextQuestion();
         }
