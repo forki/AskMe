@@ -22,13 +22,15 @@ namespace AskMeItems.Model.Specs
         It should_contain_both_items_in_the_mainscale =
             () => Subscales.Where(s => s.Name == "").First().Items.Count.ShouldEqual(2);
 
-        It should_contain_the_mainscale = 
+        It should_contain_the_mainscale =
             () => Subscales.Select(s => s.Name).ShouldContain("");
     }
 
     public class when_using_a_questionaire_with_three_subscales
     {
         protected static Questionnaire Questionnaire;
+
+        static List<Subscale> Subscales;
 
         Establish context =
             () => Questionnaire =
@@ -51,11 +53,10 @@ namespace AskMeItems.Model.Specs
                       .WithAnswer("A", "good")
                       .WithAnswer("B", "bad");
 
-        static List<Subscale> Subscales;
         Because of = () => Subscales = Questionnaire.GetSubscales();
 
         It should_contain_4_scales =
-    () => Subscales.Count.ShouldEqual(4);
+            () => Subscales.Count.ShouldEqual(4);
 
         It should_contain_three_subscale =
             () => Subscales.Where(s => s.Name != "").Count().ShouldEqual(3);

@@ -22,9 +22,9 @@ namespace AskMeItems.Model
                     Answers.Add(answer.Code, answer);
                 }
                 catch (Exception ex)
-                {                    
+                {
                     throw new DuplicateAnswerException(Code, answer.Code, ex);
-                }                
+                }
         }
 
         public string Text { get; private set; }

@@ -10,7 +10,7 @@ namespace AskMeItems.TextParser
     {
         public Questionnaire Parse(string text)
         {
-            List<string> lines = text.Split(new[] {"\r","\n"}, StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<string> lines = text.Split(new[] {"\r", "\n"}, StringSplitOptions.RemoveEmptyEntries).ToList();
             int lineNo = 0;
             var questions = new List<Item>();
             int questionCount = 0;

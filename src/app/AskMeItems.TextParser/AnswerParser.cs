@@ -16,7 +16,7 @@ namespace AskMeItems.TextParser
             return answers;
         }
 
-        private static Answer BuildAnswer(string line)
+        static Answer BuildAnswer(string line)
         {
             string[] answerParts = line.Split(')');
             string code = answerParts[0].Trim(' ');
