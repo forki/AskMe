@@ -1,10 +1,8 @@
-using System;
-
 namespace AskMeItems.Model
 {
     public class QuestionnairePresenter
     {
-        int _answeredQuestions = 0;
+        int _answeredQuestions;
 
         public QuestionnairePresenter(Questionnaire questionnaire)
         {
