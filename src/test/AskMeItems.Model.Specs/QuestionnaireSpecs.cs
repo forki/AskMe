@@ -21,7 +21,6 @@ namespace AskMeItems.Model.Specs
         It should_give_a_nice_error_message = () => Exception.Message.ShouldEqual("The item HADS_1 was used twice.");
     }
 
-
     public class when_using_a_questionaire_with_two_items
     {
         protected static Questionnaire Questionnaire;
