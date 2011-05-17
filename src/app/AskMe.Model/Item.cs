@@ -40,5 +40,10 @@ namespace AskMe.Model
                 return new Result(this, selectedAnswer);
             throw new AnswerNotAllowedException(answerCode);
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0}: {1}", Code, Text);
+        }
     }
 }

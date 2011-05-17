@@ -25,22 +25,21 @@ namespace AskMe.WPF
 
         void ShowNextQuestion()
         {
-            if (!_questionairePresenter.HasNextItem())
+            if (!_questionairePresenter.HasItem())
                 return;
-            var item = _questionairePresenter.AskNextItem();
-            DisplayQuestion(item);
-            DisplayAnswers(item);
+            DisplayQuestion();
+            DisplayAnswers();
         }
 
-        void DisplayQuestion(Item item)
+        void DisplayQuestion()
         {
-            itemTextBlock.Text = item.Text;
+            itemTextBlock.Text = _questionairePresenter.CurrentItem.Text;
         }
 
-        void DisplayAnswers(Item item)
+        void DisplayAnswers()
         {
             answersListBox.Items.Clear();
-            foreach (var answer in item.Answers.Values)
+            foreach (var answer in _questionairePresenter.CurrentItem.Answers.Values)
                 answersListBox.Items.Add(answer);
         }
 
@@ -51,6 +50,8 @@ namespace AskMe.WPF
 
         void NextButtonClick(object sender, RoutedEventArgs e)
         {
+            var answer = answersListBox.SelectedItem as Answer;
+            _questionairePresenter.AnswerCurrentItem(answer);
             ShowNextQuestion();
         }
     }

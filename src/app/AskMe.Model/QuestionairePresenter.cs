@@ -4,7 +4,7 @@ namespace AskMe.Model
 {
     public class QuestionairePresenter
     {
-        int _answeredQuestions;
+        int _answeredQuestions = 0;
 
         public QuestionairePresenter(Questionaire questionaire)
         {
@@ -13,14 +13,24 @@ namespace AskMe.Model
 
         public Questionaire Questionaire { get; private set; }
 
-        public Item AskNextItem()
+        public Item CurrentItem
         {
-            return Questionaire.Items[_answeredQuestions++];
+            get { return Questionaire.Items[_answeredQuestions]; }
         }
 
-        public bool HasNextItem()
+        public void AnswerCurrentItem(Answer answer)
+        {
+            _answeredQuestions++;
+        }
+
+        public bool HasItem()
         {
             return _answeredQuestions < Questionaire.Items.Count;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Answered: {0} - {1}", _answeredQuestions, CurrentItem);
         }
     }
 }
