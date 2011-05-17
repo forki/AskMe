@@ -63,8 +63,8 @@
                  TextWrapping="Wrap"
                  Name="itemTextBlock" />
     </Label>
-    <ListBox Height="218"
-             Margin="12,0,12,171"
+    <ListBox Height="348"
+             Margin="12,0,12,41"
              Name="answersListBox"
              VerticalAlignment="Bottom">
       <ListBoxItem>A) Answer 1</ListBoxItem>
