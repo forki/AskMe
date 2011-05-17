@@ -20,4 +20,19 @@ namespace AskMeItems.Model.Specs
         It should_give_a_nice_error = () => Exception.ShouldBeOfType<DuplicateItemException>();
         It should_give_a_nice_error_message = () => Exception.Message.ShouldEqual("The item HADS_1 was used twice.");
     }
+
+
+    public class when_using_a_questionaire_with_two_items
+    {
+        protected static Questionnaire Questionnaire;
+
+        Establish context =
+            () => Questionnaire =
+                  Ask.Item("HADS_1", "How do you feel?")
+                      .WithAnswer("A", "good")
+                      .WithAnswer("B", "bad")
+                      .Item("HADS_2", "How do you really feel?")
+                      .WithAnswer("A", "very good")
+                      .WithAnswer("B", "very bad");
+    }
 }

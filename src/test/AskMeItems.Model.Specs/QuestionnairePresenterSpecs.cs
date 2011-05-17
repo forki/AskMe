@@ -4,19 +4,11 @@ using Machine.Specifications;
 
 namespace AskMeItems.Model.Specs
 {
-    public class when_presenting_a_questionaire_with_two_items
+    public class when_presenting_a_questionaire_with_two_items : when_using_a_questionaire_with_two_items
     {
         protected static QuestionnairePresenter Presenter;
 
-        Establish context =
-            () => Presenter =
-                  Ask.Item("HADS_1", "How do you feel?")
-                      .WithAnswer("A", "good")
-                      .WithAnswer("B", "bad")
-                      .Item("HADS_2", "How do you really feel?")
-                      .WithAnswer("A", "very good")
-                      .WithAnswer("B", "very bad")
-                      .ToPresenter();
+        Establish context = () => Presenter = Questionnaire.ToPresenter();
     }
 
     public class when_asking_for_first_item : when_presenting_a_questionaire_with_two_items
