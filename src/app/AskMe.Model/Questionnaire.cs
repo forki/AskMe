@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace AskMe.Model
 {
-    public class Questionaire
+    public class Questionnaire
     {
         readonly Dictionary<string, Item> _questions;
 
-        public Questionaire(IEnumerable<Item> questions)
+        public Questionnaire(IEnumerable<Item> questions)
         {
             Items = new List<Item>();
             _questions = new Dictionary<string, Item>();

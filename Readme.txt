@@ -1,1 +1,1 @@
-AskMe is a little Questionaire presenter and can be used for scientific studies.
+AskMe is a little questionnaire presenter and can be used for scientific studies.

@@ -7,10 +7,10 @@ namespace AskMe.TextParser.Specs
     public class when_parsing
     {
         protected static string Text;
-        static readonly QuestionaireParser QuestionaireParser = new QuestionaireParser();
-        protected static Questionaire Questionaire;
+        static readonly QuestionnaireParser QuestionnaireParser = new QuestionnaireParser();
+        protected static Questionnaire Questionnaire;
 
-        Because of = () => Questionaire = QuestionaireParser.Parse(Text);
+        Because of = () => Questionnaire = QuestionnaireParser.Parse(Text);
 
         public static Answer GetAnswer(int itemIndex, int answer)
         {
@@ -19,7 +19,7 @@ namespace AskMe.TextParser.Specs
 
         public static Item GetItem(int itemIndex)
         {
-            return Questionaire.Items.Skip(itemIndex).First();
+            return Questionnaire.Items.Skip(itemIndex).First();
         }
     }
 }

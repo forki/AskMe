@@ -2,20 +2,20 @@ using System;
 
 namespace AskMe.Model
 {
-    public class QuestionairePresenter
+    public class QuestionnairePresenter
     {
         int _answeredQuestions = 0;
 
-        public QuestionairePresenter(Questionaire questionaire)
+        public QuestionnairePresenter(Questionnaire questionnaire)
         {
-            Questionaire = questionaire;
+            Questionnaire = questionnaire;
         }
 
-        public Questionaire Questionaire { get; private set; }
+        public Questionnaire Questionnaire { get; private set; }
 
         public Item CurrentItem
         {
-            get { return Questionaire.Items[_answeredQuestions]; }
+            get { return Questionnaire.Items[_answeredQuestions]; }
         }
 
         public void AnswerCurrentItem(Answer answer)
@@ -25,7 +25,7 @@ namespace AskMe.Model
 
         public bool HasItem()
         {
-            return _answeredQuestions < Questionaire.Items.Count;
+            return _answeredQuestions < Questionnaire.Items.Count;
         }
 
         public override string ToString()

@@ -12,20 +12,20 @@ namespace AskMe.WPF
     /// </summary>
     public partial class ItemWindow
     {
-        readonly QuestionairePresenter _questionairePresenter;
+        readonly QuestionnairePresenter _questionnairePresenter;
 
         public ItemWindow()
         {
             InitializeComponent();
 
-            _questionairePresenter = new QuestionairePresenter(LoadQuestionaire(@"D:\AskMe\samples\Coded1.txt"));
+            _questionnairePresenter = new QuestionnairePresenter(LoadQuestionaire(@"D:\AskMe\samples\Coded1.txt"));
 
             ShowNextQuestion();
         }
 
         void ShowNextQuestion()
         {
-            if (!_questionairePresenter.HasItem())
+            if (!_questionnairePresenter.HasItem())
                 return;
             DisplayQuestion();
             DisplayAnswers();
@@ -33,25 +33,25 @@ namespace AskMe.WPF
 
         void DisplayQuestion()
         {
-            itemTextBlock.Text = _questionairePresenter.CurrentItem.Text;
+            itemTextBlock.Text = _questionnairePresenter.CurrentItem.Text;
         }
 
         void DisplayAnswers()
         {
             answersListBox.Items.Clear();
-            foreach (var answer in _questionairePresenter.CurrentItem.Answers.Values)
+            foreach (var answer in _questionnairePresenter.CurrentItem.Answers.Values)
                 answersListBox.Items.Add(answer);
         }
 
-        static Questionaire LoadQuestionaire(string fileName)
+        static Questionnaire LoadQuestionaire(string fileName)
         {
-            return new QuestionaireParser().Parse(File.ReadAllText(fileName, Encoding.Default));
+            return new QuestionnaireParser().Parse(File.ReadAllText(fileName, Encoding.Default));
         }
 
         void NextButtonClick(object sender, RoutedEventArgs e)
         {
             var answer = answersListBox.SelectedItem as Answer;
-            _questionairePresenter.AnswerCurrentItem(answer);
+            _questionnairePresenter.AnswerCurrentItem(answer);
             ShowNextQuestion();
         }
     }

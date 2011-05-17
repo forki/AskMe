@@ -6,43 +6,43 @@ namespace AskMe.Model.Specs
 {
     public static class Ask
     {
-        public static Questionaire Item(string code, string text)
+        public static Questionnaire Item(string code, string text)
         {
             return
-                new Questionaire(new List<Item>())
+                new Questionnaire(new List<Item>())
                     .Item(code, text);
         }
 
-        public static Questionaire Item(string text)
+        public static Questionnaire Item(string text)
         {
             return Item(text, text);
         }
 
-        public static Questionaire Item(this Questionaire questionaire, string code, string text)
+        public static Questionnaire Item(this Questionnaire questionnaire, string code, string text)
         {
-            var questions = questionaire.Items.ToList();
+            var questions = questionnaire.Items.ToList();
             questions.Add(new Item(code, text, new List<Answer>()));
-            return new Questionaire(questions);
+            return new Questionnaire(questions);
         }
 
-        public static Questionaire Item(this Questionaire questionaire, string text)
+        public static Questionnaire Item(this Questionnaire questionnaire, string text)
         {
-            return questionaire.Item(text, text);
+            return questionnaire.Item(text, text);
         }
 
-        public static QuestionairePresenter ToPresenter(this Questionaire questionaire)
+        public static QuestionnairePresenter ToPresenter(this Questionnaire questionnaire)
         {
-            return new QuestionairePresenter(questionaire);
+            return new QuestionnairePresenter(questionnaire);
         }
 
-        public static Questionaire WithAnswer(this Questionaire questionaire, string code, string text)
+        public static Questionnaire WithAnswer(this Questionnaire questionnaire, string code, string text)
         {
-            var questions = questionaire.Items.ToList();
+            var questions = questionnaire.Items.ToList();
             questions[questions.Count - 1] =
                 questions[questions.Count - 1]
                     .WithAnswer(code, text);
 
-            return new Questionaire(questions);
+            return new Questionnaire(questions);
         }
 
         public static Item WithAnswer(this Item item, string code, string text)

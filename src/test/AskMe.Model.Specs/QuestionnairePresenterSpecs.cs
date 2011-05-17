@@ -6,7 +6,7 @@ namespace AskMe.Model.Specs
 {
     public class when_presenting_a_questionaire_with_two_items
     {
-        protected static QuestionairePresenter Presenter;
+        protected static QuestionnairePresenter Presenter;
 
         Establish context =
             () => Presenter =
