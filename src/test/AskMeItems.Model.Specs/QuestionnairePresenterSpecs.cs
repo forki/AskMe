@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 using Machine.Specifications;
@@ -17,7 +18,7 @@ namespace AskMeItems.Model.Specs
             Because of = () => Item = Presenter.CurrentItem;
 
             It should_give_the_item = () => Item.Code.ShouldEqual("HADS_1");
-            It should_not_have_an_answer = () => Presenter.Answers.ShouldBeEmpty();
+            It should_not_have_a_result = () => Presenter.Results.ShouldBeEmpty();
             It should_have_another_item = () => Presenter.HasItem().ShouldBeTrue();
         }
 
@@ -32,9 +33,19 @@ namespace AskMeItems.Model.Specs
                     Presenter.AnswerCurrentItem(GivenAnswer);
                 };
 
-            It should_have_one_item_answered = () => Presenter.Answers.Count.ShouldEqual(1);
-            It should_have_recorded_the_given_answer = () => Presenter.Answers.First().ShouldEqual(GivenAnswer);
+            It should_have_one_item_answered = () => Presenter.Results.Count.ShouldEqual(1);
+            It should_have_recorded_the_given_answer = () => Presenter.Results.First().SelectedAnswer.ShouldEqual(GivenAnswer);
             It should_have_another_item = () => Presenter.HasItem().ShouldBeTrue();
+        }
+
+        public class when_answering_an_item_with_an_invalid_answer
+        {
+            Because of =
+                () => Exception = Catch.Exception(() =>  Presenter.AnswerCurrentItem(new Answer("Test", "foo", 0)));
+
+            static Exception Exception;
+
+            It should_have_one_item_answered = () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
         }
 
         public class when_asking_for_current_item_after_answering_an_item
@@ -64,8 +75,8 @@ namespace AskMeItems.Model.Specs
                     Presenter.AnswerCurrentItem(LastGivenAnswer);
                 };
 
-            It should_have_two_items_answered = () => Presenter.Answers.Count.ShouldEqual(2);
-            It should_have_recorded_the_given_answer = () => Presenter.Answers.Last().ShouldEqual(LastGivenAnswer);
+            It should_have_two_items_answered = () => Presenter.Results.Count.ShouldEqual(2);
+            It should_have_recorded_the_given_answer = () => Presenter.Results.Last().SelectedAnswer.ShouldEqual(LastGivenAnswer);
             It should_not_have_another_item = () => Presenter.HasItem().ShouldBeFalse();
         }
     }
