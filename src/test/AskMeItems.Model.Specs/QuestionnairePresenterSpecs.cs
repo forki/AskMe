@@ -61,7 +61,7 @@ namespace AskMeItems.Model.Specs
             () =>
             {
                 Presenter.AnswerCurrentItem(Presenter.CurrentItem.Answers.Values.First());
-                LastGivenAnswer = Presenter.CurrentItem.Answers.Values.First();
+                LastGivenAnswer = Presenter.CurrentItem.Answers.Values.Skip(1).First();
                 Presenter.AnswerCurrentItem(LastGivenAnswer);
             };
 
