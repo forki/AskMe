@@ -1,0 +1,9 @@
+<ProjectConfiguration>
+  <CopyReferencedAssembliesToWorkspace>false</CopyReferencedAssembliesToWorkspace>
+  <RunPreBuildEvents>false</RunPreBuildEvents>
+  <RunPostBuildEvents>false</RunPostBuildEvents>
+  <InstrumentAssembly>false</InstrumentAssembly>
+  <BuildOutputPath />
+  <DefaultTestTimeout>60000</DefaultTestTimeout>
+  <UseBuildConfiguration />
+</ProjectConfiguration>

@@ -1,34 +1,37 @@
+using System.Collections.Generic;
+
 namespace AskMeItems.Model
 {
     public class QuestionnairePresenter
     {
-        int _answeredQuestions;
-
         public QuestionnairePresenter(Questionnaire questionnaire)
         {
             Questionnaire = questionnaire;
+            Answers = new List<Answer>();
         }
 
         public Questionnaire Questionnaire { get; private set; }
 
         public Item CurrentItem
         {
-            get { return Questionnaire.Items[_answeredQuestions]; }
+            get { return Questionnaire.Items[Answers.Count]; }
         }
+
+        public List<Answer> Answers { get; private set; }
 
         public void AnswerCurrentItem(Answer answer)
         {
-            _answeredQuestions++;
+            Answers.Add(answer);
         }
 
         public bool HasItem()
         {
-            return _answeredQuestions < Questionnaire.Items.Count;
+            return Answers.Count < Questionnaire.Items.Count;
         }
 
         public override string ToString()
         {
-            return string.Format("Answered: {0} - {1}", _answeredQuestions, CurrentItem);
+            return string.Format("Answered: {0} - {1}", Answers.Count, CurrentItem);
         }
     }
 }
