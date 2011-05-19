@@ -66,17 +66,6 @@ namespace AskMeItems.Model.Specs
 
             It should_have_two_items_answered = () => Presenter.Answers.Count.ShouldEqual(2);
             It should_have_recorded_the_given_answer = () => Presenter.Answers.Last().ShouldEqual(LastGivenAnswer);
-        }
-
-        public class when_asking_for_current_item_after_answering_two_items
-        {
-            Because of =
-                () =>
-                {
-                    Presenter.AnswerCurrentItem(Presenter.CurrentItem.Answers.Values.First());
-                    Presenter.AnswerCurrentItem(Presenter.CurrentItem.Answers.Values.First());
-                };
-
             It should_not_have_another_item = () => Presenter.HasItem().ShouldBeFalse();
         }
     }
