@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
 
+using AskMeItems.Model.Specs.Data;
+
 using Machine.Specifications;
 
 namespace AskMeItems.Model.Specs

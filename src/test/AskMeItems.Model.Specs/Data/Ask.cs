@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AskMeItems.Model.Specs
+namespace AskMeItems.Model.Specs.Data
 {
     public static class Ask
     {

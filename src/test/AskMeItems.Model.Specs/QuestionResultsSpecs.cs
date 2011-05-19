@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 
+using AskMeItems.Model.Specs.Data;
+
 using Machine.Specifications;
 
 namespace AskMeItems.Model.Specs
@@ -13,10 +15,9 @@ namespace AskMeItems.Model.Specs
         Establish context =
             () => Item =
                   Ask.Item("How do you feel?")
-                      .WithAnswer("A", "good",5)
-                      .WithAnswer("B", "bad",2)
+                      .WithAnswer("A", "good", 5)
+                      .WithAnswer("B", "bad", 2)
                       .Items.Last();
-
 
         public class when_answering_with_A
         {

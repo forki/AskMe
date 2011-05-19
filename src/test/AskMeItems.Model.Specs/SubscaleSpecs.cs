@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using AskMeItems.Model.Specs.Data;
+
 using Machine.Specifications;
 
 namespace AskMeItems.Model.Specs
@@ -26,33 +28,8 @@ namespace AskMeItems.Model.Specs
             () => Subscales.Select(s => s.Name).ShouldContain("");
     }
 
-    public class when_using_a_questionaire_with_three_subscales
+    public class when_looking_for_subscales : when_using_a_questionaire_with_three_subscales
     {
-        protected static Questionnaire Questionnaire;
-
-        static List<Subscale> Subscales;
-
-        Establish context =
-            () => Questionnaire =
-                  Ask.Item("A_1", "How do you feel?")
-                      .WithAnswer("A", "good",1)
-                      .WithAnswer("B", "bad",2)
-                      .Item("A_2", "How do you really feel?")
-                      .WithAnswer("A", "very good",1)
-                      .WithAnswer("B", "very bad",2)
-                      .Item("B_1", "How do you feel?")
-                      .WithAnswer("A", "good",3)
-                      .WithAnswer("B", "bad",4)
-                      .Item("B_2", "How do you really feel?")
-                      .WithAnswer("A", "very good",2)
-                      .WithAnswer("B", "very bad",4)
-                      .Item("B_3", "How do you really feel?")
-                      .WithAnswer("A", "very good",5)
-                      .WithAnswer("B", "very bad",0)
-                      .Item("C_1", "How do you feel?")
-                      .WithAnswer("A", "good",7)
-                      .WithAnswer("B", "bad",8);
-
         Because of = () => Subscales = Questionnaire.GetSubscales();
 
         It should_contain_4_scales =
