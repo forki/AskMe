@@ -13,6 +13,12 @@ namespace AskMeItems.Model
             AddAnswers(answers);
         }
 
+        public string Text { get; private set; }
+
+        public Dictionary<string, Answer> Answers { get; private set; }
+
+        public string Code { get; private set; }
+
         void AddAnswers(IEnumerable<Answer> answers)
         {
             Answers = new Dictionary<string, Answer>();
@@ -26,12 +32,6 @@ namespace AskMeItems.Model
                     throw new DuplicateAnswerException(Code, answer.Code, ex);
                 }
         }
-
-        public string Text { get; private set; }
-
-        public Dictionary<string, Answer> Answers { get; private set; }
-
-        public string Code { get; private set; }
 
         public Result AnswerWith(string answerCode)
         {

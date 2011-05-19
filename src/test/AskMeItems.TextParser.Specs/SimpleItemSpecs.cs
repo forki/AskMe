@@ -1,6 +1,4 @@
-﻿using Machine.Specifications;
-
-namespace AskMeItems.TextParser.Specs
+﻿namespace AskMeItems.TextParser.Specs
 {
     public class when_parsing_a_single_question : when_parsing
     {
