@@ -10,7 +10,7 @@ namespace AskMeItems.Model.Specs
     public class when_finding_subscales : when_using_a_questionaire_with_two_items
     {
         static List<Subscale> Subscales;
-        Because of = () => Subscales = Questionnaire.GetSubscales();
+        Because of = () => Subscales = SubscaleAnalyzer.GetSubscalesFor(Questionnaire);
 
         It should_contain_2_scales =
             () => Subscales.Count.ShouldEqual(2);
@@ -30,7 +30,7 @@ namespace AskMeItems.Model.Specs
 
     public class when_looking_for_subscales : when_using_a_questionaire_with_three_subscales
     {
-        Because of = () => Subscales = Questionnaire.GetSubscales();
+        Because of = () => Subscales = SubscaleAnalyzer.GetSubscalesFor(Questionnaire);
 
         It should_contain_4_scales =
             () => Subscales.Count.ShouldEqual(4);
