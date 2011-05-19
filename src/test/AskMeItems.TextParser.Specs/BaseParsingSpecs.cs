@@ -2,6 +2,8 @@ using System.Linq;
 
 using AskMeItems.Model;
 
+using Machine.Specifications;
+
 namespace AskMeItems.TextParser.Specs
 {
     public class when_parsing

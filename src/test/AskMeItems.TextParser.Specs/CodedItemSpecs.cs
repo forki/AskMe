@@ -1,4 +1,6 @@
-﻿namespace AskMeItems.TextParser.Specs
+﻿using Machine.Specifications;
+
+namespace AskMeItems.TextParser.Specs
 {
     public class when_parsing_a_coded_question : when_parsing
     {
