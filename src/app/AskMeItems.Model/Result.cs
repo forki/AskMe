@@ -10,7 +10,7 @@ namespace AskMeItems.Model
 
         public int Points
         {
-            get { return 5; }
+            get { return SelectedAnswer.Points; }
         }
 
         public Item Item { get; private set; }

@@ -28,10 +28,10 @@ namespace AskMeItems.Model.Specs
         Establish context =
             () => Questionnaire =
                   Ask.Item("HADS_1", "How do you feel?")
-                      .WithAnswer("A", "good")
-                      .WithAnswer("B", "bad")
+                      .WithAnswer("A", "good",1)
+                      .WithAnswer("B", "bad",2)
                       .Item("HADS_2", "How do you really feel?")
-                      .WithAnswer("A", "very good")
-                      .WithAnswer("B", "very bad");
+                      .WithAnswer("A", "very good",3)
+                      .WithAnswer("B", "very bad",4);
     }
 }

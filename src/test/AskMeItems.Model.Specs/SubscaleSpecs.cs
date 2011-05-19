@@ -35,23 +35,23 @@ namespace AskMeItems.Model.Specs
         Establish context =
             () => Questionnaire =
                   Ask.Item("A_1", "How do you feel?")
-                      .WithAnswer("A", "good")
-                      .WithAnswer("B", "bad")
+                      .WithAnswer("A", "good",1)
+                      .WithAnswer("B", "bad",2)
                       .Item("A_2", "How do you really feel?")
-                      .WithAnswer("A", "very good")
-                      .WithAnswer("B", "very bad")
+                      .WithAnswer("A", "very good",1)
+                      .WithAnswer("B", "very bad",2)
                       .Item("B_1", "How do you feel?")
-                      .WithAnswer("A", "good")
-                      .WithAnswer("B", "bad")
+                      .WithAnswer("A", "good",3)
+                      .WithAnswer("B", "bad",4)
                       .Item("B_2", "How do you really feel?")
-                      .WithAnswer("A", "very good")
-                      .WithAnswer("B", "very bad")
+                      .WithAnswer("A", "very good",2)
+                      .WithAnswer("B", "very bad",4)
                       .Item("B_3", "How do you really feel?")
-                      .WithAnswer("A", "very good")
-                      .WithAnswer("B", "very bad")
+                      .WithAnswer("A", "very good",5)
+                      .WithAnswer("B", "very bad",0)
                       .Item("C_1", "How do you feel?")
-                      .WithAnswer("A", "good")
-                      .WithAnswer("B", "bad");
+                      .WithAnswer("A", "good",7)
+                      .WithAnswer("B", "bad",8);
 
         Because of = () => Subscales = Questionnaire.GetSubscales();
 

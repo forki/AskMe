@@ -13,11 +13,11 @@ namespace AskMeItems.Model.Specs
         Establish context =
             () => Item =
                   Ask.Item("HADS_1", "How do you feel?")
-                      .WithAnswer("A", "Bad")
+                      .WithAnswer("A", "Bad", 0)
                       .Items.Last();
 
         Because of =
-            () => Exception = Catch.Exception(() => Item.WithAnswer("A", "Bad again"));
+            () => Exception = Catch.Exception(() => Item.WithAnswer("A", "Bad again", 0));
 
         It should_give_a_nice_error = () => Exception.ShouldBeOfType<DuplicateAnswerException>();
 

@@ -34,20 +34,20 @@ namespace AskMeItems.Model.Specs
             return new QuestionnairePresenter(questionnaire);
         }
 
-        public static Questionnaire WithAnswer(this Questionnaire questionnaire, string code, string text)
+        public static Questionnaire WithAnswer(this Questionnaire questionnaire, string code, string text, int points)
         {
             var questions = questionnaire.Items.ToList();
             questions[questions.Count - 1] =
                 questions[questions.Count - 1]
-                    .WithAnswer(code, text);
+                    .WithAnswer(code, text, points);
 
             return new Questionnaire(questions);
         }
 
-        public static Item WithAnswer(this Item item, string code, string text)
+        public static Item WithAnswer(this Item item, string code, string text, int points)
         {
             var newAnswers = item.Answers.Values.ToList();
-            newAnswers.Add(new Answer(code, text, 0));
+            newAnswers.Add(new Answer(code, text, points));
 
             return new Item(item.Code, item.Text, newAnswers);
         }
