@@ -7,7 +7,7 @@ docsBuild/
 test/
 !src/test/
 obj/
-build/
+[Bb]uild/
 nuget/
 helpBuild/
 deploy/
