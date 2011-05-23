@@ -6,23 +6,14 @@ using Machine.Specifications;
 
 namespace AskMeItems.Model.Specs
 {
-    public class when_exporting_the_results : when_using_a_questionaire_with_two_items
+    public class when_exporting_the_results_as_CSV : when_using_an_answered_questionaire_with_two_items
     {
-        static QuestionnairePresenter Presenter;
         static string[] Text;
-
-        Establish context =
-            () =>
-            Presenter =
-            Questionnaire
-                .ToPresenter()
-                .AnswerWith("A")
-                .AnswerWith("B");
 
         Because of =
             () =>
             Text =
-            Presenter.Export()
+            Presenter.ExportAsCSV()
                 .Split(new[] {"\r\n"}, StringSplitOptions.None);
 
         It should_format_the_first_answer = () => Text[0].ShouldEqual("HADS_1\tA\t1");

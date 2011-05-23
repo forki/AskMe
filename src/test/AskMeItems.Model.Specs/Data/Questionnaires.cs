@@ -18,6 +18,19 @@ namespace AskMeItems.Model.Specs.Data
                       .WithAnswer("B", "very bad", 4);
     }
 
+    public class when_using_an_answered_questionaire_with_two_items : when_using_a_questionaire_with_two_items
+    {
+        protected static QuestionnairePresenter Presenter;
+
+        Establish context =
+            () =>
+            Presenter =
+            Questionnaire
+                .ToPresenter()
+                .AnswerWith("A")
+                .AnswerWith("B");
+    }
+
     public class when_using_a_questionaire_with_three_subscales
     {
         protected static Questionnaire Questionnaire;
