@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -51,6 +52,11 @@ namespace AskMeItems.Model.Specs.Data
             newAnswers.Add(new Answer(code, text, points));
 
             return new Item(item.Code, item.Text, newAnswers);
+        }
+
+        public static string[] SplitOnLineBreaks(this string text)
+        {
+            return text.Split(new[] {"\r\n"}, StringSplitOptions.None);
         }
     }
 }
