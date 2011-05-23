@@ -38,7 +38,7 @@ namespace AskMeItems.Model
             Answer selectedAnswer;
             if (Answers.TryGetValue(answerCode, out selectedAnswer))
                 return new Result(this, selectedAnswer);
-            throw new AnswerNotAllowedException(answerCode);
+            throw new AnswerNotAllowedException(this, answerCode);
         }
 
         public override string ToString()

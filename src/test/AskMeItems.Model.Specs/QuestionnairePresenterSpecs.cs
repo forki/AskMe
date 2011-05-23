@@ -58,6 +58,7 @@ namespace AskMeItems.Model.Specs
             static Exception Exception;
 
             It should_report_that_the_answer_is_not_allowed = () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
+            It should_report_a_nice_error_text = () => Exception.Message.ShouldEqual("You have to specify an answer for item HADS_1.");
             It should_report_an_ArgumentException = () => Exception.ShouldBeOfType<ArgumentException>();
         }
 

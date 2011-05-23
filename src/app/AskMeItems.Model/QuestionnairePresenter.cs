@@ -22,7 +22,7 @@ namespace AskMeItems.Model
         public void AnswerCurrentItem(Answer answer)
         {
             if (answer == null)
-                throw new AnswerNotAllowedException("");
+                throw new AnswerNotAllowedException(CurrentItem);
 
             Results.Add(CurrentItem.AnswerWith(answer.Code));
         }

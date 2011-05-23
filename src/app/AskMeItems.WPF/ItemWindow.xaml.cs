@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using System.Windows;
 
@@ -12,23 +13,22 @@ namespace AskMeItems.WPF
     /// </summary>
     public partial class ItemWindow
     {
-        readonly QuestionnairePresenter _questionnairePresenter;
+        QuestionnairePresenter _questionnairePresenter;
 
         public ItemWindow()
         {
             InitializeComponent();
-
-            _questionnairePresenter = new QuestionnairePresenter(LoadQuestionaire(@"D:\AskMe\samples\Coded1.txt"));
-
-            ShowNextQuestion();
         }
 
         void ShowNextQuestion()
         {
-            if (!_questionnairePresenter.HasItem())
-                return;
-            DisplayQuestion();
-            DisplayAnswers();
+            ReportErrorsInLabel(() =>
+            {
+                if (!_questionnairePresenter.HasItem())
+                    return;
+                DisplayQuestion();
+                DisplayAnswers();
+            });
         }
 
         void DisplayQuestion()
@@ -43,15 +43,39 @@ namespace AskMeItems.WPF
                 answersListBox.Items.Add(answer);
         }
 
-        static Questionnaire LoadQuestionaire(string fileName)
-        {
-            return new QuestionnaireParser().Parse(File.ReadAllText(fileName, Encoding.Default));
-        }
-
         void NextButtonClick(object sender, RoutedEventArgs e)
         {
-            var answer = answersListBox.SelectedItem as Answer;
-            _questionnairePresenter.AnswerCurrentItem(answer);
+            ReportErrorsInLabel(() =>
+            {
+                var answer = answersListBox.SelectedItem as Answer;
+                _questionnairePresenter.AnswerCurrentItem(answer);
+                ShowNextQuestion();
+            });
+        }
+
+        void ReportErrorsInLabel(Action action)
+        {
+            try
+            {
+                ErrorLabel.Content = "";
+                action();
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Content = ex.Message;
+            }
+        }
+
+        void WindowLoaded(object sender, RoutedEventArgs e)
+        {
+            ReportErrorsInLabel(() =>
+            {
+                _questionnairePresenter =
+                    new QuestionnaireParser()
+                        .Parse(File.ReadAllText(@"D:\AskMe\samples\Coded1.txt", Encoding.Default))
+                        .ToPresenter();
+            });
+
             ShowNextQuestion();
         }
     }

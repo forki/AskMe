@@ -14,7 +14,7 @@ namespace AskMeItems.Model.Specs
 
         Establish context =
             () => Item =
-                  Ask.Item("How do you feel?")
+                  Ask.Item("Test1", "How do you feel?")
                       .WithAnswer("A", "good", 5)
                       .WithAnswer("B", "bad", 2)
                       .Items.Last();
@@ -44,7 +44,9 @@ namespace AskMeItems.Model.Specs
             Because of = () => Exception = Catch.Exception(() => Item.AnswerWith("C"));
 
             It should_give_a_nice_error = () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
-            It should_give_a_nice_error_message = () => Exception.Message.ShouldEqual("The answer C is not allowed.");
+
+            It should_give_a_nice_error_message =
+                () => Exception.Message.ShouldEqual("The answer C is not allowed for item Test1.");
         }
     }
 }
