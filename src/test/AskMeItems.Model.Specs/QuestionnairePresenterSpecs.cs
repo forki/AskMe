@@ -47,7 +47,18 @@ namespace AskMeItems.Model.Specs
 
             static Exception Exception;
 
-            It should_have_one_item_answered = () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
+            It should_report_that_the_answer_is_not_allowed = () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
+        }
+
+        public class when_answering_an_item_with_nothing
+        {
+            Because of =
+                () => Exception = Catch.Exception(() =>  Presenter.AnswerCurrentItem(null));
+
+            static Exception Exception;
+
+            It should_report_that_the_answer_is_not_allowed = () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
+            It should_report_an_ArgumentException = () => Exception.ShouldBeOfType<ArgumentException>();
         }
 
         public class when_asking_for_current_item_after_answering_an_item

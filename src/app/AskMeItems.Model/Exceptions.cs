@@ -2,7 +2,7 @@ using System;
 
 namespace AskMeItems.Model
 {
-    public class AnswerNotAllowedException : Exception
+    public class AnswerNotAllowedException : ArgumentException
     {
         public AnswerNotAllowedException(string option)
             : base(string.Format("The answer {0} is not allowed.", option))
