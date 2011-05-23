@@ -20,6 +20,11 @@ namespace AskMeItems.Model
 
         public List<Result> Results { get; private set; }
 
+        public List<Subscale> GetSubscales()
+        {
+            return SubscaleAnalyzer.GetSubscalesFor(Results);
+        }
+
         public void AnswerCurrentItem(Answer answer)
         {
             if (answer == null)
@@ -49,8 +54,8 @@ namespace AskMeItems.Model
                                                FieldDelimiter,
                                                x.SelectedAnswer.Code,
                                                x.Points,
-                                               LineDelimiter))                                               
-                    .Aggregate("", (acc,x) => acc + x);
+                                               LineDelimiter))
+                    .Aggregate("", (acc, x) => acc + x);
         }
     }
 }

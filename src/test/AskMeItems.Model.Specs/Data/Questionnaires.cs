@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 using Machine.Specifications;
 
 namespace AskMeItems.Model.Specs.Data
@@ -35,8 +33,6 @@ namespace AskMeItems.Model.Specs.Data
     {
         protected static Questionnaire Questionnaire;
 
-        protected static List<Subscale> Subscales;
-
         Establish context =
             () => Questionnaire =
                   Ask.Item("A_1", "How do you feel?")
@@ -57,5 +53,23 @@ namespace AskMeItems.Model.Specs.Data
                       .Item("C_1", "How do you feel?")
                       .WithAnswer("A", "good", 7)
                       .WithAnswer("B", "bad", 8);
+    }
+
+    public class when_using_an_answered_questionaire_with_three_subscales :
+        when_using_a_questionaire_with_three_subscales
+    {
+        protected static QuestionnairePresenter Presenter;
+
+        Establish context =
+            () =>
+            Presenter =
+            Questionnaire
+                .ToPresenter()
+                .AnswerWith("A")
+                .AnswerWith("B")
+                .AnswerWith("B")
+                .AnswerWith("A")
+                .AnswerWith("B")
+                .AnswerWith("B");
     }
 }

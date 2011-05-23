@@ -3,16 +3,16 @@ using System.Linq;
 
 namespace AskMeItems.Model
 {
-    public class SubscaleAnalyzer
+    class SubscaleAnalyzer
     {
-        public static List<Subscale> GetSubscalesFor(Questionnaire questionnaire)
+        public static List<Subscale> GetSubscalesFor(List<Result> results)
         {
-            var subscales = new Dictionary<string, List<Item>>();
-            foreach (var question in questionnaire.Items)
+            var subscales = new Dictionary<string, List<Result>>();
+            foreach (var result in results)
             {
-                if (question.Code.Contains("_"))
-                    AddToDict(question, subscales, question.Code.Split('_')[0]);
-                AddToDict(question, subscales, "");
+                if (result.Item.Code.Contains("_"))
+                    AddToDict(result, subscales, result.Item.Code.Split('_')[0]);
+                AddToDict(result, subscales, "");
             }
 
             return
@@ -21,11 +21,11 @@ namespace AskMeItems.Model
                     .ToList();
         }
 
-        static void AddToDict(Item question, IDictionary<string, List<Item>> subscales, string subscaleCode)
+        static void AddToDict(Result result, IDictionary<string, List<Result>> subscales, string subscaleCode)
         {
             if (!subscales.ContainsKey(subscaleCode))
-                subscales[subscaleCode] = new List<Item>();
-            subscales[subscaleCode].Add(question);
+                subscales[subscaleCode] = new List<Result>();
+            subscales[subscaleCode].Add(result);
         }
     }
 }

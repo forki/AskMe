@@ -1,16 +1,22 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AskMeItems.Model
 {
     public class Subscale
     {
-        public Subscale(string name, List<Item> items)
+        internal Subscale(string name, List<Result> results)
         {
             Name = name;
-            Items = items;
+            Results = results;
         }
 
         public string Name { get; private set; }
-        public List<Item> Items { get; private set; }
+        public List<Result> Results { get; private set; }
+
+        public double Average
+        {
+            get { return Results.Select(x => x.Points).Average(); }
+        }
     }
 }

@@ -58,5 +58,12 @@ namespace AskMeItems.Model.Specs.Data
         {
             return text.Split(new[] {"\r\n"}, StringSplitOptions.None);
         }
+
+        public static Subscale ByName(this IEnumerable<Subscale> subscales, string name)
+        {
+            return subscales
+                .Where(s => s.Name == name)
+                .First();
+        }
     }
 }
