@@ -29,6 +29,12 @@ namespace AskMeItems.Model.Specs.Data
             return questionnaire.Item(text, text);
         }
 
+        public static QuestionnairePresenter AnswerWith(this QuestionnairePresenter presenter, string answerCode)
+        {
+            presenter.AnswerCurrentItem(presenter.CurrentItem.Answers[answerCode]);
+            return presenter;
+        }
+
         public static Questionnaire WithAnswer(this Questionnaire questionnaire, string code, string text, int points)
         {
             var questions = questionnaire.Items.ToList();

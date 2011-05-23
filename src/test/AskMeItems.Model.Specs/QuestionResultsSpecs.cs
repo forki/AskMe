@@ -43,7 +43,8 @@ namespace AskMeItems.Model.Specs
 
             Because of = () => Exception = Catch.Exception(() => Item.AnswerWith("C"));
 
-            It should_give_a_nice_error = () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
+            It should_give_a_nice_error =
+                () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
 
             It should_give_a_nice_error_message =
                 () => Exception.Message.ShouldEqual("The answer C is not allowed for item Test1.");
