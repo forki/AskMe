@@ -62,5 +62,8 @@ namespace AskMeItems.Model.Specs
 
         It should_have_the_average_for_the_main_scale =
             () => Subscales.ByName("").Average.ShouldBeCloseTo(2.83333333333333);
+
+        It should_have_the_average_for_the_B_subscale =
+            () => Subscales.ByName("B").Average.ShouldBeCloseTo(2);
     }
 }
