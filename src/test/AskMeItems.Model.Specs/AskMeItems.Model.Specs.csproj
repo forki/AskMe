@@ -60,6 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseParsingSpecs.cs" />
+    <Compile Include="CodedItemSpecs.cs" />
     <Compile Include="Data\Ask.cs" />
     <Compile Include="QuestionnairePresenterSpecs.cs" />
     <Compile Include="QuestionnaireSpecs.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ItemSpecs.cs" />
     <Compile Include="ExportResultsSpecs.cs" />
+    <Compile Include="SimpleItemSpecs.cs" />
     <Compile Include="SubscaleSpecs.cs" />
     <Compile Include="Data\Questionnaires.cs" />
   </ItemGroup>
