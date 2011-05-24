@@ -57,7 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Answer.cs" />
+    <Compile Include="Export\CSVExporter.cs" />
     <Compile Include="Exceptions.cs" />
+    <Compile Include="Export\IExporter.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Questionnaire.cs" />
@@ -66,9 +68,6 @@
     <Compile Include="Subscale.cs" />
     <Compile Include="SubscaleAnalyzer.cs" />
     <Compile Include="SubscaleType.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Extensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

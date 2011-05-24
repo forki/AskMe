@@ -1,17 +1,19 @@
 using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
+
+using AskMeItems.Model.Export;
 
 namespace AskMeItems.Model
 {
     public class QuestionnairePresenter
     {
-        public QuestionnairePresenter(Questionnaire questionnaire)
+        public QuestionnairePresenter(IExporter exporter, Questionnaire questionnaire)
         {
+            Exporter = exporter;
             Questionnaire = questionnaire;
             Results = new List<Result>();
         }
 
+        public IExporter Exporter { get; set; }
         public Questionnaire Questionnaire { get; private set; }
 
         public Item CurrentItem
@@ -44,27 +46,9 @@ namespace AskMeItems.Model
             return string.Format("Answered: {0} - {1}", Results.Count, CurrentItem);
         }
 
-        public string ExportAsCSV()
+        public string Export()
         {
-            const string FieldDelimiter = "\t";
-            const string LineDelimiter = "\r\n";
-            var sb = new StringBuilder();
-            Results
-                .ForEach(x => sb.AppendFormat("ITEM{1}{0}{1}{2}{1}{3}{4}",
-                                              x.Item.Code,
-                                              FieldDelimiter,
-                                              x.SelectedAnswer.Code,
-                                              x.Points,
-                                              LineDelimiter));
-            GetSubscales()
-                .ForEach(x => sb.AppendFormat("{5}{1}{0}{1}{2}{1}{3}{4}",
-                                              x.Name,
-                                              FieldDelimiter,
-                                              x.Points.ToString(CultureInfo.InvariantCulture),
-                                              x.Average.ToString(CultureInfo.InvariantCulture),
-                                              LineDelimiter,
-                                              x.Type.ToString().ToUpper()));
-            return sb.ToString();
+            return Exporter.Export(Results, GetSubscales());
         }
     }
 }

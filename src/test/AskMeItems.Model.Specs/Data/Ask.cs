@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using AskMeItems.Model.Export;
+
 namespace AskMeItems.Model.Specs.Data
 {
     public static class Ask
@@ -64,6 +66,11 @@ namespace AskMeItems.Model.Specs.Data
             return subscales
                 .Where(s => s.Name == name)
                 .First();
+        }
+
+        public static QuestionnairePresenter ToPresenter(this Questionnaire questionnaire)
+        {
+            return new QuestionnairePresenter(new CSVExporter(), questionnaire);
         }
     }
 }

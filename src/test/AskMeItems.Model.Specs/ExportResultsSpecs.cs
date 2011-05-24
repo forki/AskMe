@@ -11,7 +11,7 @@ namespace AskMeItems.Model.Specs
         Because of =
             () =>
             Text = Presenter
-                       .ExportAsCSV()
+                       .Export()
                        .SplitOnLineBreaks();
 
         It should_format_the_first_answer = () => Text[0].ShouldEqual("ITEM\tHADS_1\tA\t1");

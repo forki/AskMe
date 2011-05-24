@@ -23,7 +23,10 @@ namespace AskMeItems.WPF
             ReportErrorsInLabel(() =>
             {
                 if (!_questionnairePresenter.HasItem())
+                {
+                    Close();
                     return;
+                }
                 DisplayQuestion();
                 DisplayAnswers();
             });

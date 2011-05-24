@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows;
 
 using AskMeItems.Model;
+using AskMeItems.Model.Export;
 using AskMeItems.TextParser;
 
 namespace AskMeItems.WPF
@@ -17,13 +18,14 @@ namespace AskMeItems.WPF
         {
             base.OnStartup(e);
 
-            var fileName = e.Args.First();
+            var fileInfo = new FileInfo(e.Args.First());
             var questionnairePresenter =
-                new QuestionnaireParser()
-                    .Parse(File.ReadAllText(fileName, Encoding.Default))
-                    .ToPresenter();
+                new QuestionnairePresenter(new CSVExporter(),
+                                           new QuestionnaireParser()
+                                               .Parse(File.ReadAllText(fileInfo.FullName, Encoding.Default)));
 
             new ItemWindow(questionnairePresenter).ShowDialog();
+            File.WriteAllText(@".\results\r1.txt", questionnairePresenter.Export());
             Shutdown();
         }
     }
