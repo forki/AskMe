@@ -5,7 +5,7 @@ using System.Windows;
 
 using AskMeItems.Model;
 using AskMeItems.Model.Export;
-using AskMeItems.TextParser;
+using AskMeItems.Model.Parser;
 
 namespace AskMeItems.WPF
 {

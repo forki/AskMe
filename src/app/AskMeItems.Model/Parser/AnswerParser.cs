@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-using AskMeItems.Model;
-
-namespace AskMeItems.TextParser
+namespace AskMeItems.Model.Parser
 {
     public class AnswerParser
     {

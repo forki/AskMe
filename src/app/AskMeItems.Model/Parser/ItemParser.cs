@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-using AskMeItems.Model;
-
-namespace AskMeItems.TextParser
+namespace AskMeItems.Model.Parser
 {
     public class ItemParser
     {
