@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
+using System.Text;
 
 namespace AskMeItems.Model
 {
@@ -48,34 +48,21 @@ namespace AskMeItems.Model
         {
             const string FieldDelimiter = "\t";
             const string LineDelimiter = "\r\n";
-            return
-                ExportResultsAsCSV(FieldDelimiter, LineDelimiter) +
-                ExportSubscalesAsCSV(FieldDelimiter, LineDelimiter);
-        }
-
-        string ExportResultsAsCSV(string fieldDelimiter, string lineDelimiter)
-        {
-            return
-                Results
-                    .Select(x => string.Format("ITEM{1}{0}{1}{2}{1}{3}{4}",
-                                               x.Item.Code,
-                                               fieldDelimiter,
-                                               x.SelectedAnswer.Code,
-                                               x.Points,
-                                               lineDelimiter))
-                    .Aggregate("", (acc, x) => acc + x);
-        }
-
-        string ExportSubscalesAsCSV(string fieldDelimiter, string lineDelimiter)
-        {
-            return
-                GetSubscales()
-                    .Select(x => string.Format("SUBSCALE{1}{0}{1}{2}{3}",
-                                               x.Name,
-                                               fieldDelimiter,
-                                               x.Average.ToString(CultureInfo.InvariantCulture),
-                                               lineDelimiter))
-                    .Aggregate("", (acc, x) => acc + x);
+            var sb = new StringBuilder();
+            Results
+                .ForEach(x => sb.AppendFormat("ITEM{1}{0}{1}{2}{1}{3}{4}",
+                                              x.Item.Code,
+                                              FieldDelimiter,
+                                              x.SelectedAnswer.Code,
+                                              x.Points,
+                                              LineDelimiter));
+            GetSubscales()
+                .ForEach(x => sb.AppendFormat("SUBSCALE{1}{0}{1}{2}{3}",
+                                              x.Name,
+                                              FieldDelimiter,
+                                              x.Average.ToString(CultureInfo.InvariantCulture),
+                                              LineDelimiter));
+            return sb.ToString();
         }
     }
 }
