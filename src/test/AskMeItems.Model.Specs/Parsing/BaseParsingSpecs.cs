@@ -1,11 +1,10 @@
 using System.Linq;
 
-using AskMeItems.Model;
 using AskMeItems.Model.Parser;
 
 using Machine.Specifications;
 
-namespace AskMeItems.TextParser.Specs
+namespace AskMeItems.Model.Specs.Parsing
 {
     public class when_parsing
     {
