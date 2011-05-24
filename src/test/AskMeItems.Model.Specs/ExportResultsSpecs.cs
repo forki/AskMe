@@ -16,6 +16,7 @@ namespace AskMeItems.Model.Specs
 
         It should_format_the_first_answer = () => Text[0].ShouldEqual("ITEM\tHADS_1\tA\t1");
         It should_format_the_second_answer = () => Text[1].ShouldEqual("ITEM\tHADS_2\tB\t4");
-        It should_format_the_subscale = () => Text[2].ShouldEqual("SUBSCALE\tHADS\t2.5");
+        It should_format_the_subscale = () => Text[2].ShouldEqual("SUBSCALE\tHADS\t5\t2.5");
+        It should_format_the_mainscale = () => Text[3].ShouldEqual("QUESTIONNAIRE\t\t5\t2.5");
     }
 }

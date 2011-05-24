@@ -9,6 +9,9 @@ namespace AskMeItems.Model
         {
             Name = name;
             Results = results;
+            Type = SubscaleType.Subscale;
+            if (string.IsNullOrEmpty(name))
+                Type = SubscaleType.Questionnaire;
         }
 
         public string Name { get; private set; }
@@ -18,5 +21,12 @@ namespace AskMeItems.Model
         {
             get { return Results.Select(x => x.Points).Average(); }
         }
+
+        public int Points
+        {
+            get { return Results.Select(x => x.Points).Sum(); }
+        }
+
+        public SubscaleType Type { get; private set; }
     }
 }

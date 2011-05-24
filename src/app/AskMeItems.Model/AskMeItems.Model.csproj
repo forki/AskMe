@@ -65,6 +65,7 @@
     <Compile Include="Result.cs" />
     <Compile Include="Subscale.cs" />
     <Compile Include="SubscaleAnalyzer.cs" />
+    <Compile Include="SubscaleType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />

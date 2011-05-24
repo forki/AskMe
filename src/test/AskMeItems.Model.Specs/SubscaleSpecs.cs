@@ -26,6 +26,12 @@ namespace AskMeItems.Model.Specs
 
         It should_contain_the_mainscale =
             () => Subscales.Where(s => s.Name == "").ShouldNotBeEmpty();
+
+        It should_contain_the_mainscale_with_rigth_type =
+            () => Subscales.ByName("").Type.ShouldEqual(SubscaleType.Questionnaire);
+
+        It should_contain_the_subscale_with_rigth_type =
+            () => Subscales.ByName("HADS").Type.ShouldEqual(SubscaleType.Subscale);
     }
 
     public class when_looking_for_subscales : when_using_an_answered_questionaire_with_three_subscales
@@ -64,6 +70,9 @@ namespace AskMeItems.Model.Specs
             () => Subscales.ByName("").Average.ShouldBeCloseTo(2.83333333333333);
 
         It should_have_the_average_for_the_B_subscale =
-            () => Subscales.ByName("B").Average.ShouldBeCloseTo(2);
+            () => Subscales.ByName("B").Average.ShouldEqual(2);
+
+        It should_have_the_points_for_the_B_subscale =
+            () => Subscales.ByName("A").Points.ShouldEqual(3);
     }
 }

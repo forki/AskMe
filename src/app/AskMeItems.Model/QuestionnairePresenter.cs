@@ -57,11 +57,13 @@ namespace AskMeItems.Model
                                               x.Points,
                                               LineDelimiter));
             GetSubscales()
-                .ForEach(x => sb.AppendFormat("SUBSCALE{1}{0}{1}{2}{3}",
+                .ForEach(x => sb.AppendFormat("{5}{1}{0}{1}{2}{1}{3}{4}",
                                               x.Name,
                                               FieldDelimiter,
+                                              x.Points.ToString(CultureInfo.InvariantCulture),
                                               x.Average.ToString(CultureInfo.InvariantCulture),
-                                              LineDelimiter));
+                                              LineDelimiter,
+                                              x.Type.ToString().ToUpper()));
             return sb.ToString();
         }
     }

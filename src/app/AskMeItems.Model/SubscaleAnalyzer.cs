@@ -18,6 +18,7 @@ namespace AskMeItems.Model
             return
                 subscales
                     .Select(subscale => new Subscale(subscale.Key, subscale.Value))
+                    .OrderByDescending(subscale => subscale.Name)
                     .ToList();
         }
 
