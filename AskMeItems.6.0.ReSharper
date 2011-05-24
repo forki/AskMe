@@ -363,6 +363,9 @@ II.2.12 <HandlesEvent />
 </Patterns>
 ]]></CustomMemberReorderingPatterns>
     </CSharp>
+    <HTML>
+      <FormatSettings />
+    </HTML>
     <JavaScript>
       <FormatSettings />
       <Naming2 />
@@ -432,6 +435,7 @@ II.2.12 <HandlesEvent />
       <UserRule Inspect="True" Prefix="should_" Suffix="" Style="aa_bb" StaticnessKind="Instance" AccessRight="Private, Protected, ProtectedInternal, Internal, Public" Description="MSpec specifications">
         <ElementKinds />
       </UserRule>
+      <Abbreviation Text="CSV" />
     </Naming2>
   </CodeStyleSettings>
 </Configuration>

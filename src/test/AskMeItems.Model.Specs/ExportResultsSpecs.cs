@@ -14,7 +14,8 @@ namespace AskMeItems.Model.Specs
                        .ExportAsCSV()
                        .SplitOnLineBreaks();
 
-        It should_format_the_first_answer = () => Text[0].ShouldEqual("HADS_1\tA\t1");
-        It should_format_the_second_answer = () => Text[1].ShouldEqual("HADS_2\tB\t4");
+        It should_format_the_first_answer = () => Text[0].ShouldEqual("ITEM\tHADS_1\tA\t1");
+        It should_format_the_second_answer = () => Text[1].ShouldEqual("ITEM\tHADS_2\tB\t4");
+        It should_format_the_subscale = () => Text[2].ShouldEqual("SUBSCALE\tHADS\t2.5");
     }
 }
