@@ -1,10 +1,7 @@
 ﻿using System;
-using System.IO;
-using System.Text;
 using System.Windows;
 
 using AskMeItems.Model;
-using AskMeItems.TextParser;
 
 namespace AskMeItems.WPF
 {
@@ -13,11 +10,12 @@ namespace AskMeItems.WPF
     /// </summary>
     public partial class ItemWindow
     {
-        QuestionnairePresenter _questionnairePresenter;
+        readonly QuestionnairePresenter _questionnairePresenter;
 
-        public ItemWindow()
+        public ItemWindow(QuestionnairePresenter questionnairePresenter)
         {
             InitializeComponent();
+            _questionnairePresenter = questionnairePresenter;
         }
 
         void ShowNextQuestion()
@@ -68,14 +66,6 @@ namespace AskMeItems.WPF
 
         void WindowLoaded(object sender, RoutedEventArgs e)
         {
-            ReportErrorsInLabel(() =>
-            {
-                _questionnairePresenter =
-                    new QuestionnaireParser()
-                        .Parse(File.ReadAllText(@"D:\AskMe\samples\Coded1.txt", Encoding.Default))
-                        .ToPresenter();
-            });
-
             ShowNextQuestion();
         }
     }
