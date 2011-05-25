@@ -48,17 +48,6 @@ Target "BuildApp" (fun _ ->
           {p with
               CodeLanguage = CSharp;
               AssemblyVersion = buildVersion;
-              AssemblyTitle = "AskMeItems.TextParser";
-              AssemblyDescription = "AskMeItems is a little questionnaire presenter and can be used for scientific studies.";
-              AssemblyCopyright = copyright;
-              Guid = "564da14e-b022-40ae-9d47-6fd6793cd65a";
-              OutputFileName = @".\src\app\AskMeItems.TextParser\Properties\AssemblyInfo.cs"})
-              
-      AssemblyInfo
-        (fun p -> 
-          {p with
-              CodeLanguage = CSharp;
-              AssemblyVersion = buildVersion;
               AssemblyTitle = "AskMeItems.WPF";
               AssemblyDescription = "AskMeItems is a little questionnaire presenter and can be used for scientific studies.";
               AssemblyCopyright = copyright;
