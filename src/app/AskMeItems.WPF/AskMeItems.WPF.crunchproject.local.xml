@@ -2,7 +2,7 @@
   <CopyReferencedAssembliesToWorkspace>false</CopyReferencedAssembliesToWorkspace>
   <RunPreBuildEvents>false</RunPreBuildEvents>
   <RunPostBuildEvents>false</RunPostBuildEvents>
-  <InstrumentAssembly>true</InstrumentAssembly>
+  <InstrumentAssembly>false</InstrumentAssembly>
   <BuildOutputPath></BuildOutputPath>
   <DefaultTestTimeout>60000</DefaultTestTimeout>
   <UseBuildConfiguration></UseBuildConfiguration>
