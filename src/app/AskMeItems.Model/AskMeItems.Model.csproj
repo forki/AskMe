@@ -67,6 +67,7 @@
     <Compile Include="Questionnaire.cs" />
     <Compile Include="Parser\QuestionnaireParser.cs" />
     <Compile Include="QuestionnairePresenter.cs" />
+    <Compile Include="QuestionnaireType.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Subscale.cs" />
     <Compile Include="SubscaleAnalyzer.cs" />

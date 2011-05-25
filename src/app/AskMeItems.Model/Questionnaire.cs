@@ -5,23 +5,26 @@ namespace AskMeItems.Model
 {
     public class Questionnaire
     {
-        readonly Dictionary<string, Item> _questions;
+        readonly Dictionary<string, Item> _items;
 
-        public Questionnaire(IEnumerable<Item> questions)
+        public Questionnaire(QuestionnaireType type, IEnumerable<Item> questions)
         {
+            Type = type;
             Items = new List<Item>();
-            _questions = new Dictionary<string, Item>();
+            _items = new Dictionary<string, Item>();
             foreach (var question in questions)
                 AddQuestion(question);
         }
 
         public List<Item> Items { get; private set; }
 
+        public QuestionnaireType Type { get; private set; }
+
         void AddQuestion(Item item)
         {
             try
             {
-                _questions.Add(item.Code, item);
+                _items.Add(item.Code, item);
             }
             catch (Exception ex)
             {

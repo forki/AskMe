@@ -42,6 +42,9 @@ namespace AskMeItems.Model.Specs.Parsing
 
         It should_contain_two_answers =
             () => GetItem(0).Answers.Count.ShouldEqual(2);
+
+        It should_be_a_normal_questionnaire = 
+            () => Questionnaire.Type.ShouldEqual(QuestionnaireType.ListedAnswers);
     }
 
     public class when_parsing_a_question_with_pointed_answers : when_parsing

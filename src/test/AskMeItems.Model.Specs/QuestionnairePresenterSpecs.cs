@@ -7,6 +7,12 @@ using Machine.Specifications;
 
 namespace AskMeItems.Model.Specs
 {
+    public class when_using_code_coverage_with_mspec_style_line_breaks
+    {
+        It should_run_this =          // black bubble
+            () => 1.ShouldEqual(1);   // green bubble
+    }
+
     public class when_presenting_a_questionaire_with_two_items : when_using_a_questionaire_with_two_items
     {
         protected static QuestionnairePresenter Presenter;
@@ -36,29 +42,37 @@ namespace AskMeItems.Model.Specs
                 };
 
             It should_have_one_item_answered = () => Presenter.Results.Count.ShouldEqual(1);
-            It should_have_recorded_the_given_answer = () => Presenter.Results.First().SelectedAnswer.ShouldEqual(GivenAnswer);
+
+            It should_have_recorded_the_given_answer =
+                () => Presenter.Results.First().SelectedAnswer.ShouldEqual(GivenAnswer);
+
             It should_have_another_item = () => Presenter.HasItem().ShouldBeTrue();
         }
 
         public class when_answering_an_item_with_an_invalid_answer
         {
-            Because of =
-                () => Exception = Catch.Exception(() =>  Presenter.AnswerCurrentItem(new Answer("Test", "foo", 0)));
-
             static Exception Exception;
 
-            It should_report_that_the_answer_is_not_allowed = () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
+            Because of =
+                () => Exception = Catch.Exception(() => Presenter.AnswerCurrentItem(new Answer("Test", "foo", 0)));
+
+            It should_report_that_the_answer_is_not_allowed =
+                () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
         }
 
         public class when_answering_an_item_with_nothing
         {
-            Because of =
-                () => Exception = Catch.Exception(() =>  Presenter.AnswerCurrentItem(null));
-
             static Exception Exception;
 
-            It should_report_that_the_answer_is_not_allowed = () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
-            It should_report_a_nice_error_text = () => Exception.Message.ShouldEqual("You have to specify an answer for item HADS_1.");
+            Because of =
+                () => Exception = Catch.Exception(() => Presenter.AnswerCurrentItem(null));
+
+            It should_report_that_the_answer_is_not_allowed =
+                () => Exception.ShouldBeOfType<AnswerNotAllowedException>();
+
+            It should_report_a_nice_error_text =
+                () => Exception.Message.ShouldEqual("You have to specify an answer for item HADS_1.");
+
             It should_report_an_ArgumentException = () => Exception.ShouldBeOfType<ArgumentException>();
         }
 
@@ -90,7 +104,10 @@ namespace AskMeItems.Model.Specs
                 };
 
             It should_have_two_items_answered = () => Presenter.Results.Count.ShouldEqual(2);
-            It should_have_recorded_the_given_answer = () => Presenter.Results.Last().SelectedAnswer.ShouldEqual(LastGivenAnswer);
+
+            It should_have_recorded_the_given_answer =
+                () => Presenter.Results.Last().SelectedAnswer.ShouldEqual(LastGivenAnswer);
+
             It should_not_have_another_item = () => Presenter.HasItem().ShouldBeFalse();
         }
     }
