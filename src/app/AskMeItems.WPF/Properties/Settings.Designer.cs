@@ -22,5 +22,41 @@ namespace AskMeItems.WPF.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\samples\\")]
+        public string QuestionnaireFolder {
+            get {
+                return ((string)(this["QuestionnaireFolder"]));
+            }
+            set {
+                this["QuestionnaireFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Likert.txt")]
+        public string Questionnaire {
+            get {
+                return ((string)(this["Questionnaire"]));
+            }
+            set {
+                this["Questionnaire"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\results\\")]
+        public string ResultsPath {
+            get {
+                return ((string)(this["ResultsPath"]));
+            }
+            set {
+                this["ResultsPath"] = value;
+            }
+        }
     }
 }

@@ -1,10 +1,15 @@
-﻿<?xml version='1.0'
-      encoding='utf-8'?>
-
-<SettingsFile xmlns="uri:settings"
-              CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AskMeItems.WPF.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="QuestionnaireFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\..\..\..\samples\</Value>
+    </Setting>
+    <Setting Name="Questionnaire" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Likert.txt</Value>
+    </Setting>
+    <Setting Name="ResultsPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\..\..\..\results\</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
