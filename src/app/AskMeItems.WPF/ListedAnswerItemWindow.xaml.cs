@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 using AskMeItems.Model;
 
@@ -42,21 +44,48 @@ namespace AskMeItems.WPF
                     Close();
                     return;
                 }
-                DisplayQuestion();
-                DisplayAnswers();
+                ShowCurrentQuestion(Width, Height);
             });
         }
 
-        void DisplayQuestion()
+        void ShowCurrentQuestion(double width, double height)
         {
-            itemTextBlock.Text = _questionnairePresenter.CurrentItem.Text;
+            DisplayQuestion(width, height);
+            DisplayAnswers(width);
         }
 
-        void DisplayAnswers()
+        void DisplayQuestion(double width, double height)
+        {
+            itemTextBlock.Text = _questionnairePresenter.CurrentItem.Text;
+
+            itemLabel.Width = width / 1.2;
+            itemLabel.Height = height / 4;
+            itemTextBlock.FontSize = width / 30;
+            nextButton.FontSize = width / 30;
+            nextButton.Width = GetButtonWidth(width);
+            nextButton.Margin = new Thickness(width - 100, height - 80, 0, 0);
+        }        
+
+        double GetButtonWidth(double width)
+        {
+            return (width - 100) / _questionnairePresenter.CurrentItem.Answers.Count;
+        }
+
+        void DisplayAnswers(double width)
         {
             answersListBox.Items.Clear();
-            foreach (var answer in _questionnairePresenter.CurrentItem.Answers.Values)
-                answersListBox.Items.Add(answer);
+            var answers = _questionnairePresenter.CurrentItem.Answers;
+            var items =
+                answers.Values
+                    .Select(answer => new ListBoxItem
+                                      {
+                                          Content = answer,
+                                          Width = GetButtonWidth(width),
+                                          FontSize = width / 30
+                                      });
+
+            foreach (var listBoxItem in items)
+                answersListBox.Items.Add(listBoxItem);
         }
 
         void NextButtonClick(object sender, RoutedEventArgs e)
@@ -85,6 +114,11 @@ namespace AskMeItems.WPF
         void WindowLoaded(object sender, RoutedEventArgs e)
         {
             ShowNextQuestion();
+        }
+
+        void GridSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ShowCurrentQuestion(e.NewSize.Width, e.NewSize.Height);
         }
     }
 }

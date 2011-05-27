@@ -4,7 +4,7 @@ LIK_1: Ich fühle mich angespannt und überreizt.
   2)
   3)
   4)
-  5)
+  5) Überhaupt nicht - 6
   6) kaum - 6
 LIK_2: Ich fühle mich angespannt und überreizt.
   1) sehr - 1

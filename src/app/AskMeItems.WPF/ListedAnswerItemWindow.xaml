@@ -26,7 +26,8 @@
                     Background="LightGray"
                     BorderThickness="2"
                     CornerRadius="4"
-                    Margin="3">
+                    Margin="3"
+                    >
               <ContentPresenter Margin="2" />
             </Border>
             <ControlTemplate.Triggers>
@@ -59,15 +60,14 @@
       </Setter>
     </Style>
   </Window.Resources>
-  <Grid>
+  <Grid SizeChanged="GridSizeChanged">
 
-    <Label Height="114"
+    <Label Name ="itemLabel"
+           Height="114"
            HorizontalAlignment="Center"
            Margin="12,13,12,0"
            VerticalAlignment="Top"
            Width="598"
-           DataContext="{Binding}"
-           Target="{Binding}"
            FontSize="28"
            HorizontalContentAlignment="Center"
            VerticalContentAlignment="Center">
@@ -78,13 +78,14 @@
     <ListBox Height="348"
              Margin="12,0,12,41"
              Name="answersListBox"
+             FontSize="28"
              VerticalAlignment="Bottom">
-      <ListBoxItem>A) Answer 1</ListBoxItem>
-      <ListBoxItem>B) Answer 2</ListBoxItem>
-      <ListBoxItem>C) Answer 3</ListBoxItem>
+      <ListBoxItem>Überhaupt nicht</ListBoxItem>
+      <ListBoxItem>Nicht so sehr</ListBoxItem>
+      <ListBoxItem>Weder noch</ListBoxItem>
+      <ListBoxItem>Eventuell</ListBoxItem>
     </ListBox>
     <Button Content="Next"
-            Height="23"
             HorizontalAlignment="Left"
             Margin="535,476,0,0"
             Name="nextButton"
