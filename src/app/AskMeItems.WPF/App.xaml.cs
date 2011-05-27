@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -23,10 +24,26 @@ namespace AskMeItems.WPF
                 new QuestionnairePresenter(new CSVExporter(),
                                            new QuestionnaireParser()
                                                .Parse(File.ReadAllText(fileInfo.FullName, Encoding.Default)));
+            Present(questionnairePresenter);
 
-            new ItemWindow(questionnairePresenter).ShowDialog();
-            File.WriteAllText(@".\results\r1.txt", questionnairePresenter.Export());
+            File.WriteAllText(Path.Combine(fileInfo.Directory.Parent.FullName, @"results\r1.txt"),
+                              questionnairePresenter.Export());
             Shutdown();
+        }
+
+        static void Present(QuestionnairePresenter questionnairePresenter)
+        {
+            switch (questionnairePresenter.Questionnaire.Type)
+            {
+                case QuestionnaireType.ListedAnswers:
+                    new ListedAnswerItemWindow(questionnairePresenter).ShowDialog();
+                    break;
+                case QuestionnaireType.Likert:
+                    new LikertItemWindow(questionnairePresenter).ShowDialog();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

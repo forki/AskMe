@@ -6,13 +6,13 @@ using AskMeItems.Model;
 namespace AskMeItems.WPF
 {
     /// <summary>
-    ///   Interaction logic for ItemWindow.xaml
+    ///   Interaction logic for LikertItemWindow.xaml
     /// </summary>
-    public partial class ItemWindow
+    public partial class LikertItemWindow
     {
         readonly QuestionnairePresenter _questionnairePresenter;
 
-        public ItemWindow(QuestionnairePresenter questionnairePresenter)
+        public LikertItemWindow(QuestionnairePresenter questionnairePresenter)
         {
             InitializeComponent();
             _questionnairePresenter = questionnairePresenter;
