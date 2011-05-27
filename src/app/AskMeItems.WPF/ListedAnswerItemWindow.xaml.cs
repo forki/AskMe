@@ -16,6 +16,21 @@ namespace AskMeItems.WPF
         {
             InitializeComponent();
             _questionnairePresenter = questionnairePresenter;
+            SetListBoxStyle(questionnairePresenter);
+        }
+
+        void SetListBoxStyle(QuestionnairePresenter questionnairePresenter)
+        {
+            switch (questionnairePresenter.Questionnaire.Type)
+            {
+                case QuestionnaireType.ListedAnswers:
+                    answersListBox.Style = null;
+                    break;
+                case QuestionnaireType.Likert:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         void ShowNextQuestion()

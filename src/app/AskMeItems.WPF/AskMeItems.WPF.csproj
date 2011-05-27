@@ -71,10 +71,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="LikertItemWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="ListedAnswerItemWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -82,9 +78,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="LikertItemWindow.xaml.cs">
-      <DependentUpon>LikertItemWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ListedAnswerItemWindow.xaml.cs">
       <DependentUpon>ListedAnswerItemWindow.xaml</DependentUpon>

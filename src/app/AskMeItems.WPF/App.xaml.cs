@@ -25,7 +25,7 @@ namespace AskMeItems.WPF
                 new QuestionnairePresenter(new CSVExporter(),
                                            new QuestionnaireParser()
                                                .Parse(File.ReadAllText(fileInfo.FullName, Encoding.Default)));
-            Present(questionnairePresenter);
+            new ListedAnswerItemWindow(questionnairePresenter).ShowDialog();
 
             WriteResults(questionnairePresenter);
             Shutdown();
@@ -38,21 +38,6 @@ namespace AskMeItems.WPF
                 path.Create();
             File.WriteAllText(Path.Combine(path.FullName, @"r1.txt"),
                               questionnairePresenter.Export());
-        }
-
-        static void Present(QuestionnairePresenter questionnairePresenter)
-        {
-            switch (questionnairePresenter.Questionnaire.Type)
-            {
-                case QuestionnaireType.ListedAnswers:
-                    new ListedAnswerItemWindow(questionnairePresenter).ShowDialog();
-                    break;
-                case QuestionnaireType.Likert:
-                    new LikertItemWindow(questionnairePresenter).ShowDialog();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         }
     }
 }
