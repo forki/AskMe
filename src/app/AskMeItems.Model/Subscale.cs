@@ -19,12 +19,12 @@ namespace AskMeItems.Model
 
         public double Average
         {
-            get { return Results.Select(x => x.Points).Average(); }
+            get { return Results.Select(x => x.SelectedAnswer.Points).Average(); }
         }
 
         public int Points
         {
-            get { return Results.Select(x => x.Points).Sum(); }
+            get { return Results.Select(x => x.SelectedAnswer.Points).Sum(); }
         }
 
         public SubscaleType Type { get; private set; }

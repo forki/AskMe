@@ -26,8 +26,8 @@ namespace AskMeItems.WPF
                                                .Parse(File.ReadAllText(fileInfo.FullName, Encoding.Default)));
             Present(questionnairePresenter);
 
-            File.WriteAllText(Path.Combine(fileInfo.Directory.Parent.FullName, @"results\r1.txt"),
-                              questionnairePresenter.Export());
+            //File.WriteAllText(Path.Combine(fileInfo.Directory.Parent.FullName, @"results\r1.txt"),
+            //                  questionnairePresenter.Export());
             Shutdown();
         }
 

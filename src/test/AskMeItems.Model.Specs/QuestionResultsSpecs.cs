@@ -23,7 +23,7 @@ namespace AskMeItems.Model.Specs
         {
             Because of = () => Result = Item.AnswerWith("A");
 
-            It should_give_5_points = () => Result.Points.ShouldEqual(5);
+            It should_give_5_points = () => Result.SelectedAnswer.Points.ShouldEqual(5);
             It should_be_an_answer_to_the_question = () => Result.Item.ShouldEqual(Item);
             It should_be_the_given_answer = () => Result.SelectedAnswer.Code.ShouldEqual("A");
         }
@@ -32,7 +32,7 @@ namespace AskMeItems.Model.Specs
         {
             Because of = () => Result = Item.AnswerWith("B");
 
-            It should_give_5_points = () => Result.Points.ShouldEqual(2);
+            It should_give_5_points = () => Result.SelectedAnswer.Points.ShouldEqual(2);
             It should_be_an_answer_to_the_question = () => Result.Item.ShouldEqual(Item);
             It should_be_the_given_answer = () => Result.SelectedAnswer.Code.ShouldEqual("B");
         }

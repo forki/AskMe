@@ -8,11 +8,6 @@ namespace AskMeItems.Model
             SelectedAnswer = answer;
         }
 
-        public int Points
-        {
-            get { return SelectedAnswer.Points; }
-        }
-
         public Item Item { get; private set; }
 
         public Answer SelectedAnswer { get; private set; }

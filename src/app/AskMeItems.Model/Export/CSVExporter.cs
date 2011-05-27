@@ -16,7 +16,7 @@ namespace AskMeItems.Model.Export
                                               x.Item.Code,
                                               FieldDelimiter,
                                               x.SelectedAnswer.Code,
-                                              x.Points,
+                                              x.SelectedAnswer.Points,
                                               LineDelimiter));
             subscales
                 .ForEach(x => sb.AppendFormat("{5}{1}{0}{1}{2}{1}{3}{4}",
