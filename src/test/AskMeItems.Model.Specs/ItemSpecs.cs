@@ -7,6 +7,18 @@ using Machine.Specifications;
 
 namespace AskMeItems.Model.Specs
 {
+    public class when_creating_an_item
+    {
+        static Item Item;
+
+        Because of =
+            () => Item =
+                  Ask.Item("HADS_1", "How do you feel?")
+                      .Items.Last();
+
+        It should_have_nice_description = () => Item.ToString().ShouldEqual("HADS_1: How do you feel?");
+    }
+
     public class when_adding_two_answers_with_same_code
     {
         static Item Item;
