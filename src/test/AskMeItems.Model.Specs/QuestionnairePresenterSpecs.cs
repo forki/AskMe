@@ -7,12 +7,6 @@ using Machine.Specifications;
 
 namespace AskMeItems.Model.Specs
 {
-    public class when_using_code_coverage_with_mspec_style_line_breaks
-    {
-        It should_run_this =          // black bubble
-            () => 1.ShouldEqual(1);   // green bubble
-    }
-
     public class when_presenting_a_questionaire_with_two_items : when_using_a_questionaire_with_two_items
     {
         protected static QuestionnairePresenter Presenter;
