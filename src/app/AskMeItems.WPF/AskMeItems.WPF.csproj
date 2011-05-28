@@ -79,6 +79,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FontSizeCalculator.cs" />
     <Compile Include="ListedAnswerItemWindow.xaml.cs">
       <DependentUpon>ListedAnswerItemWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
