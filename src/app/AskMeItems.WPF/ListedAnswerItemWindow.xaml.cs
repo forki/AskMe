@@ -44,51 +44,37 @@ namespace AskMeItems.WPF
                     Close();
                     return;
                 }
-                ShowCurrentQuestion(Width, Height);
+                DisplayQuestion(Width, Height);
             });
         }
 
-        void ShowCurrentQuestion(double width, double height)
-        {
-            DisplayQuestion(width, height);
-            DisplayAnswers(width);
-        }
-
-        public Tuple<int, double> FindFontSize(double width, int fontSize)
+        public Tuple<double, double> CalculateFontSizeAndTextWidth(double width, double fontSize)
         {
             var answers = _questionnairePresenter.CurrentItem.Answers.Values.Select(x => x.Text).ToList();
             var maxWidth =
                 answers.Max(answer => FontSizeCalculator.GetFontWidth(answer, answersListBox.FontFamily, fontSize));
             var sum = maxWidth * answers.Count();
-            return sum + width * 0.45 < answersListBox.ActualWidth
-                       ? FindFontSize(width, fontSize + 1)
+            return sum + width * 0.45 < width
+                       ? CalculateFontSizeAndTextWidth(width, fontSize + 0.5)
                        : Tuple.Create(fontSize, maxWidth);
         }
 
         void DisplayQuestion(double width, double height)
         {
+            var tuple = CalculateFontSizeAndTextWidth(width, 10);
+            var maxWidth = tuple.Item2;
+            var fontSize = tuple.Item1;
+
             itemTextBlock.Text = _questionnairePresenter.CurrentItem.Text;
 
             itemLabel.Width = width / 1.2;
             itemLabel.Height = height / 4;
             itemTextBlock.FontSize = width / 30;
-            nextButton.FontSize = width / 30;
-            nextButton.Width = GetButtonWidth(width);
+            nextButton.FontSize = fontSize;
             nextButton.Margin = new Thickness(width - 100, height - 80, 0, 0);
-        }
 
-        double GetButtonWidth(double width)
-        {
-            return (width - 100) / _questionnairePresenter.CurrentItem.Answers.Count;
-        }
-
-        void DisplayAnswers(double width)
-        {
             answersListBox.Items.Clear();
             var answers = _questionnairePresenter.CurrentItem.Answers;
-            var tuple = FindFontSize(width, 10);
-            var maxWidth = tuple.Item2;
-            var fontSize = tuple.Item1;
             var items =
                 answers.Values
                     .Select(answer => new ListBoxItem
@@ -132,7 +118,7 @@ namespace AskMeItems.WPF
 
         void GridSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            ShowCurrentQuestion(e.NewSize.Width, e.NewSize.Height);
+            DisplayQuestion(e.NewSize.Width, e.NewSize.Height);
         }
     }
 }
