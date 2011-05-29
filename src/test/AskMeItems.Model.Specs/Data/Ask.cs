@@ -11,7 +11,7 @@ namespace AskMeItems.Model.Specs.Data
         public static Questionnaire Item(string code, string text)
         {
             return
-                new Questionnaire(QuestionnaireType.ListedAnswers, new List<Item>())
+                new Questionnaire(QuestionnaireType.ListedAnswers, "", new List<Item>())
                     .Item(code, text);
         }
 
@@ -19,7 +19,7 @@ namespace AskMeItems.Model.Specs.Data
         {
             var questions = questionnaire.Items.ToList();
             questions.Add(new Item(code, text, new List<Answer>()));
-            return new Questionnaire(questionnaire.Type,questions);
+            return new Questionnaire(questionnaire.Type, questionnaire.Instruction, questions);
         }
 
         public static QuestionnairePresenter AnswerWith(this QuestionnairePresenter presenter, string answerCode)
@@ -35,7 +35,7 @@ namespace AskMeItems.Model.Specs.Data
                 questions[questions.Count - 1]
                     .WithAnswer(code, text, points);
 
-            return new Questionnaire(questionnaire.Type, questions);
+            return new Questionnaire(questionnaire.Type, questionnaire.Instruction, questions);
         }
 
         public static Item WithAnswer(this Item item, string code, string text, int points)
