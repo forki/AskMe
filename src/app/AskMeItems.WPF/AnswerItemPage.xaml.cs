@@ -10,7 +10,7 @@ namespace AskMeItems.WPF
     /// <summary>
     ///   Interaction logic for AnswerItemPage.xaml
     /// </summary>
-    public partial class AnswerItemPage
+    public partial class AnswerItemPage : INavigationPage
     {
         readonly QuestionnairePresenter _questionnairePresenter;
         readonly Action<Action> _safeAction;
@@ -21,6 +21,17 @@ namespace AskMeItems.WPF
             _safeAction = safeAction;
             _questionnairePresenter = questionnairePresenter;
             SetListBoxStyle(questionnairePresenter);
+        }
+
+        public bool Next()
+        {
+            _safeAction(() =>
+            {
+                var answer = ((ListBoxItem) answersListBox.SelectedItem).Content as Answer;
+                _questionnairePresenter.AnswerCurrentItem(answer);
+                DisplayQuestion(Width, Height);
+            });
+            return _questionnairePresenter.HasItem();
         }
 
         void SetListBoxStyle(QuestionnairePresenter questionnairePresenter)
@@ -53,7 +64,7 @@ namespace AskMeItems.WPF
 
         void DisplayQuestion(double width, double height)
         {
-            if(!_questionnairePresenter.HasItem())
+            if (!_questionnairePresenter.HasItem())
                 return;
 
             var tuple = CalculateFontSizeAndTextWidth(width, 10);
@@ -79,17 +90,6 @@ namespace AskMeItems.WPF
 
             foreach (var listBoxItem in items)
                 answersListBox.Items.Add(listBoxItem);
-        }
-
-        public bool NextQuestion()
-        {
-            _safeAction(() =>
-            {
-                var answer = ((ListBoxItem)answersListBox.SelectedItem).Content as Answer;
-                _questionnairePresenter.AnswerCurrentItem(answer);
-                DisplayQuestion(Width, Height);
-            });
-            return _questionnairePresenter.HasItem();
         }
 
         void GridSizeChanged(object sender, SizeChangedEventArgs e)

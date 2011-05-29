@@ -91,6 +91,7 @@
       <DependentUpon>BaseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="FontSizeCalculator.cs" />
+    <Compile Include="INavigationPage.xaml.cs" />
     <Compile Include="InstructionPage.xaml.cs">
       <DependentUpon>InstructionPage.xaml</DependentUpon>
     </Compile>

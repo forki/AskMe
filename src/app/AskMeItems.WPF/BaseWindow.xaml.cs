@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 
 using AskMeItems.Model;
@@ -14,17 +14,23 @@ namespace AskMeItems.WPF
     {
         readonly QuestionnairePresenter _questionnairePresenter;
         readonly double fontSize;
-        Page _currentPage;
+        readonly List<INavigationPage> pages;
+        int _currentPage;
 
         public BaseWindow(QuestionnairePresenter questionnairePresenter)
         {
             _questionnairePresenter = questionnairePresenter;
             fontSize = 15;
             InitializeComponent();
-            _currentPage = new InstructionPage(ReportErrorsInLabel, questionnairePresenter);
+            pages =
+                new List<INavigationPage>
+                {
+                    new InstructionPage(ReportErrorsInLabel, questionnairePresenter),
+                    new AnswerItemPage(ReportErrorsInLabel, _questionnairePresenter)
+                };
 
             frame1.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            frame1.Navigate(_currentPage);
+            frame1.Navigate(pages[_currentPage]);
         }
 
         void ReportErrorsInLabel(Action action)
@@ -42,17 +48,13 @@ namespace AskMeItems.WPF
 
         void NextButtonClick(object sender, RoutedEventArgs e)
         {
-            var answerItemPage = _currentPage as AnswerItemPage;
-            if (answerItemPage != null)
-            {
-                if (!answerItemPage.NextQuestion())
-                    Close();
-            }
+            if (pages[_currentPage].Next())
+                return;
+            _currentPage++;
+            if (pages.Count <= _currentPage)
+                Close();
             else
-            {
-                _currentPage = new AnswerItemPage(ReportErrorsInLabel, _questionnairePresenter);
-                frame1.Navigate(_currentPage);
-            }
+                frame1.Navigate(pages[_currentPage]);
         }
 
         void WindowSizeChanged(object sender, SizeChangedEventArgs e)

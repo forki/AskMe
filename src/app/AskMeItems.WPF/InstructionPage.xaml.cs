@@ -8,7 +8,7 @@ namespace AskMeItems.WPF
     /// <summary>
     ///   Interaction logic for InstructionPage.xaml
     /// </summary>
-    public partial class InstructionPage
+    public partial class InstructionPage : INavigationPage
     {
         readonly Action<Action> _safeAction;
 
@@ -20,6 +20,11 @@ namespace AskMeItems.WPF
         }
 
         public QuestionnairePresenter QuestionnairePresenter { get; private set; }
+
+        public bool Next()
+        {
+            return false;
+        }
 
         void WindowLoaded(object sender, RoutedEventArgs e)
         {
