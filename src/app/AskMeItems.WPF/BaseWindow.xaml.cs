@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 using AskMeItems.Model;
 
@@ -22,6 +23,7 @@ namespace AskMeItems.WPF
             InitializeComponent();
             _currentPage = new InstructionPage(ReportErrorsInLabel, questionnairePresenter);
 
+            frame1.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             frame1.Navigate(_currentPage);
         }
 

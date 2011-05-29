@@ -85,7 +85,7 @@ namespace AskMeItems.WPF
         {
             _safeAction(() =>
             {
-                var answer = (answersListBox.SelectedItem as ListBoxItem).Content as Answer;
+                var answer = ((ListBoxItem)answersListBox.SelectedItem).Content as Answer;
                 _questionnairePresenter.AnswerCurrentItem(answer);
                 DisplayQuestion(Width, Height);
             });
