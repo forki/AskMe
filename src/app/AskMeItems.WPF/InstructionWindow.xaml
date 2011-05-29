@@ -19,7 +19,7 @@
             Margin="535,476,0,0"
             Name="nextButton"
             VerticalAlignment="Top"
-            Width="75"/>
+            Width="75" Click="NextButtonClick" />
         <Label Content="ErrorLabel"
            Height="28"
            HorizontalAlignment="Left"

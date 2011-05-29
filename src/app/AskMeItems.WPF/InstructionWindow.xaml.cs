@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 using AskMeItems.Model;
 
@@ -9,17 +10,35 @@ namespace AskMeItems.WPF
     /// </summary>
     public partial class InstructionWindow
     {
-        public QuestionnairePresenter QuestionnairePresenter { get; private set; }
-
         public InstructionWindow(QuestionnairePresenter questionnairePresenter)
         {
             QuestionnairePresenter = questionnairePresenter;
             InitializeComponent();
         }
 
-        private void WindowLoaded(object sender, RoutedEventArgs e)
+        public QuestionnairePresenter QuestionnairePresenter { get; private set; }
+
+        void WindowLoaded(object sender, RoutedEventArgs e)
         {
-            itemTextBlock.Text = QuestionnairePresenter.Questionnaire.Instruction;
+            ReportErrorsInLabel(() => itemTextBlock.Text = QuestionnairePresenter.Questionnaire.Instruction);
+        }
+
+        void ReportErrorsInLabel(Action action)
+        {
+            try
+            {
+                ErrorLabel.Content = "";
+                action();
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Content = ex.Message;
+            }
+        }
+
+        private void NextButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
         }
     }
 }
