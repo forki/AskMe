@@ -78,7 +78,10 @@
              Margin="12,0,12,41"
              Name="answersListBox"
              FontSize="28"
-             VerticalAlignment="Bottom">
+               ScrollViewer.VerticalScrollBarVisibility="Disabled"
+               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+             VerticalAlignment="Bottom" 
+             BorderBrush="{x:Null}" Background="{x:Null}">
       <ListBoxItem>Never</ListBoxItem>
       <ListBoxItem>Hardly ever</ListBoxItem>
       <ListBoxItem>Sometimes</ListBoxItem>

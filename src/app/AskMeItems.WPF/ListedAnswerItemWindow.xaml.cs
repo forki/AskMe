@@ -55,6 +55,7 @@ namespace AskMeItems.WPF
                 answers
                     .Select(answer => FontSizeCalculator.GetFontWidth(answer, answersListBox.FontFamily, fontSize))
                     .Max();
+
             var sum = maxWidth * answers.Count();
             return sum + width * 0.45 < width
                        ? CalculateFontSizeAndTextWidth(width, fontSize + 0.5)
