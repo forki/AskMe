@@ -1,0 +1,18 @@
+﻿<Page x:Class="AskMeItems.WPF.InstructionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="AskMeItems"
+      Height="550"
+      Width="644"
+      Loaded="WindowLoaded">
+  <Label Name="itemLabel"
+         HorizontalAlignment="Center"
+         Margin="12,13,12,41"
+         FontSize="28"
+         HorizontalContentAlignment="Center"
+         VerticalContentAlignment="Center">
+    <TextBlock Text="The text of the current item will be displayed here."
+               TextWrapping="Wrap"
+               Name="itemTextBlock" />
+  </Label>
+</Page>

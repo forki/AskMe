@@ -71,11 +71,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="InstructionWindow.xaml">
+    <Page Include="BaseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AnswerItemWindow.xaml">
+    <Page Include="InstructionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AnswerItemPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -83,12 +87,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FontSizeCalculator.cs" />
-    <Compile Include="InstructionWindow.xaml.cs">
-      <DependentUpon>InstructionWindow.xaml</DependentUpon>
+    <Compile Include="BaseWindow.xaml.cs">
+      <DependentUpon>BaseWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AnswerItemWindow.xaml.cs">
-      <DependentUpon>AnswerItemWindow.xaml</DependentUpon>
+    <Compile Include="FontSizeCalculator.cs" />
+    <Compile Include="InstructionPage.xaml.cs">
+      <DependentUpon>InstructionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerItemPage.xaml.cs">
+      <DependentUpon>AnswerItemPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

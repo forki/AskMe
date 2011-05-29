@@ -25,9 +25,8 @@ namespace AskMeItems.WPF
                                            new QuestionnaireParser()
                                                .Parse(File.ReadAllText(fileInfo.FullName, Encoding.Default)));
 
-            if (questionnairePresenter.HasIntroduction)
-                new InstructionWindow(questionnairePresenter).ShowDialog();
-            new AnswerItemWindow(questionnairePresenter).ShowDialog();
+            var window = new BaseWindow(questionnairePresenter);
+            window.ShowDialog();
 
             WriteResults(questionnairePresenter);
             Shutdown();

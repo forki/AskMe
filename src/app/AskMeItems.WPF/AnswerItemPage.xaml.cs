@@ -8,15 +8,17 @@ using AskMeItems.Model;
 namespace AskMeItems.WPF
 {
     /// <summary>
-    ///   Interaction logic for AnswerItemWindow.xaml
+    ///   Interaction logic for AnswerItemPage.xaml
     /// </summary>
-    public partial class AnswerItemWindow
+    public partial class AnswerItemPage
     {
         readonly QuestionnairePresenter _questionnairePresenter;
+        readonly Action<Action> _safeAction;
 
-        public AnswerItemWindow(QuestionnairePresenter questionnairePresenter)
+        public AnswerItemPage(Action<Action> safeAction, QuestionnairePresenter questionnairePresenter)
         {
             InitializeComponent();
+            _safeAction = safeAction;
             _questionnairePresenter = questionnairePresenter;
             SetListBoxStyle(questionnairePresenter);
         }
@@ -35,19 +37,6 @@ namespace AskMeItems.WPF
             }
         }
 
-        void ShowNextQuestion()
-        {
-            ReportErrorsInLabel(() =>
-            {
-                if (!_questionnairePresenter.HasItem())
-                {
-                    Close();
-                    return;
-                }
-                DisplayQuestion(Width, Height);
-            });
-        }
-
         public Tuple<double, double> CalculateFontSizeAndTextWidth(double width, double fontSize)
         {
             var answers = _questionnairePresenter.CurrentItem.Answers.Values.Select(x => x.Text).ToList();
@@ -64,6 +53,9 @@ namespace AskMeItems.WPF
 
         void DisplayQuestion(double width, double height)
         {
+            if(!_questionnairePresenter.HasItem())
+                return;
+
             var tuple = CalculateFontSizeAndTextWidth(width, 10);
             var maxWidth = tuple.Item2;
             var fontSize = tuple.Item1;
@@ -73,8 +65,6 @@ namespace AskMeItems.WPF
             itemLabel.Width = width / 1.2;
             itemLabel.Height = height / 4;
             itemTextBlock.FontSize = width / 30;
-            nextButton.FontSize = fontSize;
-            nextButton.Margin = new Thickness(width - 100, height - 80, 0, 0);
 
             answersListBox.Items.Clear();
             var answers = _questionnairePresenter.CurrentItem.Answers;
@@ -91,32 +81,15 @@ namespace AskMeItems.WPF
                 answersListBox.Items.Add(listBoxItem);
         }
 
-        void NextButtonClick(object sender, RoutedEventArgs e)
+        public bool NextQuestion()
         {
-            ReportErrorsInLabel(() =>
+            _safeAction(() =>
             {
-                var answer = answersListBox.SelectedItem as Answer;
+                var answer = (answersListBox.SelectedItem as ListBoxItem).Content as Answer;
                 _questionnairePresenter.AnswerCurrentItem(answer);
-                ShowNextQuestion();
+                DisplayQuestion(Width, Height);
             });
-        }
-
-        void ReportErrorsInLabel(Action action)
-        {
-            try
-            {
-                ErrorLabel.Content = "";
-                action();
-            }
-            catch (Exception ex)
-            {
-                ErrorLabel.Content = ex.Message;
-            }
-        }
-
-        void WindowLoaded(object sender, RoutedEventArgs e)
-        {
-            ShowNextQuestion();
+            return _questionnairePresenter.HasItem();
         }
 
         void GridSizeChanged(object sender, SizeChangedEventArgs e)
