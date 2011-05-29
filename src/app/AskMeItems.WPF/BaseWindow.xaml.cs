@@ -12,9 +12,9 @@ namespace AskMeItems.WPF
     /// </summary>
     public partial class BaseWindow : Window
     {
+        readonly List<INavigationPage> _pages;
         readonly QuestionnairePresenter _questionnairePresenter;
         readonly double fontSize;
-        readonly List<INavigationPage> pages;
         int _currentPage;
 
         public BaseWindow(QuestionnairePresenter questionnairePresenter)
@@ -22,7 +22,7 @@ namespace AskMeItems.WPF
             _questionnairePresenter = questionnairePresenter;
             fontSize = 15;
             InitializeComponent();
-            pages =
+            _pages =
                 new List<INavigationPage>
                 {
                     new InstructionPage(ReportErrorsInLabel, questionnairePresenter),
@@ -30,7 +30,7 @@ namespace AskMeItems.WPF
                 };
 
             frame1.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            frame1.Navigate(pages[_currentPage]);
+            frame1.Navigate(_pages[_currentPage]);
         }
 
         void ReportErrorsInLabel(Action action)
@@ -48,19 +48,25 @@ namespace AskMeItems.WPF
 
         void NextButtonClick(object sender, RoutedEventArgs e)
         {
-            if (pages[_currentPage].Next())
+            if (_pages[_currentPage].Next())
                 return;
             _currentPage++;
-            if (pages.Count <= _currentPage)
+            if (_pages.Count <= _currentPage)
                 Close();
             else
-                frame1.Navigate(pages[_currentPage]);
+                frame1.Navigate(_pages[_currentPage]);
         }
 
         void WindowSizeChanged(object sender, SizeChangedEventArgs e)
         {
             nextButton.FontSize = fontSize;
             nextButton.Margin = new Thickness(e.NewSize.Width - 100, e.NewSize.Height - 80, 0, 0);
+        }
+
+        void GridSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            frame1.Width = e.NewSize.Width - 30;
+            frame1.Height = e.NewSize.Height - 30;
         }
     }
 }

@@ -3,16 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AskMeItems"
         Height="550"
-        Width="644" SizeChanged="WindowSizeChanged">
-    
-    <Grid >
-        <Button Content="Next"
+        Width="644"
+        SizeChanged="WindowSizeChanged">
+
+  <Grid SizeChanged="GridSizeChanged">
+
+    <Frame HorizontalAlignment="Left"
+           Margin="12,12,0,0"
+           Name="frame1"
+           Width="598"
+           Height="457"
+           VerticalAlignment="Top" />
+    <Button Content="Next"
             HorizontalAlignment="Left"
             Margin="535,476,0,0"
             Name="nextButton"
             VerticalAlignment="Top"
-            Width="75" Click="NextButtonClick" />
-        <Label Content="ErrorLabel"
+            Width="75"
+            Click="NextButtonClick" />
+    <Label Content="ErrorLabel"
            Height="28"
            HorizontalAlignment="Left"
            Margin="12,475,0,0"
@@ -20,6 +29,5 @@
            VerticalAlignment="Top"
            Width="517"
            Foreground="#FFFC0000" />
-        <Frame Height="458" HorizontalAlignment="Left" Margin="12,12,0,0" Name="frame1" VerticalAlignment="Top" Width="598" />
-    </Grid>
+  </Grid>
 </Window>
