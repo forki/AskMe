@@ -71,7 +71,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ListedAnswerItemWindow.xaml">
+    <Page Include="InstructionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AnswerItemWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -80,8 +84,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="FontSizeCalculator.cs" />
-    <Compile Include="ListedAnswerItemWindow.xaml.cs">
-      <DependentUpon>ListedAnswerItemWindow.xaml</DependentUpon>
+    <Compile Include="InstructionWindow.xaml.cs">
+      <DependentUpon>InstructionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerItemWindow.xaml.cs">
+      <DependentUpon>AnswerItemWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

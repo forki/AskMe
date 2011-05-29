@@ -8,13 +8,13 @@ using AskMeItems.Model;
 namespace AskMeItems.WPF
 {
     /// <summary>
-    ///   Interaction logic for ListedAnswerItemWindow.xaml
+    ///   Interaction logic for AnswerItemWindow.xaml
     /// </summary>
-    public partial class ListedAnswerItemWindow
+    public partial class AnswerItemWindow
     {
         readonly QuestionnairePresenter _questionnairePresenter;
 
-        public ListedAnswerItemWindow(QuestionnairePresenter questionnairePresenter)
+        public AnswerItemWindow(QuestionnairePresenter questionnairePresenter)
         {
             InitializeComponent();
             _questionnairePresenter = questionnairePresenter;

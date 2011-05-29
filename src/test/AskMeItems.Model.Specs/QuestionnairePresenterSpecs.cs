@@ -22,6 +22,7 @@ namespace AskMeItems.Model.Specs
             It should_give_the_item = () => Item.Code.ShouldEqual("HADS_1");
             It should_not_have_a_result = () => Presenter.Results.ShouldBeEmpty();
             It should_have_another_item = () => Presenter.HasItem().ShouldBeTrue();
+            It should_not_have_a_introduction = () => Presenter.HasIntroduction.ShouldBeFalse();
         }
 
         public class when_answering_an_item

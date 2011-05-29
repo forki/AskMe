@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using AskMeItems.Model.Export;
@@ -49,6 +50,11 @@ namespace AskMeItems.Model
         public string Export()
         {
             return Exporter.Export(Results, GetSubscales());
+        }
+
+        public bool HasIntroduction
+        {
+            get { return !string.IsNullOrEmpty(Questionnaire.Instruction); }
         }
     }
 }

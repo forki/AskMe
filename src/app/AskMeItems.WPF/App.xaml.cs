@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using System.Windows;
 
@@ -13,7 +12,7 @@ namespace AskMeItems.WPF
     /// <summary>
     ///   Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -25,7 +24,10 @@ namespace AskMeItems.WPF
                 new QuestionnairePresenter(new CSVExporter(),
                                            new QuestionnaireParser()
                                                .Parse(File.ReadAllText(fileInfo.FullName, Encoding.Default)));
-            new ListedAnswerItemWindow(questionnairePresenter).ShowDialog();
+
+            if (questionnairePresenter.HasIntroduction)
+                new InstructionWindow(questionnairePresenter).ShowDialog();
+            new AnswerItemWindow(questionnairePresenter).ShowDialog();
 
             WriteResults(questionnairePresenter);
             Shutdown();

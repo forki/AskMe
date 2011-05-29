@@ -1,0 +1,32 @@
+﻿<Window x:Class="AskMeItems.WPF.InstructionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AskMeItems"
+        Height="550"
+        Width="644" Loaded="WindowLoaded">
+  <Grid >
+        <Label Name="itemLabel" HorizontalAlignment="Center"
+           Margin="12,13,12,41" Width="598"
+           FontSize="28"
+           HorizontalContentAlignment="Center"
+           VerticalContentAlignment="Center">
+            <TextBlock Text="The text of the current item will be displayed here."
+                 TextWrapping="Wrap"
+                 Name="itemTextBlock" />
+        </Label>
+        <Button Content="Next"
+            HorizontalAlignment="Left"
+            Margin="535,476,0,0"
+            Name="nextButton"
+            VerticalAlignment="Top"
+            Width="75"/>
+        <Label Content="ErrorLabel"
+           Height="28"
+           HorizontalAlignment="Left"
+           Margin="12,475,0,0"
+           Name="ErrorLabel"
+           VerticalAlignment="Top"
+           Width="517"
+           Foreground="#FFFC0000" />
+    </Grid>
+</Window>

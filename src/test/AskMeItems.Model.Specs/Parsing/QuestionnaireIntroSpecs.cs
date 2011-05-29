@@ -1,4 +1,6 @@
-﻿using Machine.Specifications;
+﻿using System.Collections.Generic;
+
+using Machine.Specifications;
 
 namespace AskMeItems.Model.Specs.Parsing
 {
@@ -6,7 +8,7 @@ namespace AskMeItems.Model.Specs.Parsing
     {
         Establish context =
             () => Text = "Questionnaire-Type: Likert\r\n" +
-                         "Instruction: In this questionnaire you have to answer on a Likert-scale as fast as possible.\r\n" +
+                         "Instruction: In this questionnaire you have to answer as fast as possible.\r\n" +
                          "  There are no right or wrong answers.\r\n" +
                          "LIK_1: I'm feeling good.\r\n" +
                          "  1) yes - 1\r\n" +
@@ -17,9 +19,27 @@ namespace AskMeItems.Model.Specs.Parsing
             () => Questionnaire.Items.Count.ShouldEqual(1);
 
         It should_have_parsed_the_intro_text =
-            () => Questionnaire.Instruction.ShouldEqual("In this questionnaire you have to answer on a Likert-scale as fast as possible.\r\nThere are no right or wrong answers.");
+            () => Questionnaire.Instruction
+                      .ShouldEqual("In this questionnaire you have to answer as fast as possible.\r\n" +
+                                   "There are no right or wrong answers.");
 
         It should_contain_the_given_sentence =
             () => GetItem(0).Text.ShouldEqual("I'm feeling good.");
+    }
+
+    public class when_presenting_a_questionnaire_with_intro
+    {
+        static QuestionnairePresenter Presenter;
+
+        static Questionnaire Questionnaire;
+
+        Establish context =
+            () => Questionnaire = new Questionnaire(QuestionnaireType.Likert, "blablub", new List<Item>());
+
+        Because of =
+            () => Presenter = new QuestionnairePresenter(null, Questionnaire);
+
+        It should_have_a_instruction = () => Presenter.HasIntroduction.ShouldBeTrue();
+        It should_have_the_insturction_text = () => Questionnaire.Instruction.ShouldEqual("blablub");
     }
 }
