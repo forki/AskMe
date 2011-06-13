@@ -19,3 +19,4 @@ _ReSharper*/
 *.user
 *.bak
 *.crunchsolution.cache
+results/*
