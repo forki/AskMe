@@ -58,5 +58,17 @@ namespace AskMeItems.WPF.Properties {
                 this["ResultsPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("S100")]
+        public string SubjectCode {
+            get {
+                return ((string)(this["SubjectCode"]));
+            }
+            set {
+                this["SubjectCode"] = value;
+            }
+        }
     }
 }

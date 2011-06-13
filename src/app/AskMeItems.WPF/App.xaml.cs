@@ -21,7 +21,7 @@ namespace AskMeItems.WPF
             var fileInfo = new FileInfo(fileName);
             var questionnairePresenter =
                 new QuestionnairePresenter(new CSVExporter(),
-                                           "1",
+                                           Settings.Default.SubjectCode,
                                            new QuestionnaireParser()
                                                .ParseFromFile(fileInfo.FullName));
 

@@ -11,5 +11,8 @@
     <Setting Name="ResultsPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">..\..\..\..\..\results\</Value>
     </Setting>
+    <Setting Name="SubjectCode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">S100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
