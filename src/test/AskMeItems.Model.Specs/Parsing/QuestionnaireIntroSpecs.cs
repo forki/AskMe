@@ -34,10 +34,10 @@ namespace AskMeItems.Model.Specs.Parsing
         static Questionnaire Questionnaire;
 
         Establish context =
-            () => Questionnaire = new Questionnaire(QuestionnaireType.Likert, "blablub", new List<Item>());
+            () => Questionnaire = new Questionnaire("WithIntro", QuestionnaireType.Likert, "blablub", new List<Item>());
 
         Because of =
-            () => Presenter = new QuestionnairePresenter(null, Questionnaire);
+            () => Presenter = new QuestionnairePresenter(null, "1", Questionnaire);
 
         It should_have_a_instruction = () => Presenter.HasIntroduction.ShouldBeTrue();
         It should_have_the_insturction_text = () => Questionnaire.Instruction.ShouldEqual("blablub");

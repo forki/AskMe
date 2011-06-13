@@ -12,7 +12,7 @@ namespace AskMeItems.Model.Specs
         static Exception Exception;
 
         Establish context =
-            () => Questionnaire = Ask.Item("HADS_1", "How do you feel?");
+            () => Questionnaire = Ask.NewQuestionnaire("HADS").Item("HADS_1", "How do you feel?");
 
         Because of =
             () =>

@@ -19,4 +19,15 @@ namespace AskMeItems.Model.Specs
         It should_format_the_subscale = () => Text[2].ShouldEqual("SUBSCALE\tHADS\t5\t2.5");
         It should_format_the_mainscale = () => Text[3].ShouldEqual("QUESTIONNAIRE\t\t5\t2.5");
     }
+
+    public class when_generating_filename : when_using_an_answered_questionaire_with_two_items
+    {
+        static string FileName;
+
+        Because of =
+            () => FileName = Presenter.GenerateFileName();
+
+        It should_generate_the_filename_with_the_questionnaire_and_subject_code = 
+            () => FileName.ShouldEqual("Result_HADS_1.txt");
+    }
 }

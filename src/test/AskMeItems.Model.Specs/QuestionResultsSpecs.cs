@@ -14,7 +14,8 @@ namespace AskMeItems.Model.Specs
 
         Establish context =
             () => Item =
-                  Ask.Item("Test1", "How do you feel?")
+                  Ask.NewQuestionnaire("TEST")
+                      .Item("Test1", "How do you feel?")
                       .WithAnswer("A", "good", 5)
                       .WithAnswer("B", "bad", 2)
                       .Items.Last();

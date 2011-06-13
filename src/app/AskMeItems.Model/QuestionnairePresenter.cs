@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.IO;
 
 using AskMeItems.Model.Export;
 
@@ -7,8 +7,9 @@ namespace AskMeItems.Model
 {
     public class QuestionnairePresenter
     {
-        public QuestionnairePresenter(IExporter exporter, Questionnaire questionnaire)
+        public QuestionnairePresenter(IExporter exporter, string subjectCode, Questionnaire questionnaire)
         {
+            SubjectCode = subjectCode;
             Exporter = exporter;
             Questionnaire = questionnaire;
             Results = new List<Result>();
@@ -23,6 +24,13 @@ namespace AskMeItems.Model
         }
 
         public List<Result> Results { get; private set; }
+
+        public bool HasIntroduction
+        {
+            get { return !string.IsNullOrEmpty(Questionnaire.Instruction); }
+        }
+
+        protected string SubjectCode { get; private set; }
 
         public List<Subscale> GetSubscales()
         {
@@ -52,9 +60,17 @@ namespace AskMeItems.Model
             return Exporter.Export(Results, GetSubscales());
         }
 
-        public bool HasIntroduction
+        public void ExportToFile(string dir)
         {
-            get { return !string.IsNullOrEmpty(Questionnaire.Instruction); }
+            var path = new DirectoryInfo(dir);
+            if (!path.Exists)
+                path.Create();
+            File.WriteAllText(Path.Combine(path.FullName, GenerateFileName()), Export());
+        }
+
+        public string GenerateFileName()
+        {
+            return string.Format("Result_{0}_{1}.txt", Questionnaire.Code, SubjectCode);
         }
     }
 }

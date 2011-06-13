@@ -13,7 +13,8 @@ namespace AskMeItems.Model.Specs
 
         Because of =
             () => Item =
-                  Ask.Item("HADS_1", "How do you feel?")
+                  Ask.NewQuestionnaire("HADS")
+                      .Item("HADS_1", "How do you feel?")
                       .Items.Last();
 
         It should_have_nice_description = () => Item.ToString().ShouldEqual("HADS_1: How do you feel?");
@@ -26,7 +27,8 @@ namespace AskMeItems.Model.Specs
 
         Establish context =
             () => Item =
-                  Ask.Item("HADS_1", "How do you feel?")
+                  Ask.NewQuestionnaire("HADS")
+                      .Item("HADS_1", "How do you feel?")
                       .WithAnswer("A", "Bad", 0)
                       .Items.Last();
 

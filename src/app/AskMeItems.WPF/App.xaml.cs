@@ -22,23 +22,15 @@ namespace AskMeItems.WPF
             var fileInfo = new FileInfo(fileName);
             var questionnairePresenter =
                 new QuestionnairePresenter(new CSVExporter(),
+                                           "1",
                                            new QuestionnaireParser()
                                                .Parse(File.ReadAllText(fileInfo.FullName, Encoding.Default)));
 
             var window = new BaseWindow(questionnairePresenter);
             window.ShowDialog();
 
-            WriteResults(questionnairePresenter);
+            questionnairePresenter.ExportToFile(Settings.Default.ResultsPath);
             Shutdown();
-        }
-
-        static void WriteResults(QuestionnairePresenter questionnairePresenter)
-        {
-            var path = new DirectoryInfo(Settings.Default.ResultsPath);
-            if (!path.Exists)
-                path.Create();
-            File.WriteAllText(Path.Combine(path.FullName, @"r1.txt"),
-                              questionnairePresenter.Export());
         }
     }
 }

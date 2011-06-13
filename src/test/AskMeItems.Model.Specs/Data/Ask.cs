@@ -8,18 +8,16 @@ namespace AskMeItems.Model.Specs.Data
 {
     public static class Ask
     {
-        public static Questionnaire Item(string code, string text)
+        public static Questionnaire NewQuestionnaire(string code)
         {
-            return
-                new Questionnaire(QuestionnaireType.ListedAnswers, "", new List<Item>())
-                    .Item(code, text);
+            return new Questionnaire(code, QuestionnaireType.ListedAnswers, "", new List<Item>());
         }
 
         public static Questionnaire Item(this Questionnaire questionnaire, string code, string text)
         {
             var questions = questionnaire.Items.ToList();
             questions.Add(new Item(code, text, new List<Answer>()));
-            return new Questionnaire(questionnaire.Type, questionnaire.Instruction, questions);
+            return new Questionnaire(questionnaire.Code, questionnaire.Type, questionnaire.Instruction, questions);
         }
 
         public static QuestionnairePresenter AnswerWith(this QuestionnairePresenter presenter, string answerCode)
@@ -35,7 +33,7 @@ namespace AskMeItems.Model.Specs.Data
                 questions[questions.Count - 1]
                     .WithAnswer(code, text, points);
 
-            return new Questionnaire(questionnaire.Type, questionnaire.Instruction, questions);
+            return new Questionnaire(questionnaire.Code, questionnaire.Type, questionnaire.Instruction, questions);
         }
 
         public static Item WithAnswer(this Item item, string code, string text, int points)
@@ -58,9 +56,9 @@ namespace AskMeItems.Model.Specs.Data
                 .First();
         }
 
-        public static QuestionnairePresenter ToPresenter(this Questionnaire questionnaire)
+        public static QuestionnairePresenter ToPresenter(this Questionnaire questionnaire, string subjectCode)
         {
-            return new QuestionnairePresenter(new CSVExporter(), questionnaire);
+            return new QuestionnairePresenter(new CSVExporter(), subjectCode, questionnaire);
         }
     }
 }

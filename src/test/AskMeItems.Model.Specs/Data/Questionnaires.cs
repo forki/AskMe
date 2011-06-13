@@ -8,7 +8,8 @@ namespace AskMeItems.Model.Specs.Data
 
         Establish context =
             () => Questionnaire =
-                  Ask.Item("HADS_1", "How do you feel?")
+                  Ask.NewQuestionnaire("HADS")
+                      .Item("HADS_1", "How do you feel?")
                       .WithAnswer("A", "good", 1)
                       .WithAnswer("B", "bad", 2)
                       .Item("HADS_2", "How do you really feel?")
@@ -24,7 +25,7 @@ namespace AskMeItems.Model.Specs.Data
             () =>
             Presenter =
             Questionnaire
-                .ToPresenter()
+                .ToPresenter("1")
                 .AnswerWith("A")
                 .AnswerWith("B");
     }
@@ -35,7 +36,8 @@ namespace AskMeItems.Model.Specs.Data
 
         Establish context =
             () => Questionnaire =
-                  Ask.Item("A_1", "How do you feel?")
+                  Ask.NewQuestionnaire("TEST")
+                      .Item("A_1", "How do you feel?")
                       .WithAnswer("A", "good", 1)
                       .WithAnswer("B", "bad", 2)
                       .Item("A_2", "How do you really feel?")
@@ -64,7 +66,7 @@ namespace AskMeItems.Model.Specs.Data
             () =>
             Presenter =
             Questionnaire
-                .ToPresenter()
+                .ToPresenter("1")
                 .AnswerWith("A")
                 .AnswerWith("B")
                 .AnswerWith("B")

@@ -7,8 +7,9 @@ namespace AskMeItems.Model
     {
         readonly Dictionary<string, Item> _items;
 
-        public Questionnaire(QuestionnaireType type, string instruction, IEnumerable<Item> questions)
+        public Questionnaire(string code, QuestionnaireType type, string instruction, IEnumerable<Item> questions)
         {
+            Code = code;
             Type = type;
             Instruction = instruction;
             Items = new List<Item>();
@@ -19,6 +20,7 @@ namespace AskMeItems.Model
 
         public List<Item> Items { get; private set; }
 
+        public string Code { get; private set; }
         public QuestionnaireType Type { get; private set; }
 
         public string Instruction { get; private set; }

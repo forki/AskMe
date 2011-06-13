@@ -18,7 +18,7 @@ namespace AskMeItems.Model.Parser
 
             while (ItemParser.HasNextQuestion(lines, lineNo))
                 questions.Add(ItemParser.Parse(lines, questionCount++, ref lineNo));
-            return new Questionnaire(type, instruction, questions);
+            return new Questionnaire("", type, instruction, questions);
         }
     }
 }

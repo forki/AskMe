@@ -11,7 +11,7 @@ namespace AskMeItems.Model.Specs
     {
         protected static QuestionnairePresenter Presenter;
 
-        Establish context = () => Presenter = Questionnaire.ToPresenter();
+        Establish context = () => Presenter = Questionnaire.ToPresenter("1");
 
         public class when_asking_for_first_item
         {
