@@ -56,11 +56,11 @@ namespace AskMeItems.WPF
             var answers = _questionnairePresenter.CurrentItem.Answers.Values.Select(x => x.Text).ToList();
             var maxWidth =
                 answers
-                    .Select(answer => FontSizeCalculator.GetFontWidth(answer, answersListBox.FontFamily, fontSize))
+                    .Select(answer => 1.6 * FontSizeCalculator.GetFontWidth(answer, answersListBox.FontFamily, fontSize))
                     .Max();
 
-            var sum = maxWidth * answers.Count();
-            return sum + width * 0.45 < width
+            var sum = maxWidth * 1.3 * answers.Count();
+            return sum < width
                        ? CalculateFontSizeAndTextWidth(width, fontSize + 0.5)
                        : Tuple.Create(fontSize, maxWidth);
         }
@@ -70,8 +70,8 @@ namespace AskMeItems.WPF
             if (!_questionnairePresenter.HasItem())
                 return;
 
-            var tuple = CalculateFontSizeAndTextWidth(width, 10);
-            var maxWidth = tuple.Item2;
+            var tuple = CalculateFontSizeAndTextWidth(width, 1);
+            var buttonWidth = tuple.Item2;
             var fontSize = tuple.Item1;
 
             itemTextBlock.Text = _questionnairePresenter.CurrentItem.Text;
@@ -88,7 +88,7 @@ namespace AskMeItems.WPF
                                       {
                                           Content = answer,
                                           FontSize = fontSize,
-                                          Width = maxWidth + 0.4 * maxWidth
+                                          Width = buttonWidth
                                       });
 
             foreach (var listBoxItem in items)
