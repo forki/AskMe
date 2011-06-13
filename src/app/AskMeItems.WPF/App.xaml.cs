@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Text;
 using System.Windows;
 
 using AskMeItems.Model;
@@ -24,7 +23,7 @@ namespace AskMeItems.WPF
                 new QuestionnairePresenter(new CSVExporter(),
                                            "1",
                                            new QuestionnaireParser()
-                                               .Parse(File.ReadAllText(fileInfo.FullName, Encoding.Default)));
+                                               .ParseFromFile(fileInfo.FullName));
 
             var window = new BaseWindow(questionnairePresenter);
             window.ShowDialog();

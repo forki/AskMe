@@ -1,27 +1,14 @@
+using System.IO;
+
 using Machine.Specifications;
 
 namespace AskMeItems.Model.Specs.Parsing
 {
-    public class when_parsing_a_likert_questionnaire : when_parsing
+    public class when_parsing_a_likert_questionnaire : when_parsing_from_file
     {
-        Establish context =
-            () => Text =
-                  "Questionnaire-Type: Likert\r\n" +
-                  "LIK_1: Ich fühle mich angespannt und überreizt.\r\n" +
-                  "  1) sehr - 1\r\n" +
-                  "  2) - 2\r\n" +
-                  "  3) - 3\r\n" +
-                  "  4)\r\n" +
-                  "  5)\r\n" +
-                  "  6) kaum - 6\r\n" +
-                  "LIK_2: Ich fühle mich angespannt und überreizt.\r\n" +
-                  "  1) sehr - 1\r\n" +
-                  "  2) - 2\r\n" +
-                  "  3) - 3\r\n" +
-                  "  4) - 4\r\n" +
-                  "  5) - 5\r\n" +
-                  "  6) kaum - 6\r\n";
+        Establish context = () => FileName = @"Data\Likert.txt";
 
+        It should_use_the_filename_as_questionnaire_code = () => Questionnaire.Code.ShouldEqual("Likert");
         It should_be_a_likert_questionnaire = () => Questionnaire.Type.ShouldEqual(QuestionnaireType.Likert);
         It should_contain_two_items = () => Questionnaire.Items.Count.ShouldEqual(2);
         It should_contain_the__LIK_1_item = () => GetItem(0).Code.ShouldEqual("LIK_1");
