@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ namespace AskMeItems.WPF
     /// </summary>
     public partial class AnswerItemPage : INavigationPage
     {
+        readonly Dictionary<ListBoxItem, Answer> _itemsDict = new Dictionary<ListBoxItem, Answer>();
         readonly QuestionnairePresenter _questionnairePresenter;
         readonly Action<Action> _safeAction;
 
@@ -30,7 +32,7 @@ namespace AskMeItems.WPF
                 Answer answer = null;
                 var listBoxItem = answersListBox.SelectedItem as ListBoxItem;
                 if (listBoxItem != null)
-                    answer = listBoxItem.Content as Answer;
+                    answer = _itemsDict[listBoxItem];
                 _questionnairePresenter.AnswerCurrentItem(answer);
                 DisplayQuestion(Width, Height);
             });
@@ -82,20 +84,34 @@ namespace AskMeItems.WPF
 
             answersListBox.Items.Clear();
             var answers = _questionnairePresenter.CurrentItem.Answers;
+            _itemsDict.Clear();
+
             var items =
                 answers.Values
-                    .Select(answer => new ListBoxItem
-                                      {
-                                          Content = answer,
-                                          FontSize = fontSize,
-                                          Width = buttonWidth
-                                      });
+                    .Select(answer =>
+                    {
+                        var textBlock = new TextBlock
+                                        {
+                                            Text = answer.ToString(),
+                                            FontSize = fontSize,
+                                            TextAlignment = TextAlignment.Center
+                                        };
+                        var item = new ListBoxItem
+                                   {
+                                       Content = textBlock,
+                                       Width = buttonWidth,
+                                       HorizontalContentAlignment = HorizontalAlignment.Center
+                                   };
+                        _itemsDict.Add(item, answer);
+                        return item;
+                    });
 
             foreach (var listBoxItem in items)
                 answersListBox.Items.Add(listBoxItem);
         }
 
-        void GridSizeChanged(object sender, SizeChangedEventArgs e)
+        void GridSizeChanged
+            (object sender, SizeChangedEventArgs e)
         {
             DisplayQuestion(e.NewSize.Width, e.NewSize.Height);
         }
