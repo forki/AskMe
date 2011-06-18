@@ -24,6 +24,7 @@ namespace AskMeItems.Model.Specs.Parsing
         It should_be_a_likert_questionnaire = () => Questionnaire.Type.ShouldEqual(QuestionnaireType.Likert);
         It should_contain_two_items = () => Questionnaire.Items.Count.ShouldEqual(2);
         It should_contain_the_sample_in_the_instruction = () => Questionnaire.Instruction.ShouldContain("3 - meistens, die ganze Zeit (5 bis 7 Tage lang)");
+        It should_contain_the_7_lines_in_the_instruction = () => Questionnaire.Instruction.Split('\n').Length.ShouldEqual(7);
         It should_contain_the_ADSK_item = () => GetItem(0).Code.ShouldEqual("ADS-K_1");
         It should_contain_the_text_for_the_first_answer = () => GetAnswer(0, 0).Text.ShouldEqual("selten");
         It should_contain_the_points_for_the_first_answer = () => GetAnswer(0, 0).Points.ShouldEqual(0);

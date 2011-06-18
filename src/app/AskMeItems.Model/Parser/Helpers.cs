@@ -15,15 +15,15 @@ namespace AskMeItems.Model.Parser
             var pattern = propertyName + ": ";
             return lines[lineNo].StartsWith(pattern)
                        ? lines[lineNo++].Replace(pattern, "").RemoveLineBreaks() +
-                         GetTextIfIndented(lines, ref lineNo)
+                         GetTextIfIndentedOrEmpty(lines, ref lineNo)
                        : defaultValue;
         }
 
-        public static string GetTextIfIndented(IList<string> lines, ref int lineNo)
+        public static string GetTextIfIndentedOrEmpty(IList<string> lines, ref int lineNo)
         {
-            if (lines.Count > lineNo && lines[lineNo].StartsWith("  "))
+            if (lines.Count > lineNo && (lines[lineNo].StartsWith("  ") || lines[lineNo].RemoveLineBreaks() == string.Empty))
                 return "\r\n" + lines[lineNo++].TrimStart(' ').RemoveLineBreaks() +
-                       GetTextIfIndented(lines, ref lineNo);
+                       GetTextIfIndentedOrEmpty(lines, ref lineNo);
             return String.Empty;
         }
     }

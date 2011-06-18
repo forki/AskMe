@@ -1,5 +1,6 @@
 Questionnaire-Type: Likert
 Instruction: Bitte kreuzen Sie bei den folgenden Aussagen die Antwort an, die Ihrem Befinden während der letzten Woche am besten entspricht/entsprochen hat.
+
   Antwortmöglichkeiten: 
   0 - selten oder überhaupt nicht (weniger als 1Tag)
   1 - manchmal (1 bis 2 Tage lang)
