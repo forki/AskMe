@@ -64,7 +64,7 @@
     <Compile Include="Parsing\CodedItemSpecs.cs" />
     <Compile Include="Data\Ask.cs" />
     <Compile Include="Parsing\QuestionnaireIntroSpecs.cs" />
-    <Compile Include="Parsing\LikertParsingSpecs.cs" />
+    <Compile Include="Parsing\SamplesParsingSpecs.cs" />
     <Compile Include="QuestionnairePresenterSpecs.cs" />
     <Compile Include="QuestionnaireSpecs.cs" />
     <Compile Include="QuestionResultsSpecs.cs" />
@@ -85,7 +85,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Likert.txt">
+    <Content Include="..\..\..\samples\ADS-K.txt">
+      <Link>Data\ADS-K.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\samples\Likert.txt">
+      <Link>Data\Likert.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

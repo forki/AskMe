@@ -8,6 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AskMeItems.Model.Specs", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{C28B51D7-B819-4768-A7F5-C1E5A9451EA4}"
 	ProjectSection(SolutionItems) = preProject
+		samples\ADS-K.txt = samples\ADS-K.txt
 		samples\Coded1.txt = samples\Coded1.txt
 		samples\Likert.txt = samples\Likert.txt
 		samples\Simple1.txt = samples\Simple1.txt

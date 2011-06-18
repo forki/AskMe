@@ -5,7 +5,7 @@ namespace AskMeItems.Model.Parser
 {
     public class ItemParser
     {
-        static readonly Regex ItemRegex = new Regex(@"(([^\s]+):\s)?(.*)", RegexOptions.Compiled);
+        static readonly Regex ItemRegex = new Regex(@"(([^\s]+):\s*)?(.*)", RegexOptions.Compiled);
 
         public static bool HasNextQuestion(List<string> lines, int lineNo)
         {
