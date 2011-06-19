@@ -29,4 +29,11 @@ namespace AskMeItems.Model.Specs.Parsing
         It should_contain_the_text_for_the_first_answer = () => GetAnswer(0, 0).Text.ShouldEqual("selten");
         It should_contain_the_points_for_the_first_answer = () => GetAnswer(0, 0).Points.ShouldEqual(0);
     }
+
+    public class when_parsing_a_HADS_questionnaire : when_parsing_from_file
+    {
+        Establish context = () => FileName = @"Data\HADS.txt";
+
+        It should_be_a_questionnaire_with_listed_answers = () => Questionnaire.Type.ShouldEqual(QuestionnaireType.ListedAnswers);
+    }
 }

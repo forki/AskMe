@@ -55,16 +55,37 @@ namespace AskMeItems.WPF
 
         public Tuple<double, double> CalculateFontSizeAndTextWidth(double width, double fontSize)
         {
-            var answers = _questionnairePresenter.CurrentItem.Answers.Values.Select(x => x.Text).ToList();
+            var answers = // All answers for current item
+                _questionnairePresenter.CurrentItem.Answers.Values
+                    .Select(x => x.Text)
+                    .ToList();
+
+            if (_questionnairePresenter.Questionnaire.Type == QuestionnaireType.ListedAnswers)
+                answers = // All answers for all items
+                    _questionnairePresenter.Questionnaire.Items
+                        .SelectMany(item => item.Answers)
+                        .Select(answer => answer.Value.Text)
+                        .ToList();
+
             var maxWidth =
                 answers
-                    .Select(answer => 1.6 * FontSizeCalculator.GetFontWidth(answer, answersListBox.FontFamily, fontSize))
+                    .Select(answer => FontSizeCalculator.GetFontWidth(answer, answersListBox.FontFamily, fontSize))
                     .Max();
 
-            var sum = maxWidth * 1.3 * answers.Count();
+            if (_questionnairePresenter.Questionnaire.Type == QuestionnaireType.Likert)
+                maxWidth = 1.6 * maxWidth;
+            else
+                maxWidth = 1.2 * maxWidth;
+
+            var sum = maxWidth * 1.3;
+            if (_questionnairePresenter.Questionnaire.Type == QuestionnaireType.Likert)
+                sum = sum * answers.Count();
+            if (_questionnairePresenter.Questionnaire.Type == QuestionnaireType.ListedAnswers)
+                sum = sum * 1.5;
+
             return sum < width
                        ? CalculateFontSizeAndTextWidth(width, fontSize + 0.5)
-                       : Tuple.Create(fontSize, maxWidth);
+                       : Tuple.Create(maxWidth, fontSize);
         }
 
         void DisplayQuestion(double width, double height)
@@ -73,8 +94,8 @@ namespace AskMeItems.WPF
                 return;
 
             var tuple = CalculateFontSizeAndTextWidth(width, 1);
-            var buttonWidth = tuple.Item2;
-            var fontSize = tuple.Item1;
+            var checkboxWidth = tuple.Item1;
+            var fontSize = tuple.Item2;
 
             itemTextBlock.Text = _questionnairePresenter.CurrentItem.Text;
 
@@ -90,20 +111,19 @@ namespace AskMeItems.WPF
                 answers.Values
                     .Select(answer =>
                     {
-                        var textBlock = new TextBlock
-                                        {
-                                            Text = answer.ToString(),
-                                            FontSize = fontSize,
-                                            TextAlignment = TextAlignment.Center
-                                        };
-                        var item = new ListBoxItem
+                        var listBoxItem = new ListBoxItem
                                    {
-                                       Content = textBlock,
-                                       Width = buttonWidth,
+                                       Content = new TextBlock
+                                                 {
+                                                     Text = answer.ToString(),
+                                                     FontSize = fontSize,
+                                                     TextAlignment = TextAlignment.Center
+                                                 },
+                                       Width = checkboxWidth,
                                        HorizontalContentAlignment = HorizontalAlignment.Center
                                    };
-                        _itemsDict.Add(item, answer);
-                        return item;
+                        _itemsDict.Add(listBoxItem, answer);
+                        return listBoxItem;
                     });
 
             foreach (var listBoxItem in items)

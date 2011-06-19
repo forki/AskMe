@@ -89,6 +89,10 @@
       <Link>Data\ADS-K.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\..\..\samples\HADS.txt">
+      <Link>Data\HADS.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\..\samples\Likert.txt">
       <Link>Data\Likert.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
