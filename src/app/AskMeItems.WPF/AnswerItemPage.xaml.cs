@@ -77,11 +77,11 @@ namespace AskMeItems.WPF
             else
                 maxWidth = 1.2 * maxWidth;
 
-            var sum = maxWidth * 1.3;
+            var sum = 0.0;
             if (_questionnairePresenter.Questionnaire.Type == QuestionnaireType.Likert)
-                sum = sum * answers.Count();
+                sum = maxWidth * 1.3 * answers.Count();
             if (_questionnairePresenter.Questionnaire.Type == QuestionnaireType.ListedAnswers)
-                sum = sum * 1.5;
+                sum = maxWidth * 2;
 
             return sum < width
                        ? CalculateFontSizeAndTextWidth(width, fontSize + 0.5)
