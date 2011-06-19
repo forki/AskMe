@@ -2,16 +2,20 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AskMeItems"
-        WindowStyle = "None"
-        WindowState = "Maximized"
-        SizeChanged="WindowSizeChanged" Width="1600" Height="1000">
+        WindowStyle="None"
+        WindowState="Maximized"
+        SizeChanged="WindowSizeChanged"
+        Width="1600"
+        Height="1000">
   <Grid SizeChanged="GridSizeChanged">
     <Frame HorizontalAlignment="Left"
            Margin="10,10,0,0"
            Name="frame1"
            Width="1556"
            Height="905"
-           VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+           VerticalAlignment="Top"
+           HorizontalContentAlignment="Center"
+           VerticalContentAlignment="Center" />
     <Button Content="Next"
             HorizontalAlignment="Left"
             Margin="1491,927,0,0"
@@ -26,6 +30,7 @@
            Name="ErrorLabel"
            VerticalAlignment="Top"
            Width="1467"
-           Foreground="#FFFC0000" />
+           Foreground="#FFFC0000"
+           HorizontalContentAlignment="Right" />
   </Grid>
 </Window>
