@@ -22,12 +22,10 @@ namespace AskMeItems.WPF
             _questionnairePresenter = questionnairePresenter;
             fontSize = 15;
             InitializeComponent();
-            _pages =
-                new List<INavigationPage>
-                {
-                    new InstructionPage(ReportErrorsInLabel, questionnairePresenter),
-                    new AnswerItemPage(ReportErrorsInLabel, _questionnairePresenter)
-                };
+            _pages = new List<INavigationPage>();
+            if(_questionnairePresenter.HasIntroduction)
+                _pages.Add(new InstructionPage(ReportErrorsInLabel, questionnairePresenter));
+            _pages.Add(new AnswerItemPage(ReportErrorsInLabel, _questionnairePresenter));
 
             frame1.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             frame1.Navigate(_pages[_currentPage]);
