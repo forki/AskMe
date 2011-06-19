@@ -27,3 +27,4 @@ LIK_3: How do you do?
   8)
   9)
   10) very bad
+

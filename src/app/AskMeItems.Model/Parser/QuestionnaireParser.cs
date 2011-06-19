@@ -10,7 +10,13 @@ namespace AskMeItems.Model.Parser
     {
         public Questionnaire Parse(string questionnaireCode, string text)
         {
-            var lines = text.Replace("\r\n","\r").Replace("\n","\r").Split(new[] {"\r"}, StringSplitOptions.None).ToList();
+            var lines = 
+                text
+                .TrimEnd('\r','\n',' ')
+                .Replace("\r\n","\r").Replace("\n","\r")
+                .Split(new[] {"\r"}, StringSplitOptions.None)
+                .ToList();
+
             var lineNo = 0;
             var questions = new List<Item>();
             var questionCount = 0;
