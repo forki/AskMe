@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Navigation;
 
 using AskMeItems.Model;
+using AskMeItems.Model.Export;
+using AskMeItems.Model.Parser;
 
 namespace AskMeItems.WPF
 {
@@ -12,22 +14,40 @@ namespace AskMeItems.WPF
     /// </summary>
     public partial class BaseWindow : Window
     {
+        readonly string _fileName;
+        readonly double _fontSize;
         readonly List<INavigationPage> _pages;
-        readonly QuestionnairePresenter _questionnairePresenter;
-        readonly double fontSize;
         int _currentPage;
+        readonly string _resultsPath;
 
-        public BaseWindow(QuestionnairePresenter questionnairePresenter)
+        public BaseWindow(string fileName, string resultsPath)
         {
-            _questionnairePresenter = questionnairePresenter;
-            fontSize = 15;
+            _fileName = fileName;
+            _resultsPath = resultsPath;
+            _fontSize = 15;
             InitializeComponent();
-            _pages = new List<INavigationPage>();
-            if(_questionnairePresenter.HasIntroduction)
-                _pages.Add(new InstructionPage(ReportErrorsInLabel, questionnairePresenter));
-            _pages.Add(new AnswerItemPage(ReportErrorsInLabel, _questionnairePresenter));
+
+
+            ErrorLabel.Content = "";
+            _pages = new List<INavigationPage> {new SettingsPage(SetPresenter)};
 
             frame1.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            frame1.Navigate(_pages[_currentPage]);            
+        }
+
+        public QuestionnairePresenter QuestionnairePresenter { get; private set; }
+
+        void SetPresenter(string subjectCode)
+        {
+            var questionnaire = new QuestionnaireParser().ParseFromFile(_fileName);
+
+            QuestionnairePresenter =
+                new QuestionnairePresenter(new CSVExporter(), subjectCode, questionnaire);
+
+            if (QuestionnairePresenter.HasIntroduction)
+                _pages.Add(new InstructionPage(ReportErrorsInLabel, QuestionnairePresenter));
+            _pages.Add(new AnswerItemPage(ReportErrorsInLabel, QuestionnairePresenter));
+
             frame1.Navigate(_pages[_currentPage]);
         }
 
@@ -50,14 +70,17 @@ namespace AskMeItems.WPF
                 return;
             _currentPage++;
             if (_pages.Count <= _currentPage)
+            {
+                QuestionnairePresenter.ExportToFile(_resultsPath);
                 Close();
+            }
             else
                 frame1.Navigate(_pages[_currentPage]);
         }
 
         void WindowSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            nextButton.FontSize = fontSize;
+            nextButton.FontSize = _fontSize;
             nextButton.Margin = new Thickness(e.NewSize.Width - 100, e.NewSize.Height - 80, 0, 0);
         }
 

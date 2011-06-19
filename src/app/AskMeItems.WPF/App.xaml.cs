@@ -19,16 +19,10 @@ namespace AskMeItems.WPF
 
             var fileName = Path.Combine(Settings.Default.QuestionnaireFolder, Settings.Default.Questionnaire);
             var fileInfo = new FileInfo(fileName);
-            var questionnairePresenter =
-                new QuestionnairePresenter(new CSVExporter(),
-                                           Settings.Default.SubjectCode,
-                                           new QuestionnaireParser()
-                                               .ParseFromFile(fileInfo.FullName));
 
-            var window = new BaseWindow(questionnairePresenter);
+            var window = new BaseWindow(fileInfo.FullName, Settings.Default.ResultsPath);
             window.ShowDialog();
 
-            questionnairePresenter.ExportToFile(Settings.Default.ResultsPath);
             Shutdown();
         }
     }

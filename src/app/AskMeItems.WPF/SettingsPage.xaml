@@ -1,0 +1,16 @@
+﻿<Page x:Class="AskMeItems.WPF.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="AskMeItems"
+      Width="1400"
+      Height="890">
+  <Grid>
+    <Label FontSize="48" Height="98" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="12,12,12,0" Name="itemLabel" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Width="1376">
+      <TextBlock Name="itemTextBlock" Text="Settings" TextWrapping="Wrap" />
+    </Label>
+    <WrapPanel Height="100" HorizontalAlignment="Left" Margin="12,166,0,0" Name="wrapPanel1" VerticalAlignment="Center" Width="1376">
+      <Label Content="Subject-Code:" Height="28" Name="label1" Width="525" HorizontalContentAlignment="Right" />
+      <TextBox Height="23" Width="421" Name="SubjectTextBox" />      
+    </WrapPanel>
+  </Grid>
+</Page>

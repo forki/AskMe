@@ -2,17 +2,14 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AskMeItems.WPF.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="QuestionnaireFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\..\..\..\samples\</Value>
-    </Setting>
     <Setting Name="Questionnaire" Type="System.String" Scope="User">
       <Value Profile="(Default)">Likert.txt</Value>
     </Setting>
-    <Setting Name="ResultsPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\..\..\..\results\</Value>
+    <Setting Name="QuestionnaireFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\..\..\..\..\samples\</Value>
     </Setting>
-    <Setting Name="SubjectCode" Type="System.String" Scope="User">
-      <Value Profile="(Default)">S100</Value>
+    <Setting Name="ResultsPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\..\..\..\..\results\</Value>
     </Setting>
   </Settings>
 </SettingsFile>
