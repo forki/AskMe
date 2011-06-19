@@ -14,7 +14,11 @@ namespace AskMeItems.WPF
     /// </summary>
     public partial class BaseWindow : Window
     {
-        readonly List<IExporter> _exporters = new List<IExporter> {new CSVExporter()};
+        readonly List<IExporter> _exporters = new List<IExporter>
+                                              {
+                                                  new CSVExporterWithSubscales(),
+                                                  new CSVExporter()
+                                              };
         readonly string _fileName;
         readonly double _fontSize;
         readonly List<INavigationPage> _pages;

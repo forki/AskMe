@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using AskMeItems.Model.Export;
-
 namespace AskMeItems.Model.Specs.Data
 {
     public static class Ask
@@ -47,6 +45,11 @@ namespace AskMeItems.Model.Specs.Data
         public static string[] SplitOnLineBreaks(this string text)
         {
             return text.Split(new[] {"\r\n"}, StringSplitOptions.None);
+        }
+
+        public static string TrimLineBreaksAtEnd(this string text)
+        {
+            return text.TrimEnd(new[] {'\r', '\n'});
         }
 
         public static Subscale ByName(this IEnumerable<Subscale> subscales, string name)

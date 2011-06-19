@@ -57,8 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Answer.cs" />
-    <Compile Include="Parser\AnswerParser.cs" />
     <Compile Include="Export\CSVExporter.cs" />
+    <Compile Include="Parser\AnswerParser.cs" />
+    <Compile Include="Export\CSVExporterWithSubscales.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Export\IExporter.cs" />
     <Compile Include="Item.cs" />

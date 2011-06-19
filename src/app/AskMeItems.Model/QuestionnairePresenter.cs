@@ -58,9 +58,9 @@ namespace AskMeItems.Model
             return exporter.Export(Results, GetSubscales());
         }
 
-        public string GenerateFileName()
+        public string GenerateFileName(IExporter exporter)
         {
-            return string.Format("Result_{0}_{1}.txt", Questionnaire.Code, SubjectCode);
+            return string.Format("{0}_{1}_{2}.txt", exporter.Prefix, Questionnaire.Code, SubjectCode);
         }
 
         public void ExportToFile(IExporter exporter, string resultsPath)
@@ -69,7 +69,7 @@ namespace AskMeItems.Model
             if (!path.Exists)
                 path.Create();
             var text = Export(exporter);
-            File.WriteAllText(Path.Combine(path.FullName, GenerateFileName()), text);
+            File.WriteAllText(Path.Combine(path.FullName, GenerateFileName(exporter)), text);
         }
     }
 }
