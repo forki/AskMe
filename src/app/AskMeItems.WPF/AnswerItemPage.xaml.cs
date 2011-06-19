@@ -55,33 +55,43 @@ namespace AskMeItems.WPF
 
         public Tuple<double, double> CalculateFontSizeAndTextWidth(double width, double fontSize)
         {
+            return _questionnairePresenter.Questionnaire.Type == QuestionnaireType.Likert
+                       ? CalculateFontSizeAndTextWidthForLikert(width, fontSize)
+                       : CalculateFontSizeAndTextWidthForListedAnswers(width, fontSize);
+        }
+
+        Tuple<double, double> CalculateFontSizeAndTextWidthForListedAnswers(double width, double fontSize)
+        {
+            var answers = // All answers for all items
+                _questionnairePresenter.Questionnaire.Items
+                    .SelectMany(item => item.Answers)
+                    .Select(answer => answer.Value.Text)
+                    .ToList();
+
+            var maxWidth =
+                answers
+                    .Select(answer => 1.2 * FontSizeCalculator.GetFontWidth(answer, answersListBox.FontFamily, fontSize))
+                    .Max();
+
+            var sum = maxWidth * 2;
+
+            return sum < width
+                       ? CalculateFontSizeAndTextWidth(width, fontSize + 0.5)
+                       : Tuple.Create(maxWidth, fontSize);
+        }
+
+        Tuple<double, double> CalculateFontSizeAndTextWidthForLikert(double width, double fontSize)
+        {
             var answers = // All answers for current item
                 _questionnairePresenter.CurrentItem.Answers.Values
                     .Select(x => x.Text)
                     .ToList();
 
-            if (_questionnairePresenter.Questionnaire.Type == QuestionnaireType.ListedAnswers)
-                answers = // All answers for all items
-                    _questionnairePresenter.Questionnaire.Items
-                        .SelectMany(item => item.Answers)
-                        .Select(answer => answer.Value.Text)
-                        .ToList();
-
             var maxWidth =
                 answers
-                    .Select(answer => FontSizeCalculator.GetFontWidth(answer, answersListBox.FontFamily, fontSize))
+                    .Select(answer => 1.6 * FontSizeCalculator.GetFontWidth(answer, answersListBox.FontFamily, fontSize))
                     .Max();
-
-            if (_questionnairePresenter.Questionnaire.Type == QuestionnaireType.Likert)
-                maxWidth = 1.6 * maxWidth;
-            else
-                maxWidth = 1.2 * maxWidth;
-
-            var sum = 0.0;
-            if (_questionnairePresenter.Questionnaire.Type == QuestionnaireType.Likert)
-                sum = maxWidth * 1.3 * answers.Count();
-            if (_questionnairePresenter.Questionnaire.Type == QuestionnaireType.ListedAnswers)
-                sum = maxWidth * 2;
+            var sum = maxWidth * 1.3 * answers.Count();
 
             return sum < width
                        ? CalculateFontSizeAndTextWidth(width, fontSize + 0.5)
@@ -112,16 +122,16 @@ namespace AskMeItems.WPF
                     .Select(answer =>
                     {
                         var listBoxItem = new ListBoxItem
-                                   {
-                                       Content = new TextBlock
-                                                 {
-                                                     Text = answer.ToString(),
-                                                     FontSize = fontSize,
-                                                     TextAlignment = TextAlignment.Center
-                                                 },
-                                       Width = checkboxWidth,
-                                       HorizontalContentAlignment = HorizontalAlignment.Center
-                                   };
+                                          {
+                                              Content = new TextBlock
+                                                        {
+                                                            Text = answer.ToString(),
+                                                            FontSize = fontSize,
+                                                            TextAlignment = TextAlignment.Center
+                                                        },
+                                              Width = checkboxWidth,
+                                              HorizontalContentAlignment = HorizontalAlignment.Center
+                                          };
                         _itemsDict.Add(listBoxItem, answer);
                         return listBoxItem;
                     });
