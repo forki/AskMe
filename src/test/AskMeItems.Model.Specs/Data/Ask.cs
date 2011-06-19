@@ -58,7 +58,7 @@ namespace AskMeItems.Model.Specs.Data
 
         public static QuestionnairePresenter ToPresenter(this Questionnaire questionnaire, string subjectCode)
         {
-            return new QuestionnairePresenter(new CSVExporter(), subjectCode, questionnaire);
+            return new QuestionnairePresenter(subjectCode, questionnaire);
         }
     }
 }

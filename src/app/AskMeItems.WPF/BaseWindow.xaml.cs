@@ -14,11 +14,12 @@ namespace AskMeItems.WPF
     /// </summary>
     public partial class BaseWindow : Window
     {
+        readonly List<IExporter> _exporters = new List<IExporter> {new CSVExporter()};
         readonly string _fileName;
         readonly double _fontSize;
         readonly List<INavigationPage> _pages;
-        int _currentPage;
         readonly string _resultsPath;
+        int _currentPage;
 
         public BaseWindow(string fileName, string resultsPath)
         {
@@ -27,12 +28,11 @@ namespace AskMeItems.WPF
             _fontSize = 15;
             InitializeComponent();
 
-
             ErrorLabel.Content = "";
             _pages = new List<INavigationPage> {new SettingsPage(SetPresenter)};
 
             frame1.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            frame1.Navigate(_pages[_currentPage]);            
+            frame1.Navigate(_pages[_currentPage]);
         }
 
         public QuestionnairePresenter QuestionnairePresenter { get; private set; }
@@ -41,8 +41,7 @@ namespace AskMeItems.WPF
         {
             var questionnaire = new QuestionnaireParser().ParseFromFile(_fileName);
 
-            QuestionnairePresenter =
-                new QuestionnairePresenter(new CSVExporter(), subjectCode, questionnaire);
+            QuestionnairePresenter = new QuestionnairePresenter(subjectCode, questionnaire);
 
             if (QuestionnairePresenter.HasIntroduction)
                 _pages.Add(new InstructionPage(ReportErrorsInLabel, QuestionnairePresenter));
@@ -71,7 +70,9 @@ namespace AskMeItems.WPF
             _currentPage++;
             if (_pages.Count <= _currentPage)
             {
-                QuestionnairePresenter.ExportToFile(_resultsPath);
+                foreach (var exporter in _exporters)
+                    QuestionnairePresenter.ExportToFile(exporter, _resultsPath);
+
                 Close();
             }
             else

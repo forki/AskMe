@@ -39,7 +39,7 @@ namespace AskMeItems.Model.Specs.Parsing
             () => Questionnaire = new Questionnaire("WithIntro", QuestionnaireType.Likert, "blablub", new List<Item>());
 
         Because of =
-            () => Presenter = new QuestionnairePresenter(null, "1", Questionnaire);
+            () => Presenter = new QuestionnairePresenter("1", Questionnaire);
 
         It should_have_a_instruction = () => Presenter.HasIntroduction.ShouldBeTrue();
         It should_have_the_insturction_text = () => Questionnaire.Instruction.ShouldEqual("blablub");
