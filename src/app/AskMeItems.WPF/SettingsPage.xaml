@@ -4,13 +4,78 @@
       Title="AskMeItems"
       Width="1400"
       Height="890">
+  <Page.Resources>
+    <Style TargetType="ListBoxItem">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="ListBoxItem">
+            <Border x:Name="ItemBorder"
+                    BorderBrush="Black"
+                    Background="LightGray"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="3">
+              <ContentPresenter Margin="2" />
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Page.Resources>
   <Grid>
-    <Label FontSize="48" Height="98" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="12,12,12,0" Name="itemLabel" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Width="1376">
-      <TextBlock Name="itemTextBlock" Text="Settings" TextWrapping="Wrap" />
+    <Label FontSize="48"
+           Height="98"
+           HorizontalAlignment="Center"
+           HorizontalContentAlignment="Center"
+           Margin="12,12,12,0"
+           Name="itemLabel"
+           VerticalAlignment="Top"
+           VerticalContentAlignment="Bottom"
+           Width="1376">
+      <TextBlock Name="itemTextBlock"
+                 Text="Settings"
+                 TextWrapping="Wrap" />
     </Label>
-    <WrapPanel Height="100" HorizontalAlignment="Left" Margin="12,166,0,0" Name="wrapPanel1" VerticalAlignment="Top" Width="1376">
-      <Label Content="Subject-Code:" Height="28" Name="label1" Width="525" HorizontalContentAlignment="Right" />
-      <TextBox Height="23" Width="421" Name="SubjectTextBox" />      
-    </WrapPanel>
+    <StackPanel Orientation="Vertical"
+                HorizontalAlignment="Left"
+                Margin="12,166,0,0"
+                Name="stackPanel1"
+                VerticalAlignment="Top"
+                Width="1376"
+                Height="1000">
+      <StackPanel Orientation="Horizontal">
+        <Label Content="Subject-Code:"
+               Height="28"
+               Name="label1"
+               Width="525"
+               HorizontalContentAlignment="Right" />
+        <TextBox Height="23"
+                 Width="421"
+                 Name="SubjectTextBox" />
+      </StackPanel>
+      <StackPanel Orientation="Horizontal"
+                  Height="609">
+        <Label Content="Questionnaires:"
+               Height="28"
+               Name="label2"
+               Width="525"
+               HorizontalContentAlignment="Right" />
+        <ListBox Name="QuestionnairesBox"
+                 Height="525"
+                 Width="527"
+                 VerticalContentAlignment="Top"
+                 HorizontalContentAlignment="Left">
+          <ListBoxItem>
+            <CheckBox>Questionnaire 1</CheckBox>
+          </ListBoxItem>
+          <ListBoxItem>
+            <CheckBox>Questionnaire 2</CheckBox>
+          </ListBoxItem>
+          <ListBoxItem>
+            <CheckBox>Questionnaire 3</CheckBox>
+          </ListBoxItem>
+        </ListBox>
+      </StackPanel>
+    </StackPanel>
   </Grid>
 </Page>

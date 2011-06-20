@@ -1,9 +1,6 @@
 ﻿using System.IO;
 using System.Windows;
 
-using AskMeItems.Model;
-using AskMeItems.Model.Export;
-using AskMeItems.Model.Parser;
 using AskMeItems.WPF.Properties;
 
 namespace AskMeItems.WPF
@@ -17,10 +14,7 @@ namespace AskMeItems.WPF
         {
             base.OnStartup(e);
 
-            var fileName = Path.Combine(Settings.Default.QuestionnaireFolder, Settings.Default.Questionnaire);
-            var fileInfo = new FileInfo(fileName);
-
-            var window = new BaseWindow(fileInfo.FullName, Settings.Default.ResultsPath);
+            var window = new BaseWindow(Settings.Default.QuestionnaireFolder, Settings.Default.ResultsPath);
             window.ShowDialog();
 
             Shutdown();
