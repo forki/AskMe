@@ -15,6 +15,7 @@ namespace AskMeItems.Model.Parser
                 .TrimEnd('\r','\n',' ')
                 .Replace("\r\n","\r").Replace("\n","\r")
                 .Split(new[] {"\r"}, StringSplitOptions.None)
+                .Where(line => !line.StartsWith("#"))
                 .ToList();
 
             var lineNo = 0;

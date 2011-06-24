@@ -16,6 +16,17 @@ LIK_2: Ich fühle mich angespannt und überreizt.
   4) - 4
   5) - 5
   6) kaum - 6
+#LIK_3: How do you do?
+#  1) very well
+#  2)
+#  3)
+#  4)
+#  5)
+#  6)
+#  7)
+#  8)
+#  9)
+#  10) very bad
 LIK_3: How do you do?
   1) very well
   2)
@@ -27,4 +38,3 @@ LIK_3: How do you do?
   8)
   9)
   10) very bad
-

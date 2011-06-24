@@ -63,6 +63,7 @@
     <Compile Include="Parsing\BaseParsingSpecs.cs" />
     <Compile Include="Parsing\CodedItemSpecs.cs" />
     <Compile Include="Data\Ask.cs" />
+    <Compile Include="Parsing\CommentSpecs.cs" />
     <Compile Include="Parsing\QuestionnaireIntroSpecs.cs" />
     <Compile Include="Parsing\SamplesParsingSpecs.cs" />
     <Compile Include="QuestionnairePresenterSpecs.cs" />
