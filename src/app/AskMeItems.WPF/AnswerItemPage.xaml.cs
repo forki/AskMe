@@ -65,9 +65,11 @@ namespace AskMeItems.WPF
             var answers = // All answers for all items
                 _questionnairePresenter.Questionnaire.Items
                     .SelectMany(item => item.Answers)
-                    .Select(answer => answer.Value.Text)
+                    .Select(answer => answer.Value.Text)                    
                     .ToList();
 
+            answers.Add("this is a hack to ensure the text has a min width");
+            
             var maxWidth =
                 answers
                     .Select(answer => 1.2 * FontSizeCalculator.GetFontWidth(answer, answersListBox.FontFamily, fontSize))
@@ -103,7 +105,7 @@ namespace AskMeItems.WPF
             if (!_questionnairePresenter.HasItem())
                 return;
 
-            var tuple = CalculateFontSizeAndTextWidth(width, 1);
+            var tuple = CalculateFontSizeAndTextWidth(width * 0.8, 1);
             var checkboxWidth = tuple.Item1;
             var fontSize = tuple.Item2;
 
@@ -111,7 +113,7 @@ namespace AskMeItems.WPF
 
             itemLabel.Width = width / 1.2;
             itemLabel.Height = height / 4;
-            itemTextBlock.FontSize = width / 30;
+            itemTextBlock.FontSize = width / 40;
 
             answersListBox.Items.Clear();
             var answers = _questionnairePresenter.CurrentItem.Answers;

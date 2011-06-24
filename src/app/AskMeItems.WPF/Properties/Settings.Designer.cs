@@ -25,7 +25,7 @@ namespace AskMeItems.WPF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\samples\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("samples\\")]
         public string QuestionnaireFolder {
             get {
                 return ((string)(this["QuestionnaireFolder"]));
@@ -37,7 +37,7 @@ namespace AskMeItems.WPF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\results\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("results\\")]
         public string ResultsPath {
             get {
                 return ((string)(this["ResultsPath"]));

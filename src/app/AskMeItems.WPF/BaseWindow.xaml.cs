@@ -75,6 +75,7 @@ namespace AskMeItems.WPF
             catch (Exception ex)
             {
                 ErrorLabel.Content = ex.Message;
+                ErrorLabel.HorizontalContentAlignment = HorizontalAlignment.Right;
             }
         }
 
@@ -101,9 +102,9 @@ namespace AskMeItems.WPF
         void WindowSizeChanged(object sender, SizeChangedEventArgs e)
         {
             NextButton.FontSize = _fontSize;
-            NextButton.Margin = new Thickness(e.NewSize.Width - 100, e.NewSize.Height - 80, 0, 0);
+            NextButton.Margin = new Thickness(0, e.NewSize.Height - 80, 40, 0);
             ErrorLabel.FontSize = _fontSize;
-            ErrorLabel.Margin = new Thickness(100, e.NewSize.Height - 80, 0, 0);
+            ErrorLabel.Margin = new Thickness(0, e.NewSize.Height - 80, 45 + NextButton.Width, 0);
         }
 
         void GridSizeChanged(object sender, SizeChangedEventArgs e)

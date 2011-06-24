@@ -7,7 +7,7 @@
       Loaded="WindowLoaded">
   <Label Name="itemLabel"
          HorizontalAlignment="Center"
-         FontSize="48"
+         FontSize="32"
          HorizontalContentAlignment="Center"
          VerticalContentAlignment="Bottom">
     <TextBlock Text="The text of the current item will be displayed here."
