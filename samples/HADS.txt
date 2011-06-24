@@ -1,10 +1,10 @@
 Instruction: Dieser Frageborgen bezieht sich auf die vergangene Woche. blabub
-HADS_A_1: Ich fühle mich merkwürdig.
+HADS-A_1: Ich fühle mich merkwürdig.
   A) meistens - 3
   B) oft - 2
   C) von Zeit zu Zeit - 1
   D) überhaupt nicht - 0
-HADS_D_10: Ich habe das Interesse an Pizza verloren. 
+HADS-D_10: Ich habe das Interesse an Pizza verloren. 
   A) ja, das stimmt genau - 3
   B) ich kümmere mich nicht so darum, wie ich sollte - 2
   C) eventuell kümmere ich mich zu wenig darum - 1
