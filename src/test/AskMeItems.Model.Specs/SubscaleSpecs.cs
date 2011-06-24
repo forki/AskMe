@@ -84,7 +84,7 @@ namespace AskMeItems.Model.Specs
         Establish context =
             () =>
             {
-                var Questionnaire =
+                var questionnaire =
                     Ask.NewQuestionnaire("TEST")
                         .Item("A_1", "How do you feel?")
                         .WithAnswer("A", "good", 1)
@@ -94,7 +94,7 @@ namespace AskMeItems.Model.Specs
                         .WithAnswer("B", "very bad", 2);
 
                 Presenter =
-                    Questionnaire
+                    questionnaire
                         .ToPresenter("1")
                         .AnswerWith("B")
                         .AnswerWith("A");

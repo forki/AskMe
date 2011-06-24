@@ -16,3 +16,8 @@ ADS-K_2: Ich konnte meine miese Laune nicht loswerden.
   2) manchmal - 1
   3) öfters - 2
   4) meistens - 3
+ADS-K_3: Ich konnte meine miese Laune nicht loswerden.
+  1) selten - 0
+  2) manchmal - 1
+  3) öfters - 2
+  4) meistens - 3

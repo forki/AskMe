@@ -22,7 +22,7 @@ namespace AskMeItems.Model.Specs.Parsing
 
         It should_use_the_filename_as_questionnaire_code = () => Questionnaire.Code.ShouldEqual("ADS-K");
         It should_be_a_likert_questionnaire = () => Questionnaire.Type.ShouldEqual(QuestionnaireType.Likert);
-        It should_contain_two_items = () => Questionnaire.Items.Count.ShouldEqual(2);
+        It should_contain_two_items = () => Questionnaire.Items.Count.ShouldEqual(3);
 
         It should_contain_the_sample_in_the_instruction =
             () => Questionnaire.Instruction.ShouldContain("3 - meistens, die ganze Zeit (5 bis 7 Tage lang)");
