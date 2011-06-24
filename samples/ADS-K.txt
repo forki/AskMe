@@ -6,7 +6,7 @@ Instruction: Bitte kreuzen Sie bei den folgenden Aussagen die Antwort an, die Ih
   1 - manchmal (1 bis 2 Tage lang)
   2 - öfters (3 bis 4 Tage lang)
   3 - meistens, die ganze Zeit (5 bis 7 Tage lang)
-ADS-K_1:Mich haben Dinge beunruhigt, die mir sonst nichts ausmachen.
+* ADS-K_1:Mich haben Dinge beunruhigt, die mir sonst nichts ausmachen.
   1) selten - 0
   2) manchmal - 1
   3) öfters - 2

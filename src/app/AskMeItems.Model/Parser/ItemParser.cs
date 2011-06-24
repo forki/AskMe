@@ -5,7 +5,7 @@ namespace AskMeItems.Model.Parser
 {
     public class ItemParser
     {
-        static readonly Regex ItemRegex = new Regex(@"(([^\s]+):\s*)?(.*)", RegexOptions.Compiled);
+        static readonly Regex ItemRegex = new Regex(@"([*]\s)?(([^\s]+):\s*)?(.*)", RegexOptions.Compiled);
 
         public static bool HasNextQuestion(List<string> lines, int lineNo)
         {
@@ -18,12 +18,14 @@ namespace AskMeItems.Model.Parser
             var match = ItemRegex.Match(text);
 
             var code = BuildQuestionCode(questionCount, match);
-            return new Item(code, match.Groups[3].Value, AnswerParser.ParseAnswers(lines, ref lineNo));
+            var excludeFromSubscales = !string.IsNullOrEmpty(match.Groups[1].Value);
+            var itemText = match.Groups[4].Value;
+            return new Item(code, itemText, excludeFromSubscales, AnswerParser.ParseAnswers(lines, ref lineNo));
         }
 
         static string BuildQuestionCode(int questionCount, Match match)
         {
-            var code = match.Groups[2].Value;
+            var code = match.Groups[3].Value;
             if (string.IsNullOrEmpty(code))
                 code = string.Format("Q_{0}", questionCount);
             return code;

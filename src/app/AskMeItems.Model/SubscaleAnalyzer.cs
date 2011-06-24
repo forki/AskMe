@@ -8,7 +8,7 @@ namespace AskMeItems.Model
         public static List<Subscale> GetSubscalesFor(List<Result> results)
         {
             var subscales = new Dictionary<string, List<Result>>();
-            foreach (var result in results)
+            foreach (var result in results.Where(result => !result.Item.ExcludeFromSubscales))
             {
                 if (result.Item.Code.Contains("_"))
                     AddToDict(result, subscales, result.Item.Code.Split('_')[0]);

@@ -5,8 +5,9 @@ namespace AskMeItems.Model
 {
     public class Item
     {
-        public Item(string code, string text, IEnumerable<Answer> answers)
+        public Item(string code, string text, bool excludeFromSubScales, IEnumerable<Answer> answers)
         {
+            ExcludeFromSubscales = excludeFromSubScales;
             Code = code;
             Text = text;
 
@@ -18,6 +19,8 @@ namespace AskMeItems.Model
         public Dictionary<string, Answer> Answers { get; private set; }
 
         public string Code { get; private set; }
+
+        public bool ExcludeFromSubscales { get; private set; }
 
         void AddAnswers(IEnumerable<Answer> answers)
         {

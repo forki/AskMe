@@ -13,8 +13,13 @@ namespace AskMeItems.Model.Specs.Data
 
         public static Questionnaire Item(this Questionnaire questionnaire, string code, string text)
         {
+            return questionnaire.Item(code, text, false);
+        }
+
+        public static Questionnaire Item(this Questionnaire questionnaire, string code, string text, bool excludeFromSubScales)
+        {
             var questions = questionnaire.Items.ToList();
-            questions.Add(new Item(code, text, new List<Answer>()));
+            questions.Add(new Item(code, text, excludeFromSubScales, new List<Answer>()));
             return new Questionnaire(questionnaire.Code, questionnaire.Type, questionnaire.Instruction, questions);
         }
 
@@ -39,7 +44,7 @@ namespace AskMeItems.Model.Specs.Data
             var newAnswers = item.Answers.Values.ToList();
             newAnswers.Add(new Answer(code, text, points));
 
-            return new Item(item.Code, item.Text, newAnswers);
+            return new Item(item.Code, item.Text, item.ExcludeFromSubscales, newAnswers);
         }
 
         public static string[] SplitOnLineBreaks(this string text)

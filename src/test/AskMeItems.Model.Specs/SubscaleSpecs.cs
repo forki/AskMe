@@ -75,4 +75,37 @@ namespace AskMeItems.Model.Specs
         It should_have_the_points_for_the_B_subscale =
             () => Subscales.ByName("A").Points.ShouldEqual(3);
     }
+
+    public class when_calculating_averages_with_excluded_items
+    {
+        protected static QuestionnairePresenter Presenter;
+        static List<Subscale> Subscales;
+
+        Establish context =
+            () =>
+            {
+                var Questionnaire =
+                    Ask.NewQuestionnaire("TEST")
+                        .Item("A_1", "How do you feel?")
+                        .WithAnswer("A", "good", 1)
+                        .WithAnswer("B", "bad", 2)
+                        .Item("A_2", "How do you really feel?", true)
+                        .WithAnswer("A", "very good", 1)
+                        .WithAnswer("B", "very bad", 2);
+
+                Presenter =
+                    Questionnaire
+                        .ToPresenter("1")
+                        .AnswerWith("B")
+                        .AnswerWith("A");
+            };
+
+        Because of = () => Subscales = Presenter.GetSubscales();
+
+        It should_have_the_average_for_the_main_scale =
+            () => Subscales.ByName("").Average.ShouldBeCloseTo(2);
+
+        It should_have_the_points_for_the_B_subscale =
+            () => Subscales.ByName("A").Points.ShouldEqual(2);
+    }
 }
