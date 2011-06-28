@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AskMeItems.WPF.Properties {
+namespace AskMeItems.Model.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AskMeItems.WPF.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AskMeItems.WPF.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AskMeItems.Model.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,38 @@ namespace AskMeItems.WPF.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have to fill in a Subject code..
+        ///   Looks up a localized string similar to The answer {0} is not allowed for item {1}..
         /// </summary>
-        internal static string FillInSubjectCode {
+        internal static string AnswerNotAllowedForItem {
             get {
-                return ResourceManager.GetString("FillInSubjectCode", resourceCulture);
+                return ResourceManager.GetString("AnswerNotAllowedForItem", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Next.
+        ///   Looks up a localized string similar to The answer {0} was used twice in item {1}..
         /// </summary>
-        internal static string NextButtonText {
+        internal static string AnswerUsedTwiceForItem {
             get {
-                return ResourceManager.GetString("NextButtonText", resourceCulture);
+                return ResourceManager.GetString("AnswerUsedTwiceForItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The item {0} was used twice..
+        /// </summary>
+        internal static string ItemUsedTwice {
+            get {
+                return ResourceManager.GetString("ItemUsedTwice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have to specify an answer for item {0}..
+        /// </summary>
+        internal static string SpecifyAnswerForItem {
+            get {
+                return ResourceManager.GetString("SpecifyAnswerForItem", resourceCulture);
             }
         }
     }

@@ -48,7 +48,7 @@ namespace AskMeItems.WPF
                 if (string.IsNullOrEmpty(SubjectTextBox.Text))
                 {
                     ok = false;
-                    throw new Exception("You have to fill in a Subject code.");
+                    throw new Exception(Properties.Resources.FillInSubjectCode);
                 }
             });
 

@@ -1,16 +1,18 @@
 using System;
 
+using AskMeItems.Model.Properties;
+
 namespace AskMeItems.Model
 {
     public class AnswerNotAllowedException : ArgumentException
     {
         public AnswerNotAllowedException(Item item, string option)
-            : base(string.Format("The answer {0} is not allowed for item {1}.", option, item.Code))
+            : base(string.Format(Resources.AnswerNotAllowedForItem, option, item.Code))
         {
         }
 
         public AnswerNotAllowedException(Item item)
-            : base(string.Format("You have to specify an answer for item {0}.", item.Code))
+            : base(string.Format(Resources.SpecifyAnswerForItem, item.Code))
         {
            
         }
@@ -19,7 +21,7 @@ namespace AskMeItems.Model
     public class DuplicateItemException : Exception
     {
         public DuplicateItemException(string code, Exception innerException)
-            : base(string.Format("The item {0} was used twice.", code), innerException)
+            : base(string.Format(Resources.ItemUsedTwice, code), innerException)
         {
         }
     }
@@ -28,7 +30,7 @@ namespace AskMeItems.Model
     {
         public DuplicateAnswerException(string itemCode, string answerCode, Exception innerException)
             : base(
-                string.Format("The answer {0} was used twice in item {1}.", answerCode, itemCode),
+                string.Format(Resources.AnswerUsedTwiceForItem, answerCode, itemCode),
                 innerException)
         {
         }

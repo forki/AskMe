@@ -34,6 +34,7 @@ namespace AskMeItems.WPF
             _fontSize = 15;
             InitializeComponent();
 
+            NextButton.Content = Properties.Resources.NextButtonText;
             ErrorLabel.Content = "";
             _pages =
                 new List<INavigationPage>
