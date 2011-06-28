@@ -1,0 +1,19 @@
+﻿<Page x:Class="AskMeItems.WPF.PausePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="AskMeItems"
+      Width="1400"
+      Height="890">
+  <Label Name="itemLabel"
+         HorizontalAlignment="Center"
+         FontSize="32"
+         HorizontalContentAlignment="Center"
+         VerticalContentAlignment="Bottom">
+    <TextBlock Text="The text of the current item will be displayed here."
+               TextWrapping="Wrap"
+               Width="1175"
+               Height="890"
+               TextAlignment="Center"
+               Name="pauseTextBlock" />
+  </Label>
+</Page>

@@ -11,8 +11,8 @@ namespace AskMeItems.Model
         {
         }
 
-        public AnswerNotAllowedException(Item item)
-            : base(string.Format(Resources.SpecifyAnswerForItem, item.Code))
+        public AnswerNotAllowedException()
+            : base(Resources.SpecifyAnswerForItem)
         {
            
         }

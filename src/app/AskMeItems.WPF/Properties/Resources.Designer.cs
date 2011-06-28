@@ -77,5 +77,14 @@ namespace AskMeItems.WPF.Properties {
                 return ResourceManager.GetString("NextButtonText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pause.
+        /// </summary>
+        public static string PauseText {
+            get {
+                return ResourceManager.GetString("PauseText", resourceCulture);
+            }
+        }
     }
 }

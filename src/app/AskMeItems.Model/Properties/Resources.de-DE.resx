@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="SpecifyAnswerForItem" xml:space="preserve">
-    <value>Sie müssen eine Antwort für Frage {0} geben.</value>
+    <value>Sie müssen eine Antwort angeben.</value>
   </data>
 </root>

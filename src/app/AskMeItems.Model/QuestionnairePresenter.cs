@@ -38,7 +38,7 @@ namespace AskMeItems.Model
         public void AnswerCurrentItem(Answer answer)
         {
             if (answer == null)
-                throw new AnswerNotAllowedException(CurrentItem);
+                throw new AnswerNotAllowedException();
 
             Results.Add(CurrentItem.AnswerWith(answer.Code));
         }

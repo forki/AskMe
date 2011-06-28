@@ -121,7 +121,7 @@
     <value>The answer {0} is not allowed for item {1}.</value>
   </data>
   <data name="SpecifyAnswerForItem" xml:space="preserve">
-    <value>You have to specify an answer for item {0}.</value>
+    <value>You have to specify an answer for item.</value>
   </data>
   <data name="ItemUsedTwice" xml:space="preserve">
     <value>The item {0} was used twice.</value>

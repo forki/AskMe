@@ -55,11 +55,15 @@ namespace AskMeItems.WPF
                         .Select(questionnaire => new QuestionnairePresenter(subjectCode, questionnaire))
                         .ToList();
 
+                bool isFirst = true;
                 foreach (var presenter in _questionnairePresenters)
                 {
+                    if(!isFirst)
+                        _pages.Add(new PausePage());
                     if (presenter.HasIntroduction)
                         _pages.Add(new InstructionPage(ReportErrorsInLabel, presenter));
                     _pages.Add(new AnswerItemPage(ReportErrorsInLabel, presenter));
+                    isFirst = false;
                 }
                 frame1.Navigate(_pages[_currentPage]);
             });
