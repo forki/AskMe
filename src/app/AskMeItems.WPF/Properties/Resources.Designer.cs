@@ -22,7 +22,7 @@ namespace AskMeItems.WPF.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace AskMeItems.WPF.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AskMeItems.WPF.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace AskMeItems.WPF.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace AskMeItems.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to You have to fill in a Subject code..
         /// </summary>
-        internal static string FillInSubjectCode {
+        public static string FillInSubjectCode {
             get {
                 return ResourceManager.GetString("FillInSubjectCode", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace AskMeItems.WPF.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
-        internal static string NextButtonText {
+        public static string NextButtonText {
             get {
                 return ResourceManager.GetString("NextButtonText", resourceCulture);
             }

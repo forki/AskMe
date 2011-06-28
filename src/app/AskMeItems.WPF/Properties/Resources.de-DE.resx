@@ -117,16 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AnswerNotAllowedForItem" xml:space="preserve">
-    <value>The answer {0} is not allowed for item {1}.</value>
+  <data name="FillInSubjectCode" xml:space="preserve">
+    <value>Sie müssen ein SubjectCode angeben.</value>
   </data>
-  <data name="SpecifyAnswerForItem" xml:space="preserve">
-    <value>You have to specify an answer for item {0}.</value>
-  </data>
-  <data name="ItemUsedTwice" xml:space="preserve">
-    <value>The item {0} was used twice.</value>
-  </data>
-  <data name="AnswerUsedTwiceForItem" xml:space="preserve">
-    <value>The answer {0} was used twice in item {1}.</value>
+  <data name="NextButtonText" xml:space="preserve">
+    <value>Weiter</value>
   </data>
 </root>
