@@ -88,7 +88,7 @@ namespace AskMeItems.Model.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have to specify an answer for item..
+        ///   Looks up a localized string similar to You have to specify an answer for the item..
         /// </summary>
         internal static string SpecifyAnswerForItem {
             get {
