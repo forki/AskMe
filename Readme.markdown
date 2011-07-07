@@ -40,6 +40,16 @@ AskMeItems is a little questionnaire presenter and can be used for scientific st
            1) :)       (will give 1 point)
            2) :(       (will give 2 points)
 
+### Using comments
+
+* It is possible to use comments in den Questionnaire. Just use a # sign at the line start. e.g.
+
+         ABC_2: Hello, how are you? 
+         # This line is a comment
+           1) :)       (will give 1 point)
+           2) :(       (will give 2 points)
+
+
 ### Running a series of questionnaires
 
 * AskMeItems stops whenever the last answer of the very last questionnaire is given.
