@@ -1,1 +1,0 @@
-AskMeItems is a little questionnaire presenter and can be used for scientific studies.
