@@ -126,4 +126,7 @@
   <data name="PauseText" xml:space="preserve">
     <value>Pause</value>
   </data>
+  <data name="NoQuestionnaireSelected">
+    <value xml:space="preserve">No questionnaire selected.</value>
+  </data>
 </root>

@@ -17,6 +17,37 @@
                     Margin="3">
               <ContentPresenter Margin="2" />
             </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsSelected"
+                       Value="True">
+                <Setter TargetName="ItemBorder"
+                        Property="BorderBrush"
+                        Value="Green" />
+                <Setter TargetName="ItemBorder"
+                        Property="Background"
+                        Value="DarkGray" />
+              </Trigger>
+              <Trigger Property="IsMouseOver"
+                       Value="True">
+                <Setter TargetName="ItemBorder"
+                        Property="BorderBrush"
+                        Value="Green" />
+                <Setter TargetName="ItemBorder"
+                        Property="Opacity"
+                        Value="0.70" />
+                <Setter TargetName="ItemBorder"
+                        Property="Background"
+                        Value="DarkGray" />
+              </Trigger>
+              <MultiTrigger>
+                <MultiTrigger.Conditions>
+                  <Condition Property="IsMouseOver"
+                             Value="False" />
+                  <Condition Property="IsSelected"
+                             Value="False" />
+                </MultiTrigger.Conditions>
+              </MultiTrigger>
+            </ControlTemplate.Triggers>
           </ControlTemplate>
         </Setter.Value>
       </Setter>

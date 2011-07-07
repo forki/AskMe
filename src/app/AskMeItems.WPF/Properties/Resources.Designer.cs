@@ -79,6 +79,15 @@ namespace AskMeItems.WPF.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No questionnaire selected..
+        /// </summary>
+        public static string NoQuestionnaireSelected {
+            get {
+                return ResourceManager.GetString("NoQuestionnaireSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pause.
         /// </summary>
         public static string PauseText {

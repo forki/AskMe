@@ -123,6 +123,9 @@
   <data name="NextButtonText" xml:space="preserve">
     <value>Weiter</value>
   </data>
+  <data name="NoQuestionnaireSelected" xml:space="preserve">
+    <value>Es wurde kein Fragebogen ausgewählt.</value>
+  </data>
   <data name="PauseText" xml:space="preserve">
     <value>Nun folgt der nächste Fragebogen. Machen Sie eine kleine Pause. Wenn Sie den nächsten Fragebogen bearbeiten wollen, drücken Sie auf Weiter.</value>
   </data>
