@@ -42,10 +42,10 @@ AskMeItems is a little questionnaire presenter and can be used for scientific st
 
 ### Using comments
 
-* It is possible to use comments in den Questionnaire. Just use a # sign at the line start. e.g.
+* It is possible to use comments in the questionnaires. Just use a # sign at the line start. e.g.
 
          ABC_2: Hello, how are you? 
-         # This line is a comment
+         # This line is a comment and will not be displayed.
            1) :)       (will give 1 point)
            2) :(       (will give 2 points)
 
