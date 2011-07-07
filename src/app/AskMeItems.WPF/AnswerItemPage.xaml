@@ -34,15 +34,21 @@
                 <Setter TargetName="ItemBorder"
                         Property="BorderBrush"
                         Value="Green" />
+                <Setter TargetName="ItemBorder"
+                        Property="Background"
+                        Value="DarkGray" />
               </Trigger>
               <Trigger Property="IsMouseOver"
                        Value="True">
                 <Setter TargetName="ItemBorder"
                         Property="BorderBrush"
-                        Value="LightGreen" />
+                        Value="Green" />
                 <Setter TargetName="ItemBorder"
                         Property="Opacity"
                         Value="0.70" />
+                <Setter TargetName="ItemBorder"
+                        Property="Background"
+                        Value="DarkGray" />                
               </Trigger>
               <MultiTrigger>
                 <MultiTrigger.Conditions>
