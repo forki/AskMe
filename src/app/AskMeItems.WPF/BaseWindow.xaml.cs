@@ -106,9 +106,10 @@ namespace AskMeItems.WPF
         void WindowSizeChanged(object sender, SizeChangedEventArgs e)
         {
             NextButton.FontSize = _fontSize;
-            NextButton.Margin = new Thickness(0, e.NewSize.Height - 80, 40, 0);
+            NextButton.Margin = new Thickness(0, e.NewSize.Height - 80, e.NewSize.Width / 2 - NextButton.Width / 2, 0);
             ErrorLabel.FontSize = _fontSize;
-            ErrorLabel.Margin = new Thickness(0, e.NewSize.Height - 80, 45 + NextButton.Width, 0);
+            ErrorLabel.Width = NextButton.Margin.Right - 40;
+            ErrorLabel.Margin = new Thickness(0, e.NewSize.Height - 80, NextButton.Margin.Right + 40, 0);
         }
 
         void GridSizeChanged(object sender, SizeChangedEventArgs e)

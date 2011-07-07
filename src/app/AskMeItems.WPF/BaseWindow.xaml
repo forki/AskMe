@@ -18,19 +18,19 @@
            VerticalContentAlignment="Center" />
     <Button Content="Next"
             HorizontalAlignment="Right"
-            Margin="0,907,39,0"
+            Margin="0,903,570,0"
             Name="NextButton"
             VerticalAlignment="Top"
             Width="75"
             Click="NextButtonClick" />
     <Label Height="28"
            HorizontalAlignment="Left"
-           Margin="443,905,0,0"
+           Margin="12,901,0,0"
            Name="ErrorLabel"
            VerticalAlignment="Top"
-           HorizontalContentAlignment="Right"
+           HorizontalContentAlignment="Left"
            Content="ErrorLabel"
-           Width="605"
+           Width="515"
            Foreground="#FFFC0000" />
   </Grid>
 </Window>
