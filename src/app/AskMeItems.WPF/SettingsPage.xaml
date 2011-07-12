@@ -73,7 +73,7 @@
                 Name="stackPanel1"
                 VerticalAlignment="Top"
                 Width="1376"
-                Height="1000">
+                Height="600">
       <StackPanel Orientation="Horizontal">
         <Label Content="Subject-Code:"
                Height="28"
@@ -84,15 +84,13 @@
                  Width="421"
                  Name="SubjectTextBox" />
       </StackPanel>
-      <StackPanel Orientation="Horizontal"
-                  Height="609">
+      <StackPanel Orientation="Horizontal">
         <Label Content="Questionnaires:"
                Height="28"
                Name="label2"
                Width="525"
                HorizontalContentAlignment="Right" />
         <ListBox Name="QuestionnairesBox"
-                 Height="525"
                  Width="527"
                  VerticalContentAlignment="Top"
                  HorizontalContentAlignment="Left">
