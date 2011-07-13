@@ -2,6 +2,10 @@
 
 AskMeItems is a little questionnaire presenter and can be used for scientific studies. AskMeItems allows to specify a subject code and a selection of questionnaires to be presented.
 
+## Prerequisites
+
+* You need to install the Microsoft .NET Framework 4 - http://www.microsoft.com/download/en/details.aspx?id=17718
+
 ## Instructions
 
 ### Creating a questionnaire
