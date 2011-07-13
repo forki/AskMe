@@ -15,12 +15,12 @@ AskMeItems is a little questionnaire presenter and can be used for scientific st
 * If you want to present the answers horizontally, than type: "Questionnaire-Type: Likert" in the very first line of the .txt file.
     Otherwise the answers will be presented one below the other.
 
-### Adding a introduction
+### Adding an introduction
 
 * Start with "Introduction: ..." and then type the introductory message.
 * AskMeItem will show the Introduction on the first page of each questionnaire
 
-### Adding questions (or "items")
+### Adding questions (or so called "items")
 
 * Create questions by typing the questionnaire name and a number, combined with an "_", e.g. 
 
