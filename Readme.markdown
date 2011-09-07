@@ -30,7 +30,12 @@ AskMeItems is a little questionnaire presenter and can be used for scientific st
 
 * You can create subscales X and Y of a questionnaire ABC by typing ABC-X_1, ABC-X_2, ABC-Y_1, ABC-Y_2.
 * AskMeItems will calculate the mean and sum of each subscale separately and the mean and sum of the complete questionnaire.
-* Mark "fill items" with an * (* ABC_10). These items will be shown but they won't be recognized when calculating the results.
+* Mark "fill items" with an * . These items will be shown but they won't be recognized when calculating the results e.g. 
+
+         * ABC_2: Hello, how are you? 
+           1) :) - 2   (will give 2 points)
+           2) :( - 1   (will give 1 point)
+
 * Create as many answers as you need by typing each in a new line.
 * Give points by typing them behind the answers, e.g. 
 
