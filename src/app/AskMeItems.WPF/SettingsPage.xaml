@@ -22,7 +22,7 @@
                        Value="True">
                 <Setter TargetName="ItemBorder"
                         Property="BorderBrush"
-                        Value="Green" />
+                        Value="DarkOrange" />
                 <Setter TargetName="ItemBorder"
                         Property="Background"
                         Value="DarkGray" />
@@ -31,7 +31,7 @@
                        Value="True">
                 <Setter TargetName="ItemBorder"
                         Property="BorderBrush"
-                        Value="Green" />
+                        Value="DarkOrange" />
                 <Setter TargetName="ItemBorder"
                         Property="Opacity"
                         Value="0.70" />
@@ -93,7 +93,7 @@
         <ListBox Name="QuestionnairesBox"
                  Width="527"
                  VerticalContentAlignment="Top"
-                 HorizontalContentAlignment="Left">
+                 HorizontalContentAlignment="Left" Height="400">
           <ListBoxItem>
             <CheckBox>Questionnaire 1</CheckBox>
           </ListBoxItem>
