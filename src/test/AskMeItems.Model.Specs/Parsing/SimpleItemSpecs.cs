@@ -14,6 +14,21 @@ namespace AskMeItems.Model.Specs.Parsing
             () => GetItem(0).Text.ShouldEqual(Text);
     }
 
+    public class when_parsing_a_single_question_with_two_answers_which_use_tab : when_parsing
+    {
+        Establish context =
+            () => Text =
+                  "Ich fühle mich angespannt und überreizt.\r\n" +
+                  "\tA) oft\r\n" +
+                  "\tB) von Zeit zu Zeit, gelegentlich";
+
+        It should_contain_the_given_answer_code_for_A =
+            () => GetAnswer(0, 0).Code.ShouldEqual("A");
+
+        It should_contain_two_answers =
+            () => GetItem(0).Answers.Count.ShouldEqual(2);
+    }
+
     public class when_parsing_a_single_question_with_two_answers : when_parsing
     {
         Establish context =
@@ -86,6 +101,26 @@ namespace AskMeItems.Model.Specs.Parsing
 
         const string ExpectedQuestion =
             "Mich überkommt eine ängstliche Vorahnung, dass etwas Schreckliches passieren könnte.";
+    }
+
+    public class when_parsing_two_questions_with_more_than_one_linebreak : when_parsing
+    {
+        Establish context =
+            () => Text =
+                  "Ich fühle mich angespannt und überreizt.\r\n" +
+                  "  A) oft\r\n" +
+                  "  B) von Zeit zu Zeit, gelegentlich\r\n" +
+                  "\r\n" +
+                  "\r\n" +
+                  "\r\n" +
+                  "Mich überkommt eine ängstliche Vorahnung, dass etwas Schreckliches passieren könnte.\r\n" +
+                  "  A) ja, sehr stark\r\n" +
+                  "  B) ja, aber nicht allzu stark\r\n" +
+                  "  C) etwas, aber es macht mir keine Sorgen\r\n" +
+                  "  D) überhaupt nicht";
+
+        It should_contain_two_questions =
+            () => Questionnaire.Items.Count.ShouldEqual(2);
     }
 
     public class when_parsing_two_questions_with_linux_line_endings : when_parsing

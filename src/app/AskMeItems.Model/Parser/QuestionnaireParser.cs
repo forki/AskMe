@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace AskMeItems.Model.Parser
@@ -10,13 +10,13 @@ namespace AskMeItems.Model.Parser
     {
         public Questionnaire Parse(string questionnaireCode, string text)
         {
-            var lines = 
+            var lines =
                 text
-                .TrimEnd('\r','\n',' ')
-                .Replace("\r\n","\r").Replace("\n","\r")
-                .Split(new[] {"\r"}, StringSplitOptions.None)
-                .Where(line => !line.StartsWith("#"))
-                .ToList();
+                    .TrimEnd('\r', '\n', ' ')
+                    .Replace("\r\n", "\r").Replace("\n", "\r")
+                    .Split(new[] {"\r"}, StringSplitOptions.None)
+                    .Where(line => !line.StartsWith("#"))
+                    .ToList();
 
             var lineNo = 0;
             var questions = new List<Item>();
@@ -25,7 +25,7 @@ namespace AskMeItems.Model.Parser
             Enum.TryParse(Helpers.ParseProperty("Questionnaire-Type", lines, ref lineNo, "ListedAnswers"), out type);
             var instruction = Helpers.ParseProperty("Instruction", lines, ref lineNo, null);
 
-            while (ItemParser.HasNextQuestion(lines, lineNo))
+            while (ItemParser.HasNextItem(lines, lineNo))
                 questions.Add(ItemParser.Parse(lines, questionCount++, ref lineNo));
             return new Questionnaire(questionnaireCode, type, instruction, questions);
         }

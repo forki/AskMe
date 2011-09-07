@@ -7,14 +7,16 @@ namespace AskMeItems.Model.Parser
     {
         static readonly Regex ItemRegex = new Regex(@"([*]\s)?(([^\s]+):\s*)?(.*)", RegexOptions.Compiled);
 
-        public static bool HasNextQuestion(List<string> lines, int lineNo)
+        public static bool HasNextItem(List<string> lines, int lineNo)
         {
             return lineNo < lines.Count;
         }
 
         public static Item Parse(List<string> lines, int questionCount, ref int lineNo)
         {
-            var text = lines[lineNo++];
+            var text = "\r";
+            while (text == "\r" || text == "")
+                text = lines[lineNo++];
             var match = ItemRegex.Match(text);
 
             var code = BuildQuestionCode(questionCount, match);
