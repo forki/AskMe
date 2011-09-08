@@ -21,7 +21,7 @@
             Margin="0,903,570,0"
             Name="NextButton"
             VerticalAlignment="Top"
-            Width="75"
+            Width="125"
             Click="NextButtonClick" />
     <Label Height="28"
            HorizontalAlignment="Left"

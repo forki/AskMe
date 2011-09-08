@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 
 using AskMeItems.Model;
@@ -34,7 +36,8 @@ namespace AskMeItems.WPF
             _fontSize = 15;
             InitializeComponent();
 
-            NextButton.Content = Properties.Resources.NextButtonText;
+            NextButton.Content = new Label {Content = Properties.Resources.NextButtonText, FontSize = 25};
+            
             ErrorLabel.Content = "";
             _pages =
                 new List<INavigationPage>
