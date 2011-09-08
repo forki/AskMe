@@ -62,18 +62,10 @@ namespace AskMeItems.WPF
 
         Tuple<double, double> CalculateFontSizeAndTextWidthForListedAnswers(double width, double fontSize)
         {
-            var answers = // All answers for all items
-                _questionnairePresenter.Questionnaire.Items
-                    .SelectMany(item => item.Answers)
-                    .Select(answer => answer.Value.Text)                    
-                    .ToList();
-
-            answers.Add("this is a hack to ensure the text has a min width");
-            
             var maxWidth =
-                answers
-                    .Select(answer => 1.2 * FontSizeCalculator.GetFontWidth(answer, answersListBox.FontFamily, fontSize))
-                    .Max();
+                FontSizeCalculator.GetFontWidth("this is a text which has already the correct width",
+                                                answersListBox.FontFamily,
+                                                fontSize);
 
             var sum = maxWidth * 2;
 
@@ -105,7 +97,7 @@ namespace AskMeItems.WPF
             if (!_questionnairePresenter.HasItem())
                 return;
 
-            var tuple = CalculateFontSizeAndTextWidth(width * 0.8, 1);
+            var tuple = CalculateFontSizeAndTextWidth(width, 1);
             var checkboxWidth = tuple.Item1;
             var fontSize = tuple.Item2;
 
@@ -129,7 +121,8 @@ namespace AskMeItems.WPF
                                                         {
                                                             Text = answer.ToString(),
                                                             FontSize = fontSize,
-                                                            TextAlignment = TextAlignment.Center
+                                                            TextAlignment = TextAlignment.Center,
+                                                            TextWrapping = TextWrapping.Wrap
                                                         },
                                               Width = checkboxWidth,
                                               HorizontalContentAlignment = HorizontalAlignment.Center
