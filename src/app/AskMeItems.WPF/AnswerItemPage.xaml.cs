@@ -63,7 +63,7 @@ namespace AskMeItems.WPF
         Tuple<double, double> CalculateFontSizeAndTextWidthForListedAnswers(double width, double fontSize)
         {
             var maxWidth =
-                FontSizeCalculator.GetFontWidth("this is a text which has already the correct width",
+                FontSizeCalculator.GetFontWidth("this is a text which has      already the correct width",
                                                 answersListBox.FontFamily,
                                                 fontSize);
 
@@ -97,7 +97,7 @@ namespace AskMeItems.WPF
             if (!_questionnairePresenter.HasItem())
                 return;
 
-            var tuple = CalculateFontSizeAndTextWidth(width, 1);
+            var tuple = CalculateFontSizeAndTextWidth(width*0.8, 1);
             var checkboxWidth = tuple.Item1;
             var fontSize = tuple.Item2;
 

@@ -80,7 +80,7 @@
                  Name="itemTextBlock" />
     </Label>
     <ListBox Height="454"
-             Margin="12,424,12,0"
+             Margin="12,300,12,0"
              Name="answersListBox"
              FontSize="28"
              ScrollViewer.VerticalScrollBarVisibility="Disabled"
