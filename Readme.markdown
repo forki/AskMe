@@ -64,7 +64,7 @@ AskMeItems is a little questionnaire presenter and can be used for scientific st
 
          ABC_2: Hello, how are you?          
            1) good
-           2) bad\nvery bas       (will introduce a linebreak)
+           2) bad\nvery bad       (will introduce a linebreak)
 
 
 ### Running a series of questionnaires
