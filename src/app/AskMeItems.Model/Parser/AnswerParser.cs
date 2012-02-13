@@ -9,7 +9,7 @@ namespace AskMeItems.Model.Parser
         {
             var answers = new List<Answer>();
             while (lineNo < answerLines.Count && StartsWithIndent(answerLines[lineNo]))
-                answers.Add(BuildAnswer(answerLines[lineNo++]));
+                BuildAnswer(answers, answerLines[lineNo++]);
 
             return answers;
         }
@@ -19,15 +19,18 @@ namespace AskMeItems.Model.Parser
             return text.StartsWith("  ") || text.StartsWith("\t");
         }
 
-        static Answer BuildAnswer(string line)
+        static void BuildAnswer(ICollection<Answer> answers, string line)
         {
+            if (Helpers.TextIsEmptyOrWhitespace(line))
+                return;
+
             var answerParts = line.Split(')');
             var code = answerParts[0].Trim(' ').Trim('\t');
             var textParts = answerParts[1].Split(new[] {" - "}, StringSplitOptions.None);
-            var text = textParts[0].Trim(' ').Replace("\\n","\r\n");
+            var text = textParts[0].Trim(' ').Replace("\\n", "\r\n");
             var points = ParsePoints(textParts, code);
 
-            return new Answer(code, text, points);
+            answers.Add(new Answer(code, text, points));
         }
 
         static int ParsePoints(IList<string> textParts, string code)

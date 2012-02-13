@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{C28B
 		samples\Coded1.txt = samples\Coded1.txt
 		samples\HADS.txt = samples\HADS.txt
 		samples\Likert.txt = samples\Likert.txt
+		samples\PSQ.txt = samples\PSQ.txt
 		samples\Simple1.txt = samples\Simple1.txt
 	EndProjectSection
 EndProject
