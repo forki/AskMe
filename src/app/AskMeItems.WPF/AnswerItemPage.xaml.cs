@@ -81,6 +81,8 @@ namespace AskMeItems.WPF
                     .Select(x => x.Text)
                     .ToList();
 
+            answers.Add("aaaaaa"); // dummy if there is no text
+
             var maxWidth =
                 answers
                     .Select(answer => 1.6 * FontSizeCalculator.GetFontWidth(answer, answersListBox.FontFamily, fontSize))
