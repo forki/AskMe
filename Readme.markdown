@@ -58,6 +58,14 @@ AskMeItems is a little questionnaire presenter and can be used for scientific st
            1) :)       (will give 1 point)
            2) :(       (will give 2 points)
 
+### Using linebreaks
+
+* It is possible to use linebreaks in answer texts
+
+         ABC_2: Hello, how are you?          
+           1) good
+           2) bad\nvery bas       (will introduce a linebreak)
+
 
 ### Running a series of questionnaires
 

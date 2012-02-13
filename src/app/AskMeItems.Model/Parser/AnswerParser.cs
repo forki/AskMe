@@ -24,7 +24,7 @@ namespace AskMeItems.Model.Parser
             var answerParts = line.Split(')');
             var code = answerParts[0].Trim(' ').Trim('\t');
             var textParts = answerParts[1].Split(new[] {" - "}, StringSplitOptions.None);
-            var text = textParts[0].Trim(' ');
+            var text = textParts[0].Trim(' ').Replace("\\n","\r\n");
             var points = ParsePoints(textParts, code);
 
             return new Answer(code, text, points);

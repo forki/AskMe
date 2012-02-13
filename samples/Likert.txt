@@ -37,4 +37,5 @@ LIK_3: How do you do?
   7)
   8)
   9)
-  10) very bad
+  10) very bad\nreally bad
+  11) worst

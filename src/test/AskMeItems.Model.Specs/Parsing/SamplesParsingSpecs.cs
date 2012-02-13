@@ -1,3 +1,5 @@
+using System.Linq;
+
 using Machine.Specifications;
 
 namespace AskMeItems.Model.Specs.Parsing
@@ -9,11 +11,14 @@ namespace AskMeItems.Model.Specs.Parsing
         It should_use_the_filename_as_questionnaire_code = () => Questionnaire.Code.ShouldEqual("Likert");
         It should_be_a_likert_questionnaire = () => Questionnaire.Type.ShouldEqual(QuestionnaireType.Likert);
         It should_contain_two_items = () => Questionnaire.Items.Count.ShouldEqual(3);
-        It should_contain_the__LIK_1_item = () => GetItem(0).Code.ShouldEqual("LIK_1");
+        It should_contain_the_LIK_1_item = () => GetItem(0).Code.ShouldEqual("LIK_1");
         It should_contain_the_text_for_the_first_answer = () => GetAnswer(0, 0).Text.ShouldEqual("sehr");
         It should_contain_no_text_for_the_second_answer = () => GetAnswer(0, 1).Text.ShouldEqual("");
         It should_contain_the_points_for_the_second_answer = () => GetAnswer(0, 1).Points.ShouldEqual(2);
         It should_contain_the_default_points_if_no_points_are_given = () => GetAnswer(0, 3).Points.ShouldEqual(4);
+
+        It should_contain_the_LIK3_item = () => GetItem(2).Code.ShouldEqual("LIK_3");
+        It should_contain_a_linebreak_in_the_LIK3_answer = () => GetItem(2).Answers["10"].Text.ShouldEqual("very bad\r\nreally bad");
     }
 
     public class when_parsing_a_ADS_questionnaire : when_parsing_from_file
