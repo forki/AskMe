@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mime;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Navigation;
 
 using AskMeItems.Model;
@@ -17,6 +17,8 @@ namespace AskMeItems.WPF
     /// </summary>
     public partial class BaseWindow : Window
     {
+        public static RoutedCommand EnterPressedCommand = new RoutedCommand();
+
         readonly List<IExporter> _exporters =
             new List<IExporter>
             {
@@ -37,13 +39,15 @@ namespace AskMeItems.WPF
             InitializeComponent();
 
             NextButton.Content = new Label {Content = Properties.Resources.NextButtonText, FontSize = 25};
-            
+
             ErrorLabel.Content = "";
             _pages =
                 new List<INavigationPage>
                 {
                     new SettingsPage(ReportErrorsInLabel, directory, SetPresenter)
                 };
+
+            EnterPressedCommand.InputGestures.Add(new KeyGesture(Key.Enter, ModifierKeys.None));
 
             frame1.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             frame1.Navigate(_pages[_currentPage]);
@@ -58,10 +62,10 @@ namespace AskMeItems.WPF
                         .Select(questionnaire => new QuestionnairePresenter(subjectCode, questionnaire))
                         .ToList();
 
-                bool isFirst = true;
+                var isFirst = true;
                 foreach (var presenter in _questionnairePresenters)
                 {
-                    if(!isFirst)
+                    if (!isFirst)
                         _pages.Add(new PausePage());
                     if (presenter.HasIntroduction)
                         _pages.Add(new InstructionPage(ReportErrorsInLabel, presenter));
@@ -87,6 +91,11 @@ namespace AskMeItems.WPF
         }
 
         void NextButtonClick(object sender, RoutedEventArgs e)
+        {
+            Next();
+        }
+
+        void Next()
         {
             SaveAllResults();
 
@@ -119,6 +128,11 @@ namespace AskMeItems.WPF
         {
             frame1.Width = e.NewSize.Width - 30;
             frame1.Height = e.NewSize.Height - 30;
+        }
+
+        void EnterPressed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Next();
         }
     }
 }

@@ -1,13 +1,18 @@
 ﻿<Window x:Class="AskMeItems.WPF.BaseWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:WPF="clr-namespace:AskMeItems.WPF"
         Title="AskMeItems"
         WindowStyle="None"
         WindowState="Maximized"
         SizeChanged="WindowSizeChanged"
         Width="1200"
         Height="980">
-  <Grid SizeChanged="GridSizeChanged">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static WPF:BaseWindow.EnterPressedCommand}" Executed="EnterPressed"/>
+    </Window.CommandBindings>
+
+    <Grid SizeChanged="GridSizeChanged">
     <Frame HorizontalAlignment="Center"
            Margin="12,62,12,0"
            Name="frame1"
@@ -22,6 +27,7 @@
             Name="NextButton"
             VerticalAlignment="Top"
             Width="125"
+            
             Click="NextButtonClick" />
     <Label Height="28"
            HorizontalAlignment="Left"
