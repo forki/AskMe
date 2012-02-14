@@ -63,7 +63,16 @@
         </Setter.Value>
       </Setter>
     </Style>
-  </Page.Resources>
+        <Style x:Key="ListBoxFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle  StrokeThickness="0" StrokeDashArray="0"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
   <Grid SizeChanged="GridSizeChanged">
 
     <Label Name="itemLabel"
@@ -87,7 +96,9 @@
              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
              VerticalAlignment="Top"
              BorderBrush="{x:Null}"
-             Background="{x:Null}" VerticalContentAlignment="Top">
+             Background="{x:Null}"
+             FocusVisualStyle="{DynamicResource ListBoxFocusVisual}"
+             VerticalContentAlignment="Top">
       <ListBoxItem>Never</ListBoxItem>
       <ListBoxItem>Hardly ever</ListBoxItem>
       <ListBoxItem>Sometimes</ListBoxItem>
