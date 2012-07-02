@@ -137,8 +137,7 @@ namespace AskMeItems.WPF
                 answersListBox.Items.Add(listBoxItem);
         }
 
-        void GridSizeChanged
-            (object sender, SizeChangedEventArgs e)
+        void GridSizeChanged(object sender, SizeChangedEventArgs e)
         {
             DisplayQuestion(e.NewSize.Width, e.NewSize.Height);
         }
