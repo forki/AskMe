@@ -100,12 +100,20 @@ namespace AskMeItems.WPF
             SaveAllResults();
 
             if (_pages[_currentPage].Next())
+            {
+                SaveAllResults();
                 return;
+            }
             _currentPage++;
             if (_pages.Count <= _currentPage)
+            {
+                SaveAllResults();
                 Close();
+            }
             else
                 frame1.Navigate(_pages[_currentPage]);
+
+            SaveAllResults();
         }
 
         void SaveAllResults()
